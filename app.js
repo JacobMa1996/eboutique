@@ -36,7 +36,7 @@ app.use(async (ctx, next) => {
 
 //router
 routers.forEach(val => {
-  app.use(val.routes(), val.allowedMethods)
+  app.use(val.routes(), val.allowedMethods())
 })
 
 // error-handling
