@@ -70,9 +70,25 @@
 "use strict";
 
 
-console.log('home');
+var _common = __webpack_require__(1);
 
+console.log('home');
+console.log(_common.format);
 console.log(Promise);
+console.log(5);
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.format = format;
+function format() {}
 
 /***/ })
 /******/ ]);

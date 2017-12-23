@@ -4,8 +4,8 @@
 const path = require('path')
 const fs = require('fs')
 
-const srcPath = path.join(__dirname, '/assests/src/frontend/')
-const distPath = path.join(__dirname, '/assests/dist/frontend/')
+const srcPath = path.join(__dirname, '../src/frontend/')
+const distPath = path.join(__dirname, '../dist/frontend/')
 
 function getSrcPageName(srcPath) {
     let PageName = []
@@ -24,8 +24,14 @@ function getSrcPageName(srcPath) {
 }
 
 function getSrcPageEntries(srcPath) {
-    let PageName = getSrcPageName(srcPath)
-    let url = {}
+    let PageName = [],
+        url = {}
+    
+    PageName = getSrcPageName(srcPath)
+
+    if (!PageName || !PageName.length) {
+        return
+    }
 
     PageName.forEach( item => {
         url[item] = path.join(srcPath, item, `index.js`)
@@ -33,9 +39,6 @@ function getSrcPageEntries(srcPath) {
 
     return url
 }
-
-console.log(getSrcPageName(srcPath))
-console.log(getSrcPageEntries(srcPath))
 
 module.exports = {
     entry: getSrcPageEntries(srcPath),

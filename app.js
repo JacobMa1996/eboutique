@@ -44,4 +44,7 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
+//watch statics
+require('./assests/build/watch')()
+
 module.exports = app
