@@ -3,6 +3,7 @@
 */
 const path = require('path')
 const fs = require('fs')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const srcPath = path.join(__dirname, '../src/frontend/')
 const distPath = path.join(__dirname, '../dist/frontend/')
@@ -26,14 +27,14 @@ function getSrcPageName(srcPath) {
 function getSrcPageEntries(srcPath) {
     let PageName = [],
         url = {}
-    
+
     PageName = getSrcPageName(srcPath)
 
     if (!PageName || !PageName.length) {
         return
     }
 
-    PageName.forEach( item => {
+    PageName.forEach(item => {
         url[item] = path.join(srcPath, item, `index.js`)
     })
 
@@ -41,6 +42,7 @@ function getSrcPageEntries(srcPath) {
 }
 
 module.exports = {
+    context: path.join(__dirname, '../'),
     entry: getSrcPageEntries(srcPath),
     output: {
         filename: '[name].js',
@@ -55,6 +57,15 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.s?css$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }, {
+                }]
             }
         ]
     }

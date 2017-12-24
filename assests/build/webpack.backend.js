@@ -26,7 +26,7 @@ function getSrcPageName(srcPath) {
 function getSrcPageEntries(srcPath) {
     let PageName = [],
         url = {}
-    
+
     PageName = getSrcPageName(srcPath)
 
     if (!PageName || !PageName.length) {
@@ -55,6 +55,14 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.s?css$/,
+                exclude: /node_modules/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
+                ]
             }
         ]
     }
