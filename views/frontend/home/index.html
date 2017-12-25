@@ -1,7 +1,13 @@
-{% extends 'views/frontend/common/layout.html' %}
-{% block head %}
-    <script src="/dist/frontend/home.js"></script>
-{% endblock %}
-{% block body %}
+{% extends 'views/frontend/common/layout.html' %} {% block head %}
+<link rel="stylesheet" href="/dist/frontend/home/bundle.css">
+<script src="/dist/frontend/home/bundle.js"></script> {% endblock %} {% block body %}
 
-{% endblock %}
+<div>dsadsa</div>
+
+<script>
+
+    $(function () {
+        console.log(1);
+        console.log(typeof vue);
+    })
+</script> {% endblock %}

@@ -13,9 +13,10 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "clone-deep": "^2.0.1",
     "css-loader": "^0.28.7",
     "debug": "^2.6.3",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "extract-text-webpack-plugin": "^2.1.2",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
@@ -28,9 +29,9 @@
     "node-sass": "^4.7.2",
     "nunjucks": "^3.0.1",
     "sass": "^1.0.0-beta.4",
-    "sass-loader": "^6.0.6",
+    "sass-loader": "^6.0.5",
     "style-loader": "^0.19.1",
-    "webpack": "2.2.1"
+    "webpack": "2.6.1"
   },
   "devDependencies": {
     "nodemon": "^1.8.1"

@@ -1,2 +1,2 @@
 import '../common'
-import './index.css'
+import './index.scss'
