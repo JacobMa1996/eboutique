@@ -31,6 +31,9 @@ module.exports = {
         }, {
             test: /\.scss$/i,
             loader: extractSass.extract(['css-loader', 'sass-loader'])
+        }, {
+            test: /\.html$/i, 
+            loader: 'html-loader'
         }]
     }, 
     resolve: {

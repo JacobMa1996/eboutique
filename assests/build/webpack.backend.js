@@ -1,5 +1,5 @@
 /*
-    frontend页面 打包配置
+    backend页面 打包配置
 */
 const path = require('path')
 const fs = require('fs')
@@ -31,6 +31,9 @@ module.exports = {
         }, {
             test: /\.scss$/i,
             loader: extractSass.extract(['css-loader', 'sass-loader'])
+        }, {
+            test: /\.html$/i, 
+            loader: 'html-loader'
         }]
     }, 
     resolve: {

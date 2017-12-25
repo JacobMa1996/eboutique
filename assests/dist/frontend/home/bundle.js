@@ -75,11 +75,31 @@
 
 /***/ }),
 
+/***/ "5Nx8":
+/***/ (function(module, exports) {
+
+module.exports = "<li>\r\n    {{ title }}\r\n    <button v-on:click=\"$emit('remove')\">X</button>\r\n</li>";
+
+/***/ }),
+
 /***/ "IXT4":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+/***/ }),
+
+/***/ "PYZg":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('todo-item', {
+    template: __webpack_require__("5Nx8"),
+    props: ['title']
+});
 
 /***/ }),
 
@@ -92,6 +112,35 @@
 __webpack_require__("IXT4");
 
 __webpack_require__("/ikZ");
+
+__webpack_require__("PYZg");
+
+new Vue({
+    el: '#todo-list-example',
+    data: {
+        newTodoText: '',
+        todos: [{
+            id: 1,
+            title: 'Do the dishes'
+        }, {
+            id: 2,
+            title: 'Take out the trash'
+        }, {
+            id: 3,
+            title: 'Mow the lawn'
+        }],
+        nextTodoId: 4
+    },
+    methods: {
+        addNewTodo: function addNewTodo() {
+            this.todos.push({
+                id: this.nextTodoId++,
+                title: this.newTodoText
+            });
+            this.newTodoText = '';
+        }
+    }
+});
 
 /***/ })
 

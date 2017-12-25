@@ -17,6 +17,7 @@
     "css-loader": "^0.28.7",
     "debug": "^2.6.3",
     "extract-text-webpack-plugin": "^2.1.2",
+    "html-loader": "^0.5.1",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
