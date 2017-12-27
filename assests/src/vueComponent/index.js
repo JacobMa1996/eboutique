@@ -1,6 +1,2 @@
-Vue.component('todo-item', {
-    template: require('./template.html'),
-    props: ['title']
-})
-
-
+require('./v-todo-list')
+require('./v-button')

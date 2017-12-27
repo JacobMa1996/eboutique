@@ -75,7 +75,37 @@
 
 /***/ }),
 
-/***/ "5Nx8":
+/***/ "2r7+":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('todo-item', {
+    template: __webpack_require__("Gm95"),
+    props: ['title']
+});
+
+/***/ }),
+
+/***/ "4W77":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-button', {
+    template: __webpack_require__("LZrx"),
+    data: function data() {
+        return {
+            display_text: '按钮'
+        };
+    }
+});
+
+/***/ }),
+
+/***/ "Gm95":
 /***/ (function(module, exports) {
 
 module.exports = "<li>\r\n    {{ title }}\r\n    <button v-on:click=\"$emit('remove')\">X</button>\r\n</li>";
@@ -90,16 +120,21 @@ module.exports = "<li>\r\n    {{ title }}\r\n    <button v-on:click=\"$emit('rem
 
 /***/ }),
 
+/***/ "LZrx":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"v-btn\">\r\n    <button v-if=\"\">{{display_text}}</button>\r\n</div>";
+
+/***/ }),
+
 /***/ "PYZg":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Vue.component('todo-item', {
-    template: __webpack_require__("5Nx8"),
-    props: ['title']
-});
+__webpack_require__("2r7+");
+__webpack_require__("4W77");
 
 /***/ }),
 
@@ -115,30 +150,41 @@ __webpack_require__("/ikZ");
 
 __webpack_require__("PYZg");
 
+// new Vue({
+//     el: '#todo-list-example',
+//     data: {
+//         newTodoText: '',
+//         todos: [
+//             {
+//                 id: 1,
+//                 title: 'Do the dishes',
+//             },
+//             {
+//                 id: 2,
+//                 title: 'Take out the trash',
+//             },
+//             {
+//                 id: 3,
+//                 title: 'Mow the lawn'
+//             }
+//         ],
+//         nextTodoId: 4
+//     },
+//     methods: {
+//         addNewTodo: function () {
+//             this.todos.push({
+//                 id: this.nextTodoId++,
+//                 title: this.newTodoText
+//             })
+//             this.newTodoText = ''
+//         }
+//     }
+// })
+
 new Vue({
-    el: '#todo-list-example',
-    data: {
-        newTodoText: '',
-        todos: [{
-            id: 1,
-            title: 'Do the dishes'
-        }, {
-            id: 2,
-            title: 'Take out the trash'
-        }, {
-            id: 3,
-            title: 'Mow the lawn'
-        }],
-        nextTodoId: 4
-    },
-    methods: {
-        addNewTodo: function addNewTodo() {
-            this.todos.push({
-                id: this.nextTodoId++,
-                title: this.newTodoText
-            });
-            this.newTodoText = '';
-        }
+    el: '#div',
+    data: function data() {
+        return {};
     }
 });
 
