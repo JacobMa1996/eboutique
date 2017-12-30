@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>eboutique</title>
     <link rel="stylesheet" href="/dist/common/normalize.css">
-    <link rel="stylesheet" href="/dist/common/normalize.css">
-    <link rel="stylesheet" href="/dist/common/common.css">
+    <link rel="stylesheet" href="/dist/common/normal.css">
+    <link rel="stylesheet" href="/dist/common/layout.css">
     <script src="/dist/common/jquery-3.2.1.min.js"></script>
-    <script src="/dist/common/vue.min.js"></script>
-    {% block head %} {% endblock %}
+    <script src="/dist/common/vue.min.js"></script> {% block head %} {% endblock %}
 </head>
+
 <body>
-    
+
 
     {% include './header.html' %}
-    {% block body %} {% endblock %}
+    <div class="container">
+        {% block body %} {% endblock %}
+    </div>
     {% include './footer.html' %}
-    
+
 </body>
+
 </html>
