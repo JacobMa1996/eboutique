@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>eboutique</title>
-    <link rel="stylesheet" href="/dist/common/normalize.css">
-    <link rel="stylesheet" href="/dist/common/normal.css">
-    <link rel="stylesheet" href="/dist/common/layout.css">
-    <script src="/dist/common/jquery-3.2.1.min.js"></script>
-    <script src="/dist/common/vue.min.js"></script> {% block head %} {% endblock %}
+    <link rel="stylesheet" href="/common/css/normalize.css">
+    <link rel="stylesheet" href="/common/css/normal.css">
+    <link rel="stylesheet" href="/common/css/vue.css">
+    <link rel="stylesheet" href="/common/css/layout.css"> {% block head %} {% endblock %}
+    <script src="/common/js/jquery-3.2.1.min.js"></script>
+    <script src="/common/js/vue.min.js"></script>
+    <script src="/common/js/common.js"></script>
 </head>
 
 <body>
@@ -22,6 +24,7 @@
     </div>
     {% include './footer.html' %}
 
+    {% block script %}{% endblock %}
 </body>
 
 </html>
