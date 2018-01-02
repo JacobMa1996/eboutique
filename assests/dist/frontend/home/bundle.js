@@ -94,11 +94,12 @@ Vue.component('todo-item', {
 "use strict";
 
 
-Vue.component('v-button', {
+Vue.component('v-btn', {
     template: __webpack_require__("LZrx"),
     data: function data() {
         return {
-            display_text: '按钮'
+            display_text: '按钮',
+            data_btn: {}
         };
     }
 });
@@ -112,18 +113,10 @@ module.exports = "<li>\r\n    {{ title }}\r\n    <button v-on:click=\"$emit('rem
 
 /***/ }),
 
-/***/ "IXT4":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-
 /***/ "LZrx":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-btn\">\r\n    <button v-if=\"\">{{display_text}}</button>\r\n</div>";
+module.exports = "<button class=\"v-btn\" v-if=\"\" :data=\"data_btn\">{{display_text}}</button>\r\n";
 
 /***/ }),
 
@@ -144,42 +137,11 @@ __webpack_require__("4W77");
 "use strict";
 
 
-__webpack_require__("IXT4");
+__webpack_require__("PYZg");
 
 __webpack_require__("/ikZ");
 
-__webpack_require__("PYZg");
-
-// new Vue({
-//     el: '#todo-list-example',
-//     data: {
-//         newTodoText: '',
-//         todos: [
-//             {
-//                 id: 1,
-//                 title: 'Do the dishes',
-//             },
-//             {
-//                 id: 2,
-//                 title: 'Take out the trash',
-//             },
-//             {
-//                 id: 3,
-//                 title: 'Mow the lawn'
-//             }
-//         ],
-//         nextTodoId: 4
-//     },
-//     methods: {
-//         addNewTodo: function () {
-//             this.todos.push({
-//                 id: this.nextTodoId++,
-//                 title: this.newTodoText
-//             })
-//             this.newTodoText = ''
-//         }
-//     }
-// })
+$('.container').css({ 'min-height': common.pageWidthHeight().pageHeight - 240 });
 
 new Vue({
     el: '#div',

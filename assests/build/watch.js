@@ -20,6 +20,12 @@ module.exports = () => {
         recursive: true, //subdirectories should be watched
         encoding: 'utf8' 
     }, listenerBackEnd)
+
+    fs.watch(path.join(__dirname, '../src/vueComponent'), {
+        persistent: true, //watched continue to run
+        recursive: true, //subdirectories should be watched
+        encoding: 'utf8' 
+    }, listenerFrontEnd)
 }
 
 let end = (err, status) => {

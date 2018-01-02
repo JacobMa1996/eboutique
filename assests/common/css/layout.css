@@ -24,7 +24,8 @@ header .header-intro .header-title {
 }
 
 .container {
-    background: rgb(202, 192, 168)
+    background: rgb(224, 220, 214);
+    padding: 1em
 }
 
 footer {
@@ -40,5 +41,7 @@ footer {
     text-align: center; 
 }
 
-
+@media (max-width: 767px) {
+    
+}
 
