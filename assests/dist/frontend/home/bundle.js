@@ -75,48 +75,10 @@
 
 /***/ }),
 
-/***/ "2r7+":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Vue.component('todo-item', {
-    template: __webpack_require__("Gm95"),
-    props: ['title']
-});
-
-/***/ }),
-
-/***/ "4W77":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Vue.component('v-btn', {
-    template: __webpack_require__("LZrx"),
-    data: function data() {
-        return {
-            display_text: '按钮',
-            data_btn: {}
-        };
-    }
-});
-
-/***/ }),
-
-/***/ "Gm95":
+/***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<li>\r\n    {{ title }}\r\n    <button v-on:click=\"$emit('remove')\">X</button>\r\n</li>";
-
-/***/ }),
-
-/***/ "LZrx":
-/***/ (function(module, exports) {
-
-module.exports = "<button class=\"v-btn\" v-if=\"\" :data=\"data_btn\">{{display_text}}</button>\r\n";
+module.exports = "<a :class=\"'v-btn'\" @click=\"\">{{display_text}}</a>\r\n";
 
 /***/ }),
 
@@ -126,8 +88,31 @@ module.exports = "<button class=\"v-btn\" v-if=\"\" :data=\"data_btn\">{{display
 "use strict";
 
 
-__webpack_require__("2r7+");
-__webpack_require__("4W77");
+__webpack_require__("Xvv4");
+
+/***/ }),
+
+/***/ "Xvv4":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-btn', {
+    template: __webpack_require__("DAap"),
+    props: {
+        options: {}
+    },
+    data: function data() {
+        console.log(this);
+        return {
+            display_text: this.options.display_text || '未命名按钮'
+        };
+    },
+    methods: function methods() {
+        clickBtn: (function () {});
+    }
+});
 
 /***/ }),
 
@@ -145,8 +130,10 @@ $('.container').css({ 'min-height': common.pageWidthHeight().pageHeight - 240 })
 
 new Vue({
     el: '#div',
-    data: function data() {
-        return {};
+    data: {
+        btn_options: {
+            // display_text: '按钮'
+        }
     }
 });
 
