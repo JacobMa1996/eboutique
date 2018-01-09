@@ -78,7 +78,7 @@
 /***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<a :class=\"'v-btn'\" @click=\"\">{{display_text}}</a>\r\n";
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
 
 /***/ }),
 
@@ -104,13 +104,19 @@ Vue.component('v-btn', {
         options: {}
     },
     data: function data() {
-        console.log(this);
+        var data = this.options;
         return {
-            display_text: this.options.display_text || '未命名按钮'
+            display_text: data.display_text || '未命名按钮',
+            display_type: data.display_type || 'button',
+            href: data.href || undefined,
+            target: data.target || '_blank'
         };
     },
-    methods: function methods() {
-        clickBtn: (function () {});
+
+    methods: {
+        click: function click() {
+            this.options.click && this.options.click();
+        }
     }
 });
 
@@ -131,8 +137,15 @@ $('.container').css({ 'min-height': common.pageWidthHeight().pageHeight - 240 })
 new Vue({
     el: '#div',
     data: {
-        btn_options: {
-            // display_text: '按钮'
+        actions: {
+            display_text: '按钮',
+            display_type: 'link',
+            click: function click() {
+                console.log(1);
+            }
+            // href: '#', 
+            // target: '_self'
+
         }
     }
 });

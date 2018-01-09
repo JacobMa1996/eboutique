@@ -1,0 +1,36 @@
+header {
+  height: 120px;
+  background: #25211e;
+  color: #cac0a8;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center; }
+
+header .header-intro {
+  display: inline-block;
+  height: 100px;
+  line-height: 50px; }
+
+header .header-intro .header-title {
+  font-size: 45px; }
+
+.logo {
+  max-width: 80px;
+  vertical-align: middle;
+  font-size: 0; }
+
+.container {
+  background: #e0dcd6;
+  padding: 1em; }
+
+footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  background: #25211e;
+  height: 120px;
+  width: 100%;
+  color: #cac0a8;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center; }
