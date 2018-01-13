@@ -4,17 +4,15 @@ header {
     color: rgb(202, 192, 168);
     padding: 10px;
     box-sizing: border-box;
-    text-align: center
-}
-
-header .header-intro {
-    display: inline-block;
-    height: 100px; 
-    line-height: 50px;
-}
-
-header .header-intro .header-title {
-    font-size: 45px; 
+    text-align: center; 
+    .header-intro {
+        display: inline-block;
+        height: 100px; 
+        line-height: 50px;
+        .header-title {
+            font-size: 45px; 
+        }
+    }
 }
 
 .logo {
