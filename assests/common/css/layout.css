@@ -8,7 +8,7 @@ header {
 }
 
 header > div {
-    height: 100%;
+    /* height: 100%; */
     margin: 0 1em
 }
 
@@ -16,6 +16,10 @@ header .title {
     font-size: 30px;
     line-height: 60px;
     display: inline-block;
+}
+
+header .category {
+    display: inline-block
 }
 
 header .search {
@@ -44,7 +48,11 @@ header .user .passing a:hover, header .user .passed a:hover {
 header .user .passed {
     position: relative;
     width: 100px;
-    text-align: center
+    text-align: center;
+}
+
+header .user .passed .user-center {
+    
 }
 
 header .user .passed .user-center ul {
@@ -52,19 +60,22 @@ header .user .passed .user-center ul {
     right: 0px;
     line-height: 1.4em;
     background: #25211e;
-    transition: height 1s ease
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease 0s;
+    text-align: left
 }
 
 header .user .passed .user-center ul li {
     padding: 1em
 }
 
-header .user .passed .user-center .user-title:hover {
-    color: rgb(255, 235, 205)
+header .user .passed .user-center:hover .user-title {
+    color: rgb(255, 235, 205);
+    cursor: default;
 }
 
 header .user .passed .user-center:hover ul{
-    /* opacity: 1 */
-    height: 100%
+    height: 270px
 }
 
