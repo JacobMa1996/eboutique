@@ -1,47 +1,81 @@
 header {
-    height: 120px;
+    height: 60px;
+    width: 100%;
     background: #25211e;
     color: rgb(202, 192, 168);
-    padding: 10px;
     box-sizing: border-box;
-    text-align: center
+    font-size: 16px;
 }
 
-header .header-intro {
+header > div {
+    /* height: 100%; */
+    margin: 0 1em
+}
+
+header .title {
+    font-size: 30px;
+    line-height: 60px;
     display: inline-block;
-    height: 100px; 
-    line-height: 50px;
 }
 
-header .header-intro .header-title {
-    font-size: 45px; 
+header .category {
+    display: inline-block
 }
 
-.logo {
-    max-width: 80px;
-    vertical-align: middle;
-    font-size: 0
+header .search {
+    display: inline-block;
+    float: right;
+    line-height: 60px
 }
 
-.container {
-    background: rgb(224, 220, 214);
+header .user {
+    float: right;
+    line-height: 60px
+}
+
+header .user .passed, header .user .passing {
+    display: inline-block
+}
+
+header .user .passing a, header .user .passed a {
+    color: rgb(202, 192, 168);
+}
+
+header .user .passing a:hover, header .user .passed a:hover {
+    color: rgb(255, 235, 205)
+}
+
+header .user .passed {
+    position: relative;
+    width: 100px;
+    text-align: center;
+}
+
+header .user .passed .user-center {
+    
+}
+
+header .user .passed .user-center ul {
+    position: absolute;
+    right: 0px;
+    line-height: 1.4em;
+    background: #25211e;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease 0s;
+    text-align: left
+}
+
+header .user .passed .user-center ul li {
     padding: 1em
 }
 
-footer {
-    display: block;
-    position: absolute;
-    bottom: 0; 
-    background: #25211e;
-    height: 120px;
-    width: 100%;
-    color: rgb(202, 192, 168);
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center; 
+header .user .passed .user-center:hover .user-title {
+    color: rgb(255, 235, 205);
+    cursor: default;
 }
 
-@media (max-width: 767px) {
-    
+header .user .passed .user-center:hover ul{
+    height: 270px
 }
 

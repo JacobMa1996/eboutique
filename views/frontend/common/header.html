@@ -1,8 +1,47 @@
 <header>
-    <!-- <img class="logo" src="/images/logo.png" alt="logo"> -->
-    <div class="header-intro">
-        <div class="header-title">EBOUTIQUE</div>
-        <div class="header-subtitle">精致是奢华和节俭的结合</div>
+    <div class="title">EBOUTIQUE</div>
+    <div class="category">
+        <ul>
+            {% for item in category %}
+            <li><a href="">{{ item.categoryName }}</a></li>
+            {% endfor %}
+        </ul>
     </div>
-</header>
+    <div class="user">
+        <div class="passed">
+            <!-- 已登陆 -->
+            <div class="user-center">
+                <span class="user-title">个人中心</span>
+                <ul>
+                    <li>
+                        <a class="v-btn link" href="">我的信息</a>
+                    </li>
+                    <li>
+                        <a class="v-btn link" href="">我的收藏</a>
+                    </li>
+                    <li>
+                        <a class="v-btn link" href="">我的订单</a>
+                    </li>
+                    <li>
+                        <a class="v-btn link" href="">我的上架</a>
+                    </li>
+                    <li>
+                        <a class="v-btn link" href="">购物车</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="passing">
+            <!-- 未登录 -->
+            <a class="v-btn link" href="#">登陆</a>
+            <a class="v-btn link" href="#">注册</a>
+        </div>
+    </div>
+    {% if search %}
+    <div class="search">
+        <label for="search">搜索： </label>
+        <input name="search" type="text" class="v-input">
+    </div>
+    {% endif %}
 
+</header>

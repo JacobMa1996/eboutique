@@ -1,0 +1,40 @@
+header {
+    height: 120px;
+    background: #25211e;
+    color: rgb(202, 192, 168);
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center; 
+    .header-intro {
+        display: inline-block;
+        height: 100px; 
+        line-height: 50px;
+        .header-title {
+            font-size: 45px; 
+        }
+    }
+}
+
+.logo {
+    max-width: 80px;
+    vertical-align: middle;
+    font-size: 0
+}
+
+.container {
+    background: rgb(224, 220, 214);
+    padding: 1em
+}
+
+footer {
+    display: block;
+    position: absolute;
+    bottom: 0; 
+    background: #25211e;
+    height: 120px;
+    width: 100%;
+    color: rgb(202, 192, 168);
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center; 
+}
