@@ -1,0 +1,43 @@
+html {
+    height: 100%;
+    width: 100%
+}
+
+body {
+    height: 100%;
+    width: 100%
+}
+
+header {
+    height: 50px;
+    width: auto;
+    background: #f8f8f8;
+    border: #e7e7e7
+}
+
+header > div {
+    display: inline-block
+}
+
+.header-left {
+    float: left;
+}
+
+.header-right {
+    float: right;
+}
+
+.header-right > ul > li {
+    display: inline-block
+}
+
+#slide {
+    position: fixed;
+    background: #e7e7e7;
+    width: 200px;
+    height: 100%;
+}
+
+#slide > ul {
+    
+}
