@@ -1,5 +1,7 @@
 var home = require('./routes/home'), 
-    user = require('./routes/user');
+    user = require('./routes/user'), 
+    category = require('./routes/category')
 
-module.exports = [].concat(home, user);
+var admin = require('./routes/admin')
 
+module.exports = [].concat(home, user, category, admin)

@@ -1,28 +1,37 @@
-{% extends 'views/frontend/common/layout.html' %} {% block head %}
-<link rel="stylesheet" href="/dist/frontend/home/bundle.css">
-{% endblock %} {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/common/css/normalize.css">
+    <link rel="stylesheet" href="/common/css/normal.css">
+    <link rel="stylesheet" href="/common/css/vue.css">
+    <link rel="stylesheet" href="/dist/frontend/home/bundle.css">
+    <script src="/common/js/jquery-3.2.1.min.js"></script>
+    <script src="/common/js/vue.min.js"></script>
+    <script src="/common/js/common.js"></script>
+    <title>EBOUTIQUE</title>
+</head>
+<body>
+    <header>
+        <div class="header-intro">
+            <div class="header-title">EBOUTIQUE</div>
+            <div class="header-subtitle">SUBTITLE</div>
+        </div>
+    </header>
+    <div class="container">
+        <div id="div">
+            <v-btn :options="actions"></v-btn>
+            
+        </div>
 
-
-<!-- <div id="todo-list-example">
-    <input
-        v-model="newTodoText"
-        v-on:keyup.enter="addNewTodo"
-        placeholder="Add a todo"
-    >
-    <ul>
-        <li
-        is="todo-item"
-        v-for="(todo, index) in todos"
-        v-bind:key="todo.id"
-        v-bind:title="todo.title"
-        v-on:remove="todos.splice(index, 1)"
-        ></li>
-    </ul>
-</div> -->
-
-<div id="div">
-    <v-button></v-button>
-</div>
-
-<script src="/dist/frontend/home/bundle.js"></script> 
-{% endblock %}
+        <div class=""></div>
+    </div>
+    <footer>
+        <div>奢侈品二手交易平台</div>
+        <div>品牌导航论坛方式</div>
+    </footer>
+    <script src="/dist/frontend/home/bundle.js"></script>
+</body>
+</html>

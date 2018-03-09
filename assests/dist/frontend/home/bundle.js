@@ -75,55 +75,10 @@
 
 /***/ }),
 
-/***/ "2r7+":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Vue.component('todo-item', {
-    template: __webpack_require__("Gm95"),
-    props: ['title']
-});
-
-/***/ }),
-
-/***/ "4W77":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Vue.component('v-button', {
-    template: __webpack_require__("LZrx"),
-    data: function data() {
-        return {
-            display_text: '按钮'
-        };
-    }
-});
-
-/***/ }),
-
-/***/ "Gm95":
+/***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<li>\r\n    {{ title }}\r\n    <button v-on:click=\"$emit('remove')\">X</button>\r\n</li>";
-
-/***/ }),
-
-/***/ "IXT4":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-
-/***/ "LZrx":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"v-btn\">\r\n    <button v-if=\"\">{{display_text}}</button>\r\n</div>";
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
 
 /***/ }),
 
@@ -133,8 +88,37 @@ module.exports = "<div class=\"v-btn\">\r\n    <button v-if=\"\">{{display_text}
 "use strict";
 
 
-__webpack_require__("2r7+");
-__webpack_require__("4W77");
+__webpack_require__("Xvv4");
+
+/***/ }),
+
+/***/ "Xvv4":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-btn', {
+    template: __webpack_require__("DAap"),
+    props: {
+        options: {}
+    },
+    data: function data() {
+        var data = this.options;
+        return {
+            display_text: data.display_text || '未命名按钮',
+            display_type: data.display_type || 'button',
+            href: data.href || undefined,
+            target: data.target || '_blank'
+        };
+    },
+
+    methods: {
+        click: function click() {
+            this.options.click && this.options.click();
+        }
+    }
+});
 
 /***/ }),
 
@@ -144,47 +128,25 @@ __webpack_require__("4W77");
 "use strict";
 
 
-__webpack_require__("IXT4");
+__webpack_require__("PYZg");
 
 __webpack_require__("/ikZ");
 
-__webpack_require__("PYZg");
-
-// new Vue({
-//     el: '#todo-list-example',
-//     data: {
-//         newTodoText: '',
-//         todos: [
-//             {
-//                 id: 1,
-//                 title: 'Do the dishes',
-//             },
-//             {
-//                 id: 2,
-//                 title: 'Take out the trash',
-//             },
-//             {
-//                 id: 3,
-//                 title: 'Mow the lawn'
-//             }
-//         ],
-//         nextTodoId: 4
-//     },
-//     methods: {
-//         addNewTodo: function () {
-//             this.todos.push({
-//                 id: this.nextTodoId++,
-//                 title: this.newTodoText
-//             })
-//             this.newTodoText = ''
-//         }
-//     }
-// })
+$('.container').css({ 'min-height': common.pageWidthHeight().pageHeight - 240 });
 
 new Vue({
     el: '#div',
-    data: function data() {
-        return {};
+    data: {
+        actions: {
+            display_text: '按钮',
+            display_type: 'link',
+            click: function click() {
+                console.log(1);
+            }
+            // href: '#', 
+            // target: '_self'
+
+        }
     }
 });
 

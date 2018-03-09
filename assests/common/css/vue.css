@@ -1,0 +1,40 @@
+.v-btn.button {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    text-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    margin: 0 0.25em 0 0;
+    padding: 0.75em 1.5em;
+    border-radius: 0.25em;
+    border: none;
+    outline: none
+}
+.v-btn.button:hover {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+.v-btn.link {
+    color: #2a2a2a;
+    text-decoration: none
+}
+.v-btn.link:hover {
+    color: #000;
+    cursor: pointer;
+    text-decoration: underline
+}
+
+.v-input {
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    padding: 6px
+}
+
+.v-input:focus {
+    border: 1px solid rgb(202, 192, 168);
+    box-shadow: 0 0 5px rgb(202, 192, 168) inset;
+}

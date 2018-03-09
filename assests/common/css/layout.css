@@ -1,0 +1,81 @@
+header {
+    height: 60px;
+    width: 100%;
+    background: #25211e;
+    color: rgb(202, 192, 168);
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+header > div {
+    /* height: 100%; */
+    margin: 0 1em
+}
+
+header .title {
+    font-size: 30px;
+    line-height: 60px;
+    display: inline-block;
+}
+
+header .category {
+    display: inline-block
+}
+
+header .search {
+    display: inline-block;
+    float: right;
+    line-height: 60px
+}
+
+header .user {
+    float: right;
+    line-height: 60px
+}
+
+header .user .passed, header .user .passing {
+    display: inline-block
+}
+
+header .user .passing a, header .user .passed a {
+    color: rgb(202, 192, 168);
+}
+
+header .user .passing a:hover, header .user .passed a:hover {
+    color: rgb(255, 235, 205)
+}
+
+header .user .passed {
+    position: relative;
+    width: 100px;
+    text-align: center;
+}
+
+header .user .passed .user-center {
+    
+}
+
+header .user .passed .user-center ul {
+    position: absolute;
+    right: 0px;
+    line-height: 1.4em;
+    background: #25211e;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease 0s;
+    text-align: left
+}
+
+header .user .passed .user-center ul li {
+    padding: 1em
+}
+
+header .user .passed .user-center:hover .user-title {
+    color: rgb(255, 235, 205);
+    cursor: default;
+}
+
+header .user .passed .user-center:hover ul{
+    height: 270px
+}
+
