@@ -6,6 +6,8 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const nunjucks = require('nunjucks')
+const session = require('koa-generic-session')
+const MysqlStore = require('koa-mysql-session')
 
 const routers = require('./route')
 // error handler
@@ -24,6 +26,26 @@ app.use(views(__dirname + '/views', {
   map: {
     html: 'nunjucks'
   }
+}))
+
+// session
+const THIRTY_MINTUES = 30 * 60 * 1000
+ 
+const config= {
+        user: "root",
+        password: "admin",
+        database: "eboutique",
+        host: "localhost"
+}
+ 
+app.keys = ['eboutique-session-key']
+
+app.use(session({
+        store: new MysqlStore(config),
+        rolling: true,
+        cookie: {
+            maxage:THIRTY_MINTUES
+        }
 }))
 
 // logger
