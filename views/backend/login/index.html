@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/common/css/normalize.css">
     <link rel="stylesheet" href="/common/css/normal.css">
     <link rel="stylesheet" href="/dist/backend/login/bundle.css">
+    <script src="/common/js/jquery-3.2.1.min.js"></script>
     <script src="/common/js/bootstrap.min.js"></script>
     <script src="/common/js/vue.min.js"></script>    
     <script src="/common/js/common.js"></script>
@@ -23,6 +24,9 @@
                 <input v-model="userName" type="text" class="form-control" name="userName" aria-describedby="emailHelp" placeholder="UserName">
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div>
+            <!-- {%raw%}
+            <div>{{text}}</div>
+            {%endraw%} -->
             <div class="form-group">
                 <label for="userPassword">Password</label>
                 <input v-model="userPassword" type="password" class="form-control" name="userPassword" placeholder="Password">
@@ -31,7 +35,7 @@
                   <input type="checkbox" class="form-check-input" id="save password">
                   <label class="form-check-label" for="save password">Check me out</label>
                 </div> -->
-            <button @click="submit()" type="button" class="btn btn-primary">Submit</button>
+            <button @click="submit" type="button" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <script src="/dist/backend/login/bundle.js"></script>

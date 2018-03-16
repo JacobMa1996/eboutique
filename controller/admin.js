@@ -5,7 +5,12 @@ const ADMIN_USER = {
 
 module.exports = {
     index: async (ctx) => {
-        await ctx.render('backend/index/index')
+        if (ctx.session.user) {
+            await ctx.render('backend/index/index')
+        } else {
+            await ctx.redirect('/admin/login')
+        }
+
     },
     login: async (ctx) => {
         await ctx.render('backend/login/index')
@@ -16,14 +21,14 @@ module.exports = {
             // 存session
             ctx.session.user = userInfo
             ctx.body = {
-                data: '1', 
+                data: '1',
                 status: '0',
                 message: 'success'
             }
         } else {
             ctx.body = {
-                data: '0', 
-                status: '1', 
+                data: '0',
+                status: '1',
                 message: 'wrong userName or passwowrd'
             }
         }

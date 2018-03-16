@@ -1,20 +1,23 @@
 import './index.scss'
 
 new Vue({
+    el: '.form',
     data() {
         return {
             userName: '', 
-            userPassword: ''
+            userPassword: '',
+            text: '123'
         }
     }, 
     methods: {
         submit () {
+            console.log(1)
             const userInfo = {
                 userName: this.userName, 
                 userPassword: this.userPassword
             }
             EB.ajax({
-                url: '/api_login', 
+                url: '/admin/api_login', 
                 type: 'post', 
                 success(res) {
                     alert('登陆成功')

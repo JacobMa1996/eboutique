@@ -3,17 +3,20 @@ import './index.scss'
 
 $('.container').css({ 'min-height': EB.pageWidthHeight().pageHeight - 240 })
 
-new Vue({
+window.vm = new Vue({
     el: '#div',
-    data: {
-        actions: {
-            display_text: '按钮', 
-            display_type: 'link', 
-            click() {
-                console.log(1);
+    data () {
+        return {
+            text: '123',
+            actions: {
+                display_text: '按钮',
+                display_type: 'link',
+                click() {
+                    console.log(1);
+                }
+                // href: '#', 
+                // target: '_self'
             }
-            // href: '#', 
-            // target: '_self'
         }
     }
 })
