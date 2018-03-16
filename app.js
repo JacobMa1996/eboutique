@@ -12,7 +12,7 @@ const MysqlStore = require('koa-mysql-session')
 const routers = require('./route')
 // error handler
 onerror(app)
-
+ 
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
