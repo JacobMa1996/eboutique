@@ -6,7 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const nunjucks = require('nunjucks')
-const session = require('koa-generic-session')
+const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
 
 const routers = require('./route')
@@ -18,7 +18,7 @@ app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
 app.use(json())
-app.use(logger())
+// app.use(logger())
 app.use(require('koa-static')(__dirname + '/assests'))
 
 app.use(views(__dirname + '/views', {
@@ -35,12 +35,14 @@ const config= {
         user: "root",
         password: "admin",
         database: "eboutique",
-        host: "localhost"
+        host: "localhost",
+        port: 3306
 }
  
-app.keys = ['eboutique-session-key']
+app.keys = ['SESSION-ID']
 
 app.use(session({
+        key: 'SESSION-ID',
         store: new MysqlStore(config),
         rolling: true,
         cookie: {
@@ -48,7 +50,6 @@ app.use(session({
         }
 }))
 
-// logger
 // app.use(async (ctx, next) => {
 //   const start = new Date()
 //   await next()

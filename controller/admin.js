@@ -1,3 +1,5 @@
+const Data = require('../model/Data')
+
 const ADMIN_USER = {
     userName: 'root',
     userPassword: 'admin'
@@ -13,6 +15,9 @@ module.exports = {
 
     },
     login: async (ctx) => {
+        if(ctx.session.user) {
+            await ctx.redirect('/admin')
+        }
         await ctx.render('backend/login/index')
     },
     api_login: async (ctx) => {
@@ -20,17 +25,9 @@ module.exports = {
         if (userInfo.userName === ADMIN_USER.userName && userInfo.userPassword === ADMIN_USER.userPassword) {
             // 存session
             ctx.session.user = userInfo
-            ctx.body = {
-                data: '1',
-                status: '0',
-                message: 'success'
-            }
+            ctx.body = new Data()
         } else {
-            ctx.body = {
-                data: '0',
-                status: '1',
-                message: 'wrong userName or passwowrd'
-            }
+            ctx.body = new Data(null, 0, 'wrong userName or password')
         }
     }
 }

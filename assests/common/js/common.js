@@ -14,7 +14,7 @@ EB.pageWidthHeight = () => {
 }
 
 //Ajax
-EB.ajax = function (url, data, func_succ, func_err, type) {
+EB.ajax = function (url, data, func_succ, func_err, method) {
     let options = {}
     let obj = arguments[0]
 
@@ -22,8 +22,11 @@ EB.ajax = function (url, data, func_succ, func_err, type) {
         Object.assign(options, {
             url: obj.url,
             data: obj.data,
-            type: obj.type || 'get',
-            success: obj.success,
+            method: obj.method || 'get',
+            success: (res) => {
+                if (res.status == 0) obj.success && obj.success(res)
+                else obj.error && obj.error(res.message)
+            },
             err: obj.err,
         })
     } else {
@@ -31,7 +34,7 @@ EB.ajax = function (url, data, func_succ, func_err, type) {
             url: url,
             data: data,
             dataType: 'json',
-            type: 'get' || type,
+            method: method || 'get',
             contentType: 'application/json; chaset=utf-8',
             success: (res) => {
                 if (res.status == 0) func_succ && func_succ(res)

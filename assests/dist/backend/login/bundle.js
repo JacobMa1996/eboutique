@@ -95,14 +95,14 @@ new Vue({
 
     methods: {
         submit: function submit() {
-            console.log(1);
             var userInfo = {
                 userName: this.userName,
                 userPassword: this.userPassword
             };
             EB.ajax({
                 url: '/admin/api_login',
-                type: 'post',
+                data: userInfo,
+                method: 'post',
                 success: function success(res) {
                     alert('登陆成功');
                     setTimeout(function () {
@@ -110,7 +110,8 @@ new Vue({
                     }, 1500);
                 },
                 error: function error(err) {
-                    alert(res);
+                    console.log(err);
+                    alert(err);
                 }
             });
         }

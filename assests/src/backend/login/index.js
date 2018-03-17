@@ -11,14 +11,14 @@ new Vue({
     }, 
     methods: {
         submit () {
-            console.log(1)
             const userInfo = {
                 userName: this.userName, 
                 userPassword: this.userPassword
             }
             EB.ajax({
-                url: '/admin/api_login', 
-                type: 'post', 
+                url: '/admin/api_login',
+                data: userInfo,
+                method: 'post',
                 success(res) {
                     alert('登陆成功')
                     setTimeout(() => {
@@ -26,7 +26,8 @@ new Vue({
                     }, 1500)
                 }, 
                 error(err) {
-                    alert(res)
+                    console.log(err)
+                    alert(err)
                 }
             })
         }
