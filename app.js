@@ -8,6 +8,9 @@ const logger = require('koa-logger')
 const nunjucks = require('nunjucks')
 const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
+const mysql = require('mysql')
+
+const MYSQLCONFIG = require('./config/mysql.config')
 
 const routers = require('./route')
 // error handler
@@ -31,19 +34,11 @@ app.use(views(__dirname + '/views', {
 // session
 const THIRTY_MINTUES = 30 * 60 * 1000
  
-const config= {
-        user: "root",
-        password: "admin",
-        database: "eboutique",
-        host: "localhost",
-        port: 3306
-}
- 
 app.keys = ['SESSION-ID']
 
 app.use(session({
         key: 'SESSION-ID',
-        store: new MysqlStore(config),
+        store: new MysqlStore(MYSQLCONFIG),
         rolling: true,
         cookie: {
             maxage:THIRTY_MINTUES

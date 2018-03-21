@@ -1,5 +1,7 @@
 const Data = require('../model/Data')
 
+const query = require('../lib/mysql.js')
+
 const ADMIN_USER = {
     userName: 'root',
     userPassword: 'admin'
