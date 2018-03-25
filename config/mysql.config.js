@@ -1,6 +1,6 @@
 const mysqlConfig= {
-    user: "eboutique_admin",
-    password: "123456",
+    user: "root",
+    password: "admin",
     database: "eboutique",
     host: "localhost",
     port: 3306
