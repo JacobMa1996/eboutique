@@ -1,8 +1,7 @@
-class Category {
-    constructor(categoryId, categoryName) {
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-    }
-}
+require('./requestData')
+require('./categoryData')
 
-module.exports = Category
+module.exports = {
+    Category,
+    requestData
+}

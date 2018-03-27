@@ -1,11 +1,11 @@
-let Category = require('../model/index')
+let { Category } = require('../model/index')
 
 let content = {}
 
 module.exports = {
     index: async (ctx) => {
         let categoryList = []
-        categoryList.push({categoryId: 01, categoryName: 'Louis Vuitton'})
+        categoryList.push({ categoryId: 01, categoryName: 'Louis Vuitton' })
         console.log(categoryList)
         content = {
             search: true,
