@@ -16,7 +16,7 @@ new Vue({
                 userPassword: this.userPassword
             }
             EB.ajax({
-                url: '/admin/api_login',
+                url: '/api/login',
                 data: userInfo,
                 method: 'post',
                 success(res) {

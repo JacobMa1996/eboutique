@@ -63,60 +63,25 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "k2gT");
+/******/ 	return __webpack_require__(__webpack_require__.s = "tQGB");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "EJY0":
+/***/ "dYh2":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ "k2gT":
+/***/ "tQGB":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__("EJY0");
-
-new Vue({
-    el: '.form',
-    data: function data() {
-        return {
-            userName: '',
-            userPassword: '',
-            text: '123'
-        };
-    },
-
-    methods: {
-        submit: function submit() {
-            var userInfo = {
-                userName: this.userName,
-                userPassword: this.userPassword
-            };
-            EB.ajax({
-                url: '/api/login',
-                data: userInfo,
-                method: 'post',
-                success: function success(res) {
-                    alert('登陆成功');
-                    setTimeout(function () {
-                        location.href = '/admin';
-                    }, 1500);
-                },
-                error: function error(err) {
-                    console.log(err);
-                    alert(err);
-                }
-            });
-        }
-    }
-});
+__webpack_require__("dYh2");
 
 /***/ })
 

@@ -1,5 +1,12 @@
 module.exports = {
     index: async (ctx) => {
-        ctx.render(user)
+        if (ctx.session.user) {
+            await ctx.render('frontend/user/index')
+        } else {
+            await ctx.render('frontend/user/login')
+        }
+    },
+    login: async (ctx) => {
+        await ctx.render('frontend/user/login')
     }
 }

@@ -1,7 +1,7 @@
-require('./requestData')
-require('./categoryData')
+const RequestData =  require('./requestData')
+const Category = require('./categoryData')
 
 module.exports = {
-    Category,
-    requestData
+    Category: Category,
+    RequestData: RequestData
 }
