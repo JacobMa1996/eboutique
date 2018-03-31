@@ -1,6 +1,6 @@
 const { RequestData } = require('../model/index')
 
-const query = require('../lib/mysql.js')
+const { query, insertTable } = require('../lib/mysql.js')
 
 const ADMIN_USER = {
     userName: 'root',
@@ -8,7 +8,7 @@ const ADMIN_USER = {
 }
 
 const admin = [{
-    path: '/login',
+    path: '/admin/login',
     method: 'post',
     callback: async (ctx) => {
         const userInfo = ctx.request.body // bodyParser
@@ -22,4 +22,33 @@ const admin = [{
     }
 }]
 
-module.exports = [].concat(admin)
+const user = [{
+    path: '/user/login',
+    method: 'post',
+    callback: async (ctx) => {
+        const userInfo = ctx.request.body
+        
+    }
+}, {
+    path: '/user/register',
+    method: 'post',
+    callback: async (ctx) => {
+        const userInfo = ctx.request.body
+        let data
+        await insertTable('user', {
+            userName: userInfo.userName,
+            userPass: userInfo.userPassword,
+            userPhone: userInfo.userPhone,
+            sex: null
+        }).then(res => {
+            console.log('success')
+            data = new RequestData()
+        }).catch(err => {
+            data = new RequestData(err, 0, 'failed')
+        })
+        // ctx.body 不能在函数中使用，所以await异步函数，把赋值放到函数外面
+        ctx.body = data
+    }
+}]
+
+module.exports = [].concat(admin, user)

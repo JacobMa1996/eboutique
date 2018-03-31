@@ -1,0 +1,9 @@
+.form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 300px;
+  text-align: center; }
+  .form .form-group {
+    text-align: left; }

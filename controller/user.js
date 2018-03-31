@@ -8,5 +8,8 @@ module.exports = {
     },
     login: async (ctx) => {
         await ctx.render('frontend/user/login')
+    },
+    register: async (ctx) => {
+        await ctx.render('frontend/user/register')
     }
 }

@@ -63,25 +63,25 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "k2gT");
+/******/ 	return __webpack_require__(__webpack_require__.s = "qRCr");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "EJY0":
+/***/ "M3Ck":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ "k2gT":
+/***/ "qRCr":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__("EJY0");
+__webpack_require__("M3Ck");
 
 new Vue({
     el: '.form',
@@ -89,6 +89,8 @@ new Vue({
         return {
             userName: '',
             userPassword: '',
+            userPasswordRepeat: '',
+            userPhone: '',
             text: '123'
         };
     },
@@ -97,17 +99,18 @@ new Vue({
         submit: function submit() {
             var userInfo = {
                 userName: this.userName,
-                userPassword: this.userPassword
+                userPassword: this.userPassword,
+                userPhone: this.userPhone
             };
             EB.ajax({
-                url: '/api/admin/login',
+                url: '/api/user/register',
                 data: userInfo,
                 method: 'post',
                 success: function success(res) {
-                    alert('登陆成功');
+                    alert('注册成功');
                     setTimeout(function () {
-                        location.href = '/admin';
-                    }, 1500);
+                        location.href = '/user';
+                    }, 0);
                 },
                 error: function error(err) {
                     console.log(err);

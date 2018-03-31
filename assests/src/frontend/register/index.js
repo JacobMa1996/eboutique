@@ -6,6 +6,8 @@ new Vue({
         return {
             userName: '', 
             userPassword: '',
+            userPasswordRepeat: '',
+            userPhone: '',
             text: '123'
         }
     }, 
@@ -13,17 +15,18 @@ new Vue({
         submit () {
             const userInfo = {
                 userName: this.userName, 
-                userPassword: this.userPassword
+                userPassword: this.userPassword,
+                userPhone: this.userPhone,
             }
             EB.ajax({
-                url: '/api/admin/login',
+                url: '/api/user/register',
                 data: userInfo,
                 method: 'post',
                 success(res) {
-                    alert('登陆成功')
+                    alert('注册成功')
                     setTimeout(() => {
-                        location.href = '/admin'
-                    }, 1500)
+                        location.href = '/user'
+                    },0)
                 }, 
                 error(err) {
                     console.log(err)
