@@ -7,6 +7,9 @@ module.exports = {
         }
     },
     login: async (ctx) => {
+        if (ctx.session.user) {
+            ctx.redirect('/category')
+        }
         await ctx.render('frontend/user/login')
     },
     register: async (ctx) => {

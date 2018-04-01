@@ -83,6 +83,41 @@
 
 __webpack_require__("dYh2");
 
+new Vue({
+    el: '.form',
+    data: function data() {
+        return {
+            userName: '',
+            userPassword: '',
+            text: '123'
+        };
+    },
+
+    methods: {
+        submit: function submit() {
+            var userInfo = {
+                userName: this.userName,
+                userPassword: this.userPassword
+            };
+            EB.ajax({
+                url: '/api/user/login',
+                data: userInfo,
+                method: 'post',
+                success: function success(res) {
+                    alert('登陆成功');
+                    setTimeout(function () {
+                        location.href = '/user';
+                    }, 0);
+                },
+                error: function error(err) {
+                    console.log(err);
+                    alert(err);
+                }
+            });
+        }
+    }
+});
+
 /***/ })
 
 /******/ });

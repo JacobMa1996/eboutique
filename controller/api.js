@@ -27,6 +27,22 @@ const user = [{
     method: 'post',
     callback: async (ctx) => {
         const userInfo = ctx.request.body
+        let data
+        await queryTable('user', {
+            userName: userInfo.userName
+        }).then(res => {
+            if (!res.length) {
+                data = new RequestData(null, 1, "user doesn't exist")
+            } else {
+                if (userInfo.userPassword === res[0].user_pass) {
+                    ctx.session.user = res[0]
+                    data = new RequestData()
+                } else {
+                    data = new RequestData(null, 1, 'password is not correct')
+                }
+            }
+        })
+        ctx.body = data
 
     }
 }, {
