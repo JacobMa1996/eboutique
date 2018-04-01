@@ -1,6 +1,6 @@
 const { RequestData } = require('../model/index')
 
-const { query, insertTable } = require('../lib/mysql.js')
+const { query, queryTable, insertTable } = require('../lib/mysql.js')
 
 const ADMIN_USER = {
     userName: 'root',
@@ -27,7 +27,7 @@ const user = [{
     method: 'post',
     callback: async (ctx) => {
         const userInfo = ctx.request.body
-        
+
     }
 }, {
     path: '/user/register',
@@ -35,16 +35,27 @@ const user = [{
     callback: async (ctx) => {
         const userInfo = ctx.request.body
         let data
-        await insertTable('user', {
-            userName: userInfo.userName,
-            userPass: userInfo.userPassword,
-            userPhone: userInfo.userPhone,
-            sex: null
+        await queryTable('user', {
+            userName: userInfo.userName
         }).then(res => {
-            console.log('success')
-            data = new RequestData()
+            console.log(res)
+            if (!res.length) {
+                insertTable('user', {
+                    userName: userInfo.userName,
+                    userPass: userInfo.userPassword,
+                    userPhone: userInfo.userPhone,
+                    sex: null
+                }).then(res => {
+                    console.log('success')
+                    data = new RequestData()
+                })
+            } else {
+                console.log('failed')
+                data = new RequestData(null, 1, 'failed, this name has been registered')
+            }
         }).catch(err => {
-            data = new RequestData(err, 0, 'failed')
+            console.log(err)
+            data = new RequestData(err, 1, 'failed')
         })
         // ctx.body 不能在函数中使用，所以await异步函数，把赋值放到函数外面
         ctx.body = data
