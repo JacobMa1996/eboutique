@@ -1,1 +1,22 @@
-{% extends 'views/backend/common/layout.html' %}
+{% extends 'views/backend/common/layout.html' %} {% block head %}
+<link rel="stylesheet" href="/dist/backend/index/bundle.css"> {% endblock %} {% block body %}
+
+{% raw %}
+
+<div id="content">
+
+    <div v-if="slideIndex === 0" class="content">
+        分类设置
+    </div>
+    <div v-if="slideIndex === 1" class="content">
+        审核设置
+    </div>
+    <div v-if="slideIndex === 2" class="content">
+        数据分析
+    </div>
+
+</div>
+
+{% endraw %}
+
+<script src="/dist/backend/index/bundle.js"></script> {% endblock %}

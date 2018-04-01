@@ -1,8 +1,10 @@
+{% raw %}
 <div id="slide">
     <ul>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
+        <li  v-for="(item, index) in slideList"
+        :class="index === slideIndex ? 'active': ''"
+        @click="toggleSlide(index)"
+        :key="index">{{item.text}}</li>
     </ul>
 </div>
+{% endraw %}

@@ -8,11 +8,17 @@ body {
     width: 100%
 }
 
+#admin {
+    height: 100%;
+    width: 100%
+}
+
 header {
+    position: fixed;
     height: 50px;
-    width: auto;
+    width: 100%;
     background: #f8f8f8;
-    border: #e7e7e7
+    border: #e7e7e7;
 }
 
 header > div {
@@ -33,11 +39,18 @@ header > div {
 
 #slide {
     position: fixed;
+    top: 50px;
     background: #e7e7e7;
     width: 200px;
     height: 100%;
 }
 
-#slide > ul {
-    
+#slide > ul > li {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee
+}
+
+#slide > ul > li.active {
+    background: #d3cece
 }
