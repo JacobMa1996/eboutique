@@ -1,4 +1,6 @@
 import './index.scss'
+import './category'
+
 
 let vm = new Vue({
     el: '#admin',

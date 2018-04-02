@@ -68,10 +68,63 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "99qs":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"v-table\">\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\"></th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, index) in trowList\">\r\n              <th scope=\"row\">{{index+1}}</th>\r\n              <td v-for=\"(tdata, index) in theadList\"></td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
+
+/***/ }),
+
+/***/ "Be++":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-table', {
+    template: __webpack_require__("99qs"),
+    props: {
+        theadList: Array,
+        trowList: Array
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {}
+});
+
+/***/ }),
+
+/***/ "DAap":
+/***/ (function(module, exports) {
+
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
+
+/***/ }),
+
 /***/ "IKnA":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "PYZg":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__("Xvv4");
+__webpack_require__("Be++");
+
+/***/ }),
+
+/***/ "Q3No":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"category\">\r\n    <v-table :theadList=\"theadList\" :trowList=\"trowList\"></v-table>\r\n</div>";
 
 /***/ }),
 
@@ -82,6 +135,8 @@
 
 
 __webpack_require__("IKnA");
+
+__webpack_require__("xzc0");
 
 var vm = new Vue({
     el: '#admin',
@@ -106,6 +161,59 @@ var vm = new Vue({
             this.slideIndex = index;
         }
     }
+});
+
+/***/ }),
+
+/***/ "Xvv4":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-btn', {
+    template: __webpack_require__("DAap"),
+    props: {
+        options: {}
+    },
+    data: function data() {
+        var data = this.options;
+        return {
+            display_text: data.display_text || '未命名按钮',
+            display_type: data.display_type || 'button',
+            href: data.href || undefined,
+            target: data.target || '_blank'
+        };
+    },
+
+    methods: {
+        click: function click() {
+            this.options.click && this.options.click();
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "xzc0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__("PYZg");
+
+Vue.component('category', {
+    template: __webpack_require__("Q3No"),
+    props: {},
+    data: function data() {
+        return {
+            theadList: [{}],
+            trowList: [{}]
+        };
+    },
+
+    methods: {}
 });
 
 /***/ })

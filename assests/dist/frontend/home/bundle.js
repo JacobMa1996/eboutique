@@ -75,6 +75,34 @@
 
 /***/ }),
 
+/***/ "99qs":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"v-table\">\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\"></th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, index) in trowList\">\r\n              <th scope=\"row\">{{index+1}}</th>\r\n              <td v-for=\"(tdata, index) in theadList\"></td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
+
+/***/ }),
+
+/***/ "Be++":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-table', {
+    template: __webpack_require__("99qs"),
+    props: {
+        theadList: Array,
+        trowList: Array
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {}
+});
+
+/***/ }),
+
 /***/ "DAap":
 /***/ (function(module, exports) {
 
@@ -89,6 +117,7 @@ module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-bt
 
 
 __webpack_require__("Xvv4");
+__webpack_require__("Be++");
 
 /***/ }),
 
