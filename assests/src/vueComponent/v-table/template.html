@@ -1,15 +1,18 @@
 <div class="v-table">
+    <h3>{{title}}</h3>
     <table class="table table-striped table-dark">
         <thead>
             <tr>
               <th>#</th>
-              <th v-for="(thead, index) in theadList" :key="index"></th>
+              <th v-for="(thead, index) in theadList" :key="index">{{thead.text}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(trow, index) in trowList">
-              <th scope="row">{{index+1}}</th>
-              <td v-for="(tdata, index) in theadList"></td>
+            <tr v-for="(trow, trowIndex) in trowList">
+              <th scope="row">{{ trowIndex + 1 }}</th>
+              <td v-for="(thead, tdataIndex) in theadList">
+                {{trow[thead.header]}}
+              </td>
             </tr>
             
         </tbody>

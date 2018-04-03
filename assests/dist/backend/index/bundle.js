@@ -71,7 +71,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\"></th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, index) in trowList\">\r\n              <th scope=\"row\">{{index+1}}</th>\r\n              <td v-for=\"(tdata, index) in theadList\"></td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
+module.exports = "<div class=\"v-table\">\r\n    <h3>{{title}}</h3>\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\">{{thead.text}}</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, trowIndex) in trowList\">\r\n              <th scope=\"row\">{{ trowIndex + 1 }}</th>\r\n              <td v-for=\"(thead, tdataIndex) in theadList\">\r\n                {{trow[thead.header]}}\r\n              </td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
 
 /***/ }),
 
@@ -84,8 +84,18 @@ module.exports = "<div class=\"v-table\">\r\n    <table class=\"table table-stri
 Vue.component('v-table', {
     template: __webpack_require__("99qs"),
     props: {
-        theadList: Array,
-        trowList: Array
+        theadList: {
+            type: Array,
+            default: [{}]
+        },
+        trowList: {
+            type: Array,
+            defalut: [{}]
+        },
+        title: {
+            type: String,
+            default: '表格标题'
+        }
     },
     data: function data() {
         return {};
@@ -124,7 +134,7 @@ __webpack_require__("Be++");
 /***/ "Q3No":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"category\">\r\n    <v-table :theadList=\"theadList\" :trowList=\"trowList\"></v-table>\r\n</div>";
+module.exports = "<div class=\"category\">\r\n    <v-table :title=\"'分类设置'\" :theadList=\"theadList\" :trowList=\"trowList\"></v-table>\r\n</div>";
 
 /***/ }),
 
@@ -208,8 +218,35 @@ Vue.component('category', {
     props: {},
     data: function data() {
         return {
-            theadList: [{}],
-            trowList: [{}]
+            theadList: [{
+                header: 'cateName',
+                text: '分类名称'
+            }, {
+                header: 'brandName',
+                text: '品牌名称'
+            }, {
+                header: 'brandIntro',
+                text: '品牌介绍'
+            }, {
+                header: 'handle',
+                text: '操作'
+            }],
+            trowList: [{
+                cateName: 'LV',
+                brandName: 'LV',
+                brandIntro: '自1854年以来...',
+                handle: '删除'
+            }, {
+                cateName: 'LV',
+                brandName: 'LV',
+                brandIntro: '自1854年以来...',
+                handle: '删除'
+            }, {
+                cateName: 'LV',
+                brandName: 'LV',
+                brandIntro: '自1854年以来...',
+                handle: '删除'
+            }]
         };
     },
 

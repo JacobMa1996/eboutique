@@ -78,7 +78,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\"></th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, index) in trowList\">\r\n              <th scope=\"row\">{{index+1}}</th>\r\n              <td v-for=\"(tdata, index) in theadList\"></td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
+module.exports = "<div class=\"v-table\">\r\n    <h3>{{title}}</h3>\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\">{{thead.text}}</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, trowIndex) in trowList\">\r\n              <th scope=\"row\">{{ trowIndex + 1 }}</th>\r\n              <td v-for=\"(thead, tdataIndex) in theadList\">\r\n                {{trow[thead.header]}}\r\n              </td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
 
 /***/ }),
 
@@ -91,8 +91,18 @@ module.exports = "<div class=\"v-table\">\r\n    <table class=\"table table-stri
 Vue.component('v-table', {
     template: __webpack_require__("99qs"),
     props: {
-        theadList: Array,
-        trowList: Array
+        theadList: {
+            type: Array,
+            default: [{}]
+        },
+        trowList: {
+            type: Array,
+            defalut: [{}]
+        },
+        title: {
+            type: String,
+            default: '表格标题'
+        }
     },
     data: function data() {
         return {};

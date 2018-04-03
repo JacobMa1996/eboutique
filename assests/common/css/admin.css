@@ -54,3 +54,7 @@ header > div {
 #slide > ul > li.active {
     background: #d3cece
 }
+
+.content {
+    padding: 10px
+}

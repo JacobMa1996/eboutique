@@ -38,3 +38,7 @@
     border: 1px solid rgb(202, 192, 168);
     box-shadow: 0 0 5px rgb(202, 192, 168) inset;
 }
+
+.v-table {
+    text-align: center
+}
