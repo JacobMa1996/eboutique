@@ -20,6 +20,11 @@ Vue.component('v-table', {
         }
     },
     methods: {
-
+        _showPop(trow) {
+            this.$emit('showPop', trow)
+        },
+        _deleteItem(trowIndex) {
+            this.$emit('deleteItem', trowIndex)
+        }
     }
 })

@@ -9,10 +9,13 @@ const nunjucks = require('nunjucks')
 const session = require('koa-session-minimal')
 const MysqlStore = require('koa-mysql-session')
 const mysql = require('mysql')
-
+const NODE_ENV = require('./config/config')
 const MYSQLCONFIG = require('./config/mysql.config')
 
 const routers = require('./route')
+
+process.env.NODE_ENV = NODE_ENV
+
 // error handler
 onerror(app)
  

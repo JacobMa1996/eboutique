@@ -11,14 +11,13 @@
     <link rel="stylesheet" href="/common/css/vue.css">
     <link rel="stylesheet" href="/common/css/admin.css">
     <script src="/common/js/bootstrap.min.js"></script>
-    <script src="/common/js/vue.min.js"></script>
+    <script src="/common/js/vue.js"></script>
     <script src="/common/js/common.js"></script> {% block head %} {% endblock %}
 </head>
 
 <body>
-    <div id="admin">
-        {% include './header.html' %} {% include './slide.html' %} {% block body %} {% endblock %} {% include './footer.html' %}
-    </div>
+    {% block body %} {% endblock %}
+
 </body>
 
 </html>

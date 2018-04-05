@@ -71,7 +71,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\r\n    <h3>{{title}}</h3>\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\">{{thead.text}}</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, trowIndex) in trowList\">\r\n              <th scope=\"row\">{{ trowIndex + 1 }}</th>\r\n              <td v-for=\"(thead, tdataIndex) in theadList\">\r\n                {{trow[thead.header]}}\r\n              </td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
+module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in theadList\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trowList\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in theadList\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"_showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"_deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
 
 /***/ }),
 
@@ -101,7 +101,14 @@ Vue.component('v-table', {
         return {};
     },
 
-    methods: {}
+    methods: {
+        _showPop: function _showPop(trow) {
+            this.$emit('showPop', trow);
+        },
+        _deleteItem: function _deleteItem(trowIndex) {
+            this.$emit('deleteItem', trowIndex);
+        }
+    }
 });
 
 /***/ }),
@@ -109,7 +116,7 @@ Vue.component('v-table', {
 /***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\n";
 
 /***/ }),
 
@@ -126,6 +133,8 @@ module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-bt
 "use strict";
 
 
+__webpack_require__("k105");
+__webpack_require__("lu7r");
 __webpack_require__("Xvv4");
 __webpack_require__("Be++");
 
@@ -134,7 +143,7 @@ __webpack_require__("Be++");
 /***/ "Q3No":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"category\">\r\n    <v-table :title=\"'分类设置'\" :theadList=\"theadList\" :trowList=\"trowList\"></v-table>\r\n</div>";
+module.exports = "<div class=\"category\">\n    <v-table :title=\"'分类设置'\" :theadList=\"theadList\" :trowList=\"trowList\" @showPop=\"showPop\" @deleteItem=\"deleteItem\"></v-table>\n</div>";
 
 /***/ }),
 
@@ -146,31 +155,32 @@ module.exports = "<div class=\"category\">\r\n    <v-table :title=\"'分类设�
 
 __webpack_require__("IKnA");
 
+__webpack_require__("PYZg");
+
 __webpack_require__("xzc0");
 
-var vm = new Vue({
+new Vue({
     el: '#admin',
     data: function data() {
         return {
             slideIndex: 0, // 默认0
             slideList: [{
-                id: 0,
+                index: 0,
                 text: '分类设置'
             }, {
-                id: 1,
+                index: 1,
                 text: '审核设置'
             }, {
-                id: 2,
+                index: 2,
                 text: '数据分析'
             }]
         };
     },
+    mounted: function mounted() {
+        console.log(this.slideList);
+    },
 
-    methods: {
-        toggleSlide: function toggleSlide(index) {
-            this.slideIndex = index;
-        }
-    }
+    methods: {}
 });
 
 /***/ }),
@@ -205,13 +215,69 @@ Vue.component('v-btn', {
 
 /***/ }),
 
-/***/ "xzc0":
+/***/ "iVtf":
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"slide\">\n    <ul>\n        <li v-for=\"(item, index) in slideList\" :class=\"index === slideIndex ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\n    </ul>\n</div>";
+
+/***/ }),
+
+/***/ "k105":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__("PYZg");
+Vue.component('v-header', {
+    template: __webpack_require__("yAOn"),
+    props: {},
+    data: function data() {
+        return {};
+    },
+
+    methods: {}
+});
+
+/***/ }),
+
+/***/ "lu7r":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-slide', {
+    template: __webpack_require__("iVtf"),
+    props: {
+        slideIndex: {
+            type: Number,
+            default: 0
+        },
+        slideList: {
+            type: Array,
+            default: function _default() {
+                return [];
+            }
+        }
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        toggleSlide: function toggleSlide(index) {
+            this.slideIndex = index;
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "xzc0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 Vue.component('category', {
     template: __webpack_require__("Q3No"),
@@ -227,31 +293,39 @@ Vue.component('category', {
             }, {
                 header: 'brandIntro',
                 text: '品牌介绍'
-            }, {
-                header: 'handle',
-                text: '操作'
             }],
             trowList: [{
                 cateName: 'LV',
                 brandName: 'LV',
-                brandIntro: '自1854年以来...',
-                handle: '删除'
+                brandIntro: '自1854年以来...'
             }, {
                 cateName: 'LV',
                 brandName: 'LV',
-                brandIntro: '自1854年以来...',
-                handle: '删除'
+                brandIntro: '自1854年以来...'
             }, {
                 cateName: 'LV',
                 brandName: 'LV',
-                brandIntro: '自1854年以来...',
-                handle: '删除'
+                brandIntro: '自1854年以来...'
             }]
         };
     },
 
-    methods: {}
+    methods: {
+        showPop: function showPop(trow) {
+            console.log(trow);
+        },
+        deleteItem: function deleteItem(trowIndex) {
+            console.log(trowIndex);
+        }
+    }
 });
+
+/***/ }),
+
+/***/ "yAOn":
+/***/ (function(module, exports) {
+
+module.exports = "<header id=\"header\" class=\"clearfix\">\n    <div class=\"header-left\">\n        <a href=\"#\">Admin</a>\n    </div>\n    <div class=\"header-right\">\n        <ul>\n            <li>消息</li>\n            <li>设置</li>\n        </ul>\n    </div>\n</header>";
 
 /***/ })
 

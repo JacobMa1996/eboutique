@@ -78,7 +78,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\r\n    <h3>{{title}}</h3>\r\n    <table class=\"table table-striped table-dark\">\r\n        <thead>\r\n            <tr>\r\n              <th>#</th>\r\n              <th v-for=\"(thead, index) in theadList\" :key=\"index\">{{thead.text}}</th>\r\n            </tr>\r\n          </thead>\r\n          <tbody>\r\n            <tr v-for=\"(trow, trowIndex) in trowList\">\r\n              <th scope=\"row\">{{ trowIndex + 1 }}</th>\r\n              <td v-for=\"(thead, tdataIndex) in theadList\">\r\n                {{trow[thead.header]}}\r\n              </td>\r\n            </tr>\r\n            \r\n        </tbody>\r\n    </table>\r\n</div>";
+module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in theadList\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trowList\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in theadList\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"_showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"_deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
 
 /***/ }),
 
@@ -108,7 +108,14 @@ Vue.component('v-table', {
         return {};
     },
 
-    methods: {}
+    methods: {
+        _showPop: function _showPop(trow) {
+            this.$emit('showPop', trow);
+        },
+        _deleteItem: function _deleteItem(trowIndex) {
+            this.$emit('deleteItem', trowIndex);
+        }
+    }
 });
 
 /***/ }),
@@ -116,7 +123,7 @@ Vue.component('v-table', {
 /***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\n";
 
 /***/ }),
 
@@ -126,6 +133,8 @@ module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-bt
 "use strict";
 
 
+__webpack_require__("k105");
+__webpack_require__("lu7r");
 __webpack_require__("Xvv4");
 __webpack_require__("Be++");
 
@@ -155,6 +164,64 @@ Vue.component('v-btn', {
     methods: {
         click: function click() {
             this.options.click && this.options.click();
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "iVtf":
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"slide\">\n    <ul>\n        <li v-for=\"(item, index) in slideList\" :class=\"index === slideIndex ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\n    </ul>\n</div>";
+
+/***/ }),
+
+/***/ "k105":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-header', {
+    template: __webpack_require__("yAOn"),
+    props: {},
+    data: function data() {
+        return {};
+    },
+
+    methods: {}
+});
+
+/***/ }),
+
+/***/ "lu7r":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-slide', {
+    template: __webpack_require__("iVtf"),
+    props: {
+        slideIndex: {
+            type: Number,
+            default: 0
+        },
+        slideList: {
+            type: Array,
+            default: function _default() {
+                return [];
+            }
+        }
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        toggleSlide: function toggleSlide(index) {
+            this.slideIndex = index;
         }
     }
 });
@@ -191,6 +258,13 @@ window.vm = new Vue({
         };
     }
 });
+
+/***/ }),
+
+/***/ "yAOn":
+/***/ (function(module, exports) {
+
+module.exports = "<header id=\"header\" class=\"clearfix\">\n    <div class=\"header-left\">\n        <a href=\"#\">Admin</a>\n    </div>\n    <div class=\"header-right\">\n        <ul>\n            <li>消息</li>\n            <li>设置</li>\n        </ul>\n    </div>\n</header>";
 
 /***/ })
 

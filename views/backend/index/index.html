@@ -1,21 +1,31 @@
 {% extends 'views/backend/common/layout.html' %} {% block head %}
 <link rel="stylesheet" href="/dist/backend/index/bundle.css"> {% endblock %} {% block body %}
 
-{% raw %}
 
-<div id="content">
+<div id="admin">
+    <v-header></v-header>
+    <!-- <v-slide :slideIndex="_slideIndex" :slideList="_slideList"></v-slide> -->
 
-    <category v-if="slideIndex === 0" class="content">
-    </category>
-    <div v-if="slideIndex === 1" class="content">
-        审核设置
-    </div>
-    <div v-if="slideIndex === 2" class="content">
-        数据分析
-    </div>
+    {{slideIndex}}
+    {% raw %}
+
+    <!-- <div id="content">
+
+        <category v-if="slideIndex === 0" class="content">
+        </category>
+        <div v-if="slideIndex === 1" class="content">
+            审核设置
+        </div>
+        <div v-if="slideIndex === 2" class="content">
+            数据分析
+        </div>
+
+    </div> -->
+
+    {% endraw %}
 
 </div>
 
-{% endraw %}
+
 
 <script src="/dist/backend/index/bundle.js"></script> {% endblock %}

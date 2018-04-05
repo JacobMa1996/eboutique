@@ -1,11 +1,9 @@
-import '../../vueComponent'
-
 Vue.component('category', {
     template: require('./template/category.html'),
     props: {
 
     },
-    data () {
+    data() {
         return {
             theadList: [{
                 header: 'cateName',
@@ -16,29 +14,28 @@ Vue.component('category', {
             }, {
                 header: 'brandIntro',
                 text: '品牌介绍'
-            }, {
-                header: 'handle',
-                text: '操作'
             }],
             trowList: [{
                 cateName: 'LV',
                 brandName: 'LV',
-                brandIntro: '自1854年以来...',
-                handle: '删除'
+                brandIntro: '自1854年以来...'
             }, {
                 cateName: 'LV',
                 brandName: 'LV',
-                brandIntro: '自1854年以来...',
-                handle: '删除'
+                brandIntro: '自1854年以来...'
             }, {
                 cateName: 'LV',
                 brandName: 'LV',
-                brandIntro: '自1854年以来...',
-                handle: '删除'
+                brandIntro: '自1854年以来...'
             }]
         }
     },
     methods: {
-
+        showPop(trow) {
+            console.log(trow)
+        },
+        deleteItem(trowIndex) {
+            console.log(trowIndex)
+        }
     }
 })
