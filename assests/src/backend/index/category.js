@@ -5,7 +5,7 @@ Vue.component('category', {
     },
     data() {
         return {
-            theadList: [{
+            thead_list: [{
                 header: 'cateName',
                 text: '分类名称'
             }, {
@@ -15,7 +15,7 @@ Vue.component('category', {
                 header: 'brandIntro',
                 text: '品牌介绍'
             }],
-            trowList: [{
+            trow_list: [{
                 cateName: 'LV',
                 brandName: 'LV',
                 brandIntro: '自1854年以来...'

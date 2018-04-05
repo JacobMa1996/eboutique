@@ -4,23 +4,22 @@
 
 <div id="admin">
     <v-header></v-header>
-    <!-- <v-slide :slideIndex="_slideIndex" :slideList="_slideList"></v-slide> -->
+    <v-slide :slide_index="slide_index" :slide_list="slide_list" @toggle_slide="toggleSlide"></v-slide>
 
-    {{slideIndex}}
     {% raw %}
 
-    <!-- <div id="content">
+    <div id="content">
 
-        <category v-if="slideIndex === 0" class="content">
+        <category v-if="slide_index === 0" class="content">
         </category>
-        <div v-if="slideIndex === 1" class="content">
+        <div v-if="slide_index === 1" class="content">
             审核设置
         </div>
-        <div v-if="slideIndex === 2" class="content">
+        <div v-if="slide_index === 2" class="content">
             数据分析
         </div>
 
-    </div> -->
+    </div>
 
     {% endraw %}
 

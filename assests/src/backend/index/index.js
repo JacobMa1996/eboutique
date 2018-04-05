@@ -6,8 +6,8 @@ new Vue({
     el: '#admin',
     data() {
         return {
-            slideIndex: 0, // 默认0
-            slideList: [{
+            slide_index: 0, // 默认0
+            slide_list: [{
                 index: 0,
                 text: '分类设置'
             }, {
@@ -20,9 +20,11 @@ new Vue({
         }
     },
     mounted() {
-        console.log(this.slideList)
+        console.log(this.slide_list)
     },
     methods: {
-
+        toggleSlide(index) {
+            this.slide_index = index
+        }
     }
 })

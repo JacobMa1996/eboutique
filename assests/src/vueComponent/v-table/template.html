@@ -4,19 +4,19 @@
     <thead>
       <tr>
         <th>#</th>
-        <th v-for="(thead, index) in theadList" :key="index">{{thead.text}}</th>
+        <th v-for="(thead, index) in thead_list" :key="index">{{thead.text}}</th>
         <th>操作</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(trow, trowIndex) in trowList">
+      <tr v-for="(trow, trowIndex) in trow_list">
         <th scope="row">{{ trowIndex + 1 }}</th>
-        <td v-for="(thead, tdataIndex) in theadList">
+        <td v-for="(thead, tdataIndex) in thead_list">
           {{trow[thead.header]}}
         </td>
         <td>
-          <a @click="_showPop(trow)" href="javascript:void(0);">编辑</a>
-          <a @click="_deleteItem(trowIndex)" href="javascript:void(0);">删除</a>
+          <a @click="showPop(trow)" href="javascript:void(0);">编辑</a>
+          <a @click="deleteItem(trowIndex)" href="javascript:void(0);">删除</a>
         </td>
       </tr>
 

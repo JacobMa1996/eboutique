@@ -78,7 +78,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in theadList\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trowList\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in theadList\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"_showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"_deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
+module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in thead_list\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trow_list\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in thead_list\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
 
 /***/ }),
 
@@ -91,11 +91,11 @@ module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=
 Vue.component('v-table', {
     template: __webpack_require__("99qs"),
     props: {
-        theadList: {
+        thead_list: {
             type: Array,
             default: [{}]
         },
-        trowList: {
+        trow_list: {
             type: Array,
             defalut: [{}]
         },
@@ -109,11 +109,11 @@ Vue.component('v-table', {
     },
 
     methods: {
-        _showPop: function _showPop(trow) {
-            this.$emit('showPop', trow);
+        showPop: function showPop(trow) {
+            this.$emit('show_pop', trow);
         },
-        _deleteItem: function _deleteItem(trowIndex) {
-            this.$emit('deleteItem', trowIndex);
+        deleteItem: function deleteItem(trowIndex) {
+            this.$emit('delete_item', trowIndex);
         }
     }
 });
@@ -173,7 +173,7 @@ Vue.component('v-btn', {
 /***/ "iVtf":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"slide\">\n    <ul>\n        <li v-for=\"(item, index) in slideList\" :class=\"index === slideIndex ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\n    </ul>\n</div>";
+module.exports = "<div id=\"slide\">\n    <ul>\n        <li v-for=\"(item, index) in slide_list\" :class=\"index === slide_index ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\n    </ul>\n</div>";
 
 /***/ }),
 
@@ -204,11 +204,11 @@ Vue.component('v-header', {
 Vue.component('v-slide', {
     template: __webpack_require__("iVtf"),
     props: {
-        slideIndex: {
+        slide_index: {
             type: Number,
             default: 0
         },
-        slideList: {
+        slide_list: {
             type: Array,
             default: function _default() {
                 return [];
@@ -221,7 +221,7 @@ Vue.component('v-slide', {
 
     methods: {
         toggleSlide: function toggleSlide(index) {
-            this.slideIndex = index;
+            this.$emit('toggle_slide', index);
         }
     }
 });

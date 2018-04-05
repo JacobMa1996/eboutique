@@ -1,11 +1,11 @@
 Vue.component('v-table', {
     template: require('./template.html'),
     props: {
-        theadList: {
+        thead_list: {
             type: Array,
             default: [{}]
         },
-        trowList: {
+        trow_list: {
             type: Array,
             defalut: [{}]
         },
@@ -20,11 +20,11 @@ Vue.component('v-table', {
         }
     },
     methods: {
-        _showPop(trow) {
-            this.$emit('showPop', trow)
+        showPop(trow) {
+            this.$emit('show_pop', trow)
         },
-        _deleteItem(trowIndex) {
-            this.$emit('deleteItem', trowIndex)
+        deleteItem(trowIndex) {
+            this.$emit('delete_item', trowIndex)
         }
     }
 })

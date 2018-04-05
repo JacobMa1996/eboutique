@@ -1,11 +1,11 @@
 Vue.component('v-slide', {
     template: require('./template.html'),
     props: {
-        slideIndex: {
+        slide_index: {
             type: Number,
             default: 0
         },
-        slideList: {
+        slide_list: {
             type: Array,
             default: () => {
                 return []
@@ -19,7 +19,7 @@ Vue.component('v-slide', {
     },
     methods: {
         toggleSlide(index) {
-            this.slideIndex = index
+            this.$emit('toggle_slide', index)
         }
     }
 })
