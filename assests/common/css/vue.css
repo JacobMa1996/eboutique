@@ -42,3 +42,15 @@
 .v-table {
     text-align: center
 }
+
+.v-form {
+    text-align: center
+}
+
+.v-form .form-group {
+    text-align: left
+}
+
+.v-form .form-button {
+    text-align: right
+}

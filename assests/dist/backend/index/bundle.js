@@ -127,6 +127,13 @@ module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-bt
 
 /***/ }),
 
+/***/ "IoXs":
+/***/ (function(module, exports) {
+
+module.exports = "<form class=\"v-form\">\n    <div class=\"form-group\" v-for=\"(item, index) in input_list\" :key=\"index\">\n        <label for=\"\">Email address</label>\n        <input type=\"email\" class=\"form-control\" id=\"\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\">\n        <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n    </div>\n    <!-- <div class=\"form-group\">\n        <label for=\"exampleInputPassword1\">Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\">\n    </div>\n    <div class=\"form-group\">\n        <label for=\"exampleFormControlTextarea1\">Example textarea</label>\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n    </div>\n    <div class=\"form-group form-check\">\n        <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\n        <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button> -->\n</form>";
+
+/***/ }),
+
 /***/ "PYZg":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -137,13 +144,14 @@ __webpack_require__("k105");
 __webpack_require__("lu7r");
 __webpack_require__("Xvv4");
 __webpack_require__("Be++");
+__webpack_require__("roO6");
 
 /***/ }),
 
 /***/ "Q3No":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"category\">\n    <v-table :title=\"'分类设置'\" :thead_list=\"thead_list\" :trow_list=\"trow_list\" @show_pop=\"showPop\" @delete_item=\"deleteItem\"></v-table>\n</div>";
+module.exports = "<div class=\"category\">\n    <form class=\"v-form\">\n        <div class=\"form-group\">\n            <label for=\"cate-name\">分类名称</label>\n            <input type=\"text\" class=\"form-control\" id=\"cate-name\" placeholder=\"请输入分类名称\" v-model=\"cate_name\">\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group\">\n            <label for=\"brand-name\">品牌名称</label>\n            <input type=\"text\" class=\"form-control\" id=\"brand-name\" placeholder=\"请输入分类名称\" v-model=\"brand_name\">\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group\">\n            <label for=\"brand-intro\">品牌介绍</label>\n            <textarea class=\"form-control\" rows=\"3\" id=\"brand-intro\" placeholder=\"请输入分类名称\" v-model=\"brand_intro\"></textarea>\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group form-check\">\n            <input type=\"checkbox\" class=\"form-check-input\" id=\"is-show\" v-model=\"is_show\">\n            <label class=\"form-check-label\" for=\"is-show\">是否显示</label>\n        </div>\n        <div class=\"form-group form-button\"><button type=\"submit\" class=\"btn btn-primary\">添加</button></div>\n    </form>\n    <v-table :title=\"'分类设置'\" :thead_list=\"thead_list\" :trow_list=\"trow_list\" @show_pop=\"showPop\" @delete_item=\"deleteItem\"></v-table>\n</div>";
 
 /***/ }),
 
@@ -277,6 +285,24 @@ Vue.component('v-slide', {
 
 /***/ }),
 
+/***/ "roO6":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-form', {
+    template: __webpack_require__("IoXs"),
+    props: {},
+    data: function data() {
+        return {};
+    },
+
+    methods: {}
+});
+
+/***/ }),
+
 /***/ "xzc0":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -310,7 +336,11 @@ Vue.component('category', {
                 cateName: 'LV',
                 brandName: 'LV',
                 brandIntro: '自1854年以来...'
-            }]
+            }],
+            cate_name: '',
+            brand_name: '',
+            brand_intro: '',
+            is_show: true
         };
     },
 

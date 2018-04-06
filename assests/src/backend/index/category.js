@@ -27,7 +27,11 @@ Vue.component('category', {
                 cateName: 'LV',
                 brandName: 'LV',
                 brandIntro: '自1854年以来...'
-            }]
+            }],
+            cate_name: '',
+            brand_name: '',
+            brand_intro: '',
+            is_show: true
         }
     },
     methods: {

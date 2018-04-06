@@ -127,6 +127,13 @@ module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-bt
 
 /***/ }),
 
+/***/ "IoXs":
+/***/ (function(module, exports) {
+
+module.exports = "<form class=\"v-form\">\n    <div class=\"form-group\" v-for=\"(item, index) in input_list\" :key=\"index\">\n        <label for=\"\">Email address</label>\n        <input type=\"email\" class=\"form-control\" id=\"\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\">\n        <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n    </div>\n    <!-- <div class=\"form-group\">\n        <label for=\"exampleInputPassword1\">Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\">\n    </div>\n    <div class=\"form-group\">\n        <label for=\"exampleFormControlTextarea1\">Example textarea</label>\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n    </div>\n    <div class=\"form-group form-check\">\n        <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\n        <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button> -->\n</form>";
+
+/***/ }),
+
 /***/ "PYZg":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -137,6 +144,7 @@ __webpack_require__("k105");
 __webpack_require__("lu7r");
 __webpack_require__("Xvv4");
 __webpack_require__("Be++");
+__webpack_require__("roO6");
 
 /***/ }),
 
@@ -224,6 +232,24 @@ Vue.component('v-slide', {
             this.$emit('toggle_slide', index);
         }
     }
+});
+
+/***/ }),
+
+/***/ "roO6":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-form', {
+    template: __webpack_require__("IoXs"),
+    props: {},
+    data: function data() {
+        return {};
+    },
+
+    methods: {}
 });
 
 /***/ }),
