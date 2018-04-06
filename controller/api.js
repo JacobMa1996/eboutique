@@ -1,6 +1,6 @@
 const { RequestData } = require('../model/index')
 
-const { query, queryTable, insertTable } = require('../lib/mysql.js')
+const { query, queryAll, queryTable, insertTable } = require('../lib/mysql.js')
 
 const ADMIN_USER = {
     userName: 'root',
@@ -19,6 +19,17 @@ const admin = [{
         } else {
             ctx.body = new RequestData(null, 0, 'wrong userName or password')
         }
+    }
+}, {
+    path: '/admin/getCategoryList',
+    method: 'get',
+    callback: async (ctx) => {
+        let data
+        await queryAll('category').then(res => {
+            console.log(res)
+            data = res
+        })
+        ctx.body = new RequestData(data, 0, 'success')
     }
 }]
 

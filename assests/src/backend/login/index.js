@@ -23,7 +23,7 @@ new Vue({
                     alert('登陆成功')
                     setTimeout(() => {
                         location.href = '/admin'
-                    }, 1500)
+                    }, 0)
                 }, 
                 error(err) {
                     console.log(err)

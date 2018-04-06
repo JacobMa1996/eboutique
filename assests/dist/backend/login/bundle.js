@@ -107,7 +107,7 @@ new Vue({
                     alert('登陆成功');
                     setTimeout(function () {
                         location.href = '/admin';
-                    }, 1500);
+                    }, 0);
                 },
                 error: function error(err) {
                     console.log(err);
