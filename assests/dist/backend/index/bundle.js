@@ -357,7 +357,6 @@ Vue.component('category', {
                 data: data,
                 method: 'post',
                 success: function success(res) {
-                    console.log(res);
                     _this.getInitData();
                 },
                 error: function error(err) {
@@ -383,7 +382,8 @@ Vue.component('category', {
             var data = {
                 cateName: this.cate_name,
                 brandName: this.brand_name,
-                brandIntro: this.brand_intro
+                brandIntro: this.brand_intro,
+                isShow: this.is_show ? '1' : '0'
             };
             EB.ajax({
                 url: '/api/admin/addCategory',

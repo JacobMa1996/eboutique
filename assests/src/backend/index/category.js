@@ -65,7 +65,8 @@ Vue.component('category', {
             let data = {
                 cateName: this.cate_name,
                 brandName: this.brand_name,
-                brandIntro: this.brand_intro
+                brandIntro: this.brand_intro,
+                isShow: this.is_show ? '1' : '0'
             }
             EB.ajax({
                 url: '/api/admin/addCategory',

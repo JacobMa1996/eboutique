@@ -39,7 +39,8 @@ const admin = [{
         await insertTable('category', {
             cateName: categoryInfo.cateName,
             brandName: categoryInfo.brandName,
-            brandIntro: categoryInfo.brandIntro
+            brandIntro: categoryInfo.brandIntro,
+            isShow: categoryInfo.isShow
         }).then(res => {
             data = new RequestData(res, 0, 'success')
         }).catch(err => {
