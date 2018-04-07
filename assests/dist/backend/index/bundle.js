@@ -71,7 +71,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in thead_list\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trow_list\" :key=\"trow[key_id]\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in thead_list\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
+module.exports = "<div class=\"v-table\">\r\n  <h3>{{title}}</h3>\r\n  <table class=\"table table-striped table-dark\">\r\n    <thead>\r\n      <tr>\r\n        <th>#</th>\r\n        <th v-for=\"(thead, index) in thead_list\" :key=\"index\">{{thead.text}}</th>\r\n        <th>操作</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr v-for=\"(trow, trowIndex) in trow_list\" :key=\"trow[key_id]\">\r\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\r\n        <td v-for=\"(thead, tdataIndex) in thead_list\">\r\n          {{trow[thead.header]}}\r\n        </td>\r\n        <td>\r\n          <a @click=\"showPop(trow)\" href=\"\" data-toggle=\"modal\" data-target=\"#modal\">编辑</a>\r\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\r\n        </td>\r\n      </tr>\r\n\r\n    </tbody>\r\n  </table>\r\n</div>";
 
 /***/ }),
 
@@ -123,7 +123,7 @@ Vue.component('v-table', {
 /***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\n";
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
 
 /***/ }),
 
@@ -137,7 +137,14 @@ module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-bt
 /***/ "IoXs":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"v-form\">\n    <div class=\"form-group\" v-for=\"(item, index) in input_list\" :key=\"index\">\n        <label for=\"\">Email address</label>\n        <input type=\"email\" class=\"form-control\" id=\"\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\">\n        <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n    </div>\n    <!-- <div class=\"form-group\">\n        <label for=\"exampleInputPassword1\">Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\">\n    </div>\n    <div class=\"form-group\">\n        <label for=\"exampleFormControlTextarea1\">Example textarea</label>\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n    </div>\n    <div class=\"form-group form-check\">\n        <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\n        <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button> -->\n</form>";
+module.exports = "<form class=\"v-form\">\r\n    <div class=\"\" v-if=\"tip\">{{tip}}</div>\r\n    <div class=\"form-group\" v-for=\"(item, index) in input_list\" :key=\"item.header\">\r\n        <label :for=\"item.header\">{{item.label}}</label>\r\n        <input :type=\"item.type\" class=\"form-control\" :id=\"item.header\" :placeholder=\"item.placeholder\" v-model=\"item.value\">\r\n        <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\r\n    </div>\r\n    <div class=\"form-group\" v-for=\"(item, index) in textarea_list\" :key=\"item.header\">\r\n        <label :for=\"item.header\">{{item.label}}</label>\r\n        <textarea class=\"form-control\" :id=\"item.header\" :rows=\"item.rows\" v-model=\"item.value\" :placeholder=\"item.placeholder\"></textarea>\r\n    </div>\r\n    <div class=\"form-group form-check\" v-for=\"(item, index) in check_list\" :key=\"item.header\">\r\n        <input type=\"checkbox\" class=\"form-check-input\" :id=\"item.header\" v-model=\"item.value\">\r\n        <label class=\"form-check-label\" :for=\"item.header\">{{item.label}}</label>\r\n    </div>\r\n    <button v-if=\"button\" @click=\"click\" type=\"button\" class=\"btn btn-primary\">{{button.label}}</button>\r\n</form>";
+
+/***/ }),
+
+/***/ "OLaw":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"v-modal\">\r\n    <!-- Modal -->\r\n    <div class=\"modal fade\" id=\"modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"modal\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">\r\n                        \r\n                    </h5>\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    ...\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n                    <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ }),
 
@@ -152,13 +159,14 @@ __webpack_require__("lu7r");
 __webpack_require__("Xvv4");
 __webpack_require__("Be++");
 __webpack_require__("roO6");
+__webpack_require__("gaxK");
 
 /***/ }),
 
 /***/ "Q3No":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"category\">\n    <form class=\"v-form\">\n        <div class=\"form-group\">\n            <label for=\"cate-name\">分类名称</label>\n            <input type=\"text\" class=\"form-control\" id=\"cate-name\" placeholder=\"请输入分类名称\" v-model=\"cate_name\">\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group\">\n            <label for=\"brand-name\">品牌名称</label>\n            <input type=\"text\" class=\"form-control\" id=\"brand-name\" placeholder=\"请输入分类名称\" v-model=\"brand_name\">\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group\">\n            <label for=\"brand-intro\">品牌介绍</label>\n            <textarea class=\"form-control\" rows=\"3\" id=\"brand-intro\" placeholder=\"请输入分类名称\" v-model=\"brand_intro\"></textarea>\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group form-check\">\n            <input type=\"checkbox\" class=\"form-check-input\" id=\"is-show\" v-model=\"is_show\">\n            <label class=\"form-check-label\" for=\"is-show\">是否显示</label>\n        </div>\n        <div class=\"form-group form-button\"><button @click=\"submit\" type=\"button\" class=\"btn btn-primary\">添加</button></div>\n    </form>\n    <v-table :title=\"'分类设置'\" :key_id=\"'cate_id'\" :thead_list=\"thead_list\" :trow_list=\"trow_list\" @show_pop=\"showPop\" @delete_item=\"deleteItem\"></v-table>\n</div>";
+module.exports = "<div class=\"category\">\r\n    <!-- <form class=\"v-form\">\r\n        <div class=\"form-group\">\r\n            <label for=\"cate-name\">分类名称</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"cate-name\" placeholder=\"请输入分类名称\" v-model=\"cate_name\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label for=\"brand-name\">品牌名称</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"brand-name\" placeholder=\"请输入分类名称\" v-model=\"brand_name\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label for=\"brand-intro\">品牌介绍</label>\r\n            <textarea class=\"form-control\" rows=\"3\" id=\"brand-intro\" placeholder=\"请输入分类名称\" v-model=\"brand_intro\"></textarea>\r\n        </div>\r\n        <div class=\"form-group form-check\">\r\n            <input type=\"checkbox\" class=\"form-check-input\" id=\"is-show\" v-model=\"is_show\">\r\n            <label class=\"form-check-label\" for=\"is-show\">是否显示</label>\r\n        </div>\r\n        <div class=\"form-group form-button\"><button @click=\"submit\" type=\"button\" class=\"btn btn-primary\">添加</button></div>\r\n    </form> -->\r\n    <v-form :input_list=\"input_list\" :textarea_list=\"textarea_list\" :check_list=\"check_list\" @submit=\"submit\" :button=\"button\"></v-form>\r\n    <v-table :title=\"'分类设置'\" :key_id=\"'cate_id'\" :thead_list=\"thead_list\" :trow_list=\"trow_list\" @show_pop=\"showPop\" @delete_item=\"deleteItem\"></v-table>\r\n</div>";
 
 /***/ }),
 
@@ -234,10 +242,34 @@ Vue.component('v-btn', {
 
 /***/ }),
 
+/***/ "gaxK":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Vue.component('v-pop', {
+    template: __webpack_require__("OLaw"),
+    props: {
+        pop_title: {
+            type: String,
+            default: 'Modal title'
+        },
+        pop_body: {}
+    },
+    data: function data() {
+        return {};
+    },
+
+    methods: {}
+});
+
+/***/ }),
+
 /***/ "iVtf":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"slide\">\n    <ul>\n        <li v-for=\"(item, index) in slide_list\" :class=\"index === slide_index ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\n    </ul>\n</div>";
+module.exports = "<div id=\"slide\">\r\n    <ul>\r\n        <li v-for=\"(item, index) in slide_list\" :class=\"index === slide_index ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\r\n    </ul>\r\n</div>";
 
 /***/ }),
 
@@ -300,12 +332,45 @@ Vue.component('v-slide', {
 
 Vue.component('v-form', {
     template: __webpack_require__("IoXs"),
-    props: {},
+    props: {
+        tip: {
+            type: String,
+            default: null
+        },
+        input_list: {
+            type: Array,
+            default: null
+        },
+        textarea_list: {
+            type: Array,
+            default: null
+        },
+        check_list: {
+            type: Array,
+            default: null
+        },
+        button: {
+            type: Object,
+            default: null
+        }
+    },
     data: function data() {
         return {};
     },
 
-    methods: {}
+    methods: {
+        click: function click() {
+            var _this = this;
+            var data = {
+                tip: _this.tip,
+                input_list: _this.input_list,
+                textarea_list: _this.textarea_list,
+                check_list: _this.check_list,
+                button: _this.button
+            };
+            this.$emit('submit', data);
+        }
+    }
 });
 
 /***/ }),
@@ -320,7 +385,9 @@ Vue.component('category', {
     template: __webpack_require__("Q3No"),
     props: {},
     data: function data() {
+        var _this = this;
         return {
+            // table
             thead_list: [{
                 header: 'cate_name',
                 text: '分类名称'
@@ -332,6 +399,35 @@ Vue.component('category', {
                 text: '品牌介绍'
             }],
             trow_list: [],
+
+            // form
+            input_list: [{
+                label: '分类名称',
+                header: 'cate_name',
+                placeholder: '请输入分类名称',
+                value: ''
+            }, {
+                label: '品牌名称',
+                header: 'brand_name',
+                placeholder: '请输入品牌名称',
+                value: ''
+            }],
+            textarea_list: [{
+                label: '品牌介绍',
+                header: 'brand_intro',
+                rows: '3',
+                placeholder: '请输入品牌介绍',
+                value: ''
+            }],
+            check_list: [{
+                label: '是否显示',
+                header: 'is_show',
+                value: true
+            }],
+            button: {
+                label: '添加'
+            },
+            //
             cate_name: '',
             brand_name: '',
             brand_intro: '',
@@ -377,17 +473,46 @@ Vue.component('category', {
                 }
             });
         },
-        submit: function submit() {
+        submit: function submit(obj) {
             var _this = this;
-            var data = {
-                cateName: this.cate_name,
-                brandName: this.brand_name,
-                brandIntro: this.brand_intro,
-                isShow: this.is_show ? '1' : '0'
+            var data = {};
+            for (var item in obj) {
+                if (obj[item] instanceof Array) {
+                    var _iteratorNormalCompletion = true;
+                    var _didIteratorError = false;
+                    var _iteratorError = undefined;
+
+                    try {
+                        for (var _iterator = obj[item][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                            var key = _step.value;
+
+                            data[key.header] = key.value;
+                        }
+                    } catch (err) {
+                        _didIteratorError = true;
+                        _iteratorError = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion && _iterator.return) {
+                                _iterator.return();
+                            }
+                        } finally {
+                            if (_didIteratorError) {
+                                throw _iteratorError;
+                            }
+                        }
+                    }
+                }
+            }
+            var ajaxData = {
+                cateName: data.cate_name,
+                brandName: data.brand_name,
+                brandIntro: data.brand_intro,
+                isShow: data.is_show ? '1' : '0'
             };
             EB.ajax({
                 url: '/api/admin/addCategory',
-                data: data,
+                data: ajaxData,
                 method: 'post',
                 success: function success(res) {
                     _this.getInitData();
@@ -402,7 +527,7 @@ Vue.component('category', {
 /***/ "yAOn":
 /***/ (function(module, exports) {
 
-module.exports = "<header id=\"header\" class=\"clearfix\">\n    <div class=\"header-left\">\n        <a href=\"#\">Admin</a>\n    </div>\n    <div class=\"header-right\">\n        <ul>\n            <li>消息</li>\n            <li>设置</li>\n        </ul>\n    </div>\n</header>";
+module.exports = "<header id=\"header\" class=\"clearfix\">\r\n    <div class=\"header-left\">\r\n        <a href=\"#\">Admin</a>\r\n    </div>\r\n    <div class=\"header-right\">\r\n        <ul>\r\n            <li>消息</li>\r\n            <li>设置</li>\r\n        </ul>\r\n    </div>\r\n</header>";
 
 /***/ })
 

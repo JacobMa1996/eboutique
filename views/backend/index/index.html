@@ -7,7 +7,6 @@
     <v-slide :slide_index="slide_index" :slide_list="slide_list" @toggle_slide="toggleSlide"></v-slide>
 
     {% raw %}
-
     <div id="content">
         <category v-if="slide_index === 0" class="content">
         </category>
@@ -19,7 +18,7 @@
         </div>
 
     </div>
-
+    <v-pop></v-pop>
     {% endraw %}
 
 </div>
