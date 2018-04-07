@@ -3,15 +3,22 @@ Vue.component('v-table', {
     props: {
         thead_list: {
             type: Array,
-            default: [{}]
+            default: () => {
+                return [{}]
+            }
         },
         trow_list: {
             type: Array,
-            defalut: [{}]
+            defalut: () => {
+                return [{}]
+            }
         },
         title: {
             type: String,
             default: '表格标题'
+        },
+        key_id: {
+            type: String
         }
     },
     data () {

@@ -19,7 +19,7 @@
             <input type="checkbox" class="form-check-input" id="is-show" v-model="is_show">
             <label class="form-check-label" for="is-show">是否显示</label>
         </div>
-        <div class="form-group form-button"><button type="submit" class="btn btn-primary">添加</button></div>
+        <div class="form-group form-button"><button @click="submit" type="button" class="btn btn-primary">添加</button></div>
     </form>
-    <v-table :title="'分类设置'" :thead_list="thead_list" :trow_list="trow_list" @show_pop="showPop" @delete_item="deleteItem"></v-table>
+    <v-table :title="'分类设置'" :key_id="'cate_id'" :thead_list="thead_list" :trow_list="trow_list" @show_pop="showPop" @delete_item="deleteItem"></v-table>
 </div>

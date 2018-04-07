@@ -1,6 +1,6 @@
 const { RequestData } = require('../model/index')
 
-const { query, queryAll, queryTable, insertTable } = require('../lib/mysql.js')
+const { query, queryAll, queryTable, insertTable, deleteTable } = require('../lib/mysql.js')
 
 const ADMIN_USER = {
     userName: 'root',
@@ -26,10 +26,41 @@ const admin = [{
     callback: async (ctx) => {
         let data
         await queryAll('category').then(res => {
-            console.log(res)
             data = res
         })
         ctx.body = new RequestData(data, 0, 'success')
+    }
+}, {
+    path: '/admin/addCategory',
+    method: 'post',
+    callback: async (ctx) => {
+        const categoryInfo = ctx.request.body
+        let data
+        await insertTable('category', {
+            cateName: categoryInfo.cateName,
+            brandName: categoryInfo.brandName,
+            brandIntro: categoryInfo.brandIntro
+        }).then(res => {
+            data = new RequestData(res, 0, 'success')
+        }).catch(err => {
+            data = new RequestData(err, 1, 'failed')
+        })
+        ctx.body = data
+    }
+}, {
+    path: '/admin/deleteCategory',
+    method: 'post',
+    callback: async (ctx) => {
+        const categoryInfo = ctx.request.body
+        let data
+        await deleteTable('category', {
+            cateId: categoryInfo.cateId
+        }).then(res => {
+            data = new RequestData(res, 0, 'success')
+        }).catch(err => {
+            data = new RequestData(err, 1, 'failed')
+        })
+        ctx.body = data
     }
 }]
 
@@ -65,7 +96,6 @@ const user = [{
         await queryTable('user', {
             userName: userInfo.userName
         }).then(res => {
-            console.log(res)
             if (!res.length) {
                 insertTable('user', {
                     userName: userInfo.userName,
@@ -73,15 +103,12 @@ const user = [{
                     userPhone: userInfo.userPhone,
                     sex: null
                 }).then(res => {
-                    console.log('success')
                     data = new RequestData()
                 })
             } else {
-                console.log('failed')
                 data = new RequestData(null, 1, 'failed, this name has been registered')
             }
         }).catch(err => {
-            console.log(err)
             data = new RequestData(err, 1, 'failed')
         })
         // ctx.body 不能在函数中使用，所以await异步函数，把赋值放到函数外面

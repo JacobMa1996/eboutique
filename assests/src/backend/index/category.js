@@ -30,7 +30,22 @@ Vue.component('category', {
             console.log(trow)
         },
         deleteItem(trowIndex) {
-            console.log(trowIndex)
+            let _this = this
+            let cateId = _this.trow_list[trowIndex].cate_id
+            let data = {
+                cateId: cateId
+            }
+            EB.ajax({
+                url: '/api/admin/deleteCategory',
+                data: data,
+                method: 'post',
+                success(res) {
+                    _this.getInitData()
+                },
+                error(err) {
+                    console.log(err)
+                }
+            })
         },
         getInitData() {
             let _this = this
@@ -38,11 +53,26 @@ Vue.component('category', {
                 url: '/api/admin/getCategoryList',
                 method: 'get',
                 success(res) {
-                    console.log(res)
                     _this.trow_list = res.data
                 },
                 error(err) {
                     console.log(err)
+                }
+            })
+        },
+        submit() {
+            let _this = this
+            let data = {
+                cateName: this.cate_name,
+                brandName: this.brand_name,
+                brandIntro: this.brand_intro
+            }
+            EB.ajax({
+                url: '/api/admin/addCategory',
+                data: data,
+                method: 'post',
+                success(res) {
+                    _this.getInitData()
                 }
             })
         }

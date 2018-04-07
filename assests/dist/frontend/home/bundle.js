@@ -78,7 +78,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in thead_list\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trow_list\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in thead_list\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
+module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in thead_list\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trow_list\" :key=\"trow[key_id]\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in thead_list\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
 
 /***/ }),
 
@@ -93,15 +93,22 @@ Vue.component('v-table', {
     props: {
         thead_list: {
             type: Array,
-            default: [{}]
+            default: function _default() {
+                return [{}];
+            }
         },
         trow_list: {
             type: Array,
-            defalut: [{}]
+            defalut: function defalut() {
+                return [{}];
+            }
         },
         title: {
             type: String,
             default: '表格标题'
+        },
+        key_id: {
+            type: String
         }
     },
     data: function data() {

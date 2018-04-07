@@ -71,7 +71,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\r\n  <h3>{{title}}</h3>\r\n  <table class=\"table table-striped table-dark\">\r\n    <thead>\r\n      <tr>\r\n        <th>#</th>\r\n        <th v-for=\"(thead, index) in thead_list\" :key=\"index\">{{thead.text}}</th>\r\n        <th>操作</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr v-for=\"(trow, trowIndex) in trow_list\">\r\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\r\n        <td v-for=\"(thead, tdataIndex) in thead_list\">\r\n          {{trow[thead.header]}}\r\n        </td>\r\n        <td>\r\n          <a @click=\"showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\r\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\r\n        </td>\r\n      </tr>\r\n\r\n    </tbody>\r\n  </table>\r\n</div>";
+module.exports = "<div class=\"v-table\">\n  <h3>{{title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in thead_list\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in trow_list\" :key=\"trow[key_id]\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in thead_list\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
 
 /***/ }),
 
@@ -86,15 +86,22 @@ Vue.component('v-table', {
     props: {
         thead_list: {
             type: Array,
-            default: [{}]
+            default: function _default() {
+                return [{}];
+            }
         },
         trow_list: {
             type: Array,
-            defalut: [{}]
+            defalut: function defalut() {
+                return [{}];
+            }
         },
         title: {
             type: String,
             default: '表格标题'
+        },
+        key_id: {
+            type: String
         }
     },
     data: function data() {
@@ -116,7 +123,7 @@ Vue.component('v-table', {
 /***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\n";
 
 /***/ }),
 
@@ -130,7 +137,7 @@ module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-bt
 /***/ "IoXs":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"v-form\">\r\n    <div class=\"form-group\" v-for=\"(item, index) in input_list\" :key=\"index\">\r\n        <label for=\"\">Email address</label>\r\n        <input type=\"email\" class=\"form-control\" id=\"\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\">\r\n        <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\r\n    </div>\r\n    <!-- <div class=\"form-group\">\r\n        <label for=\"exampleInputPassword1\">Password</label>\r\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"exampleFormControlTextarea1\">Example textarea</label>\r\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\r\n    </div>\r\n    <div class=\"form-group form-check\">\r\n        <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\r\n        <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\r\n    </div>\r\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button> -->\r\n</form>";
+module.exports = "<form class=\"v-form\">\n    <div class=\"form-group\" v-for=\"(item, index) in input_list\" :key=\"index\">\n        <label for=\"\">Email address</label>\n        <input type=\"email\" class=\"form-control\" id=\"\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\">\n        <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n    </div>\n    <!-- <div class=\"form-group\">\n        <label for=\"exampleInputPassword1\">Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\">\n    </div>\n    <div class=\"form-group\">\n        <label for=\"exampleFormControlTextarea1\">Example textarea</label>\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n    </div>\n    <div class=\"form-group form-check\">\n        <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\n        <label class=\"form-check-label\" for=\"exampleCheck1\">Check me out</label>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button> -->\n</form>";
 
 /***/ }),
 
@@ -151,7 +158,7 @@ __webpack_require__("roO6");
 /***/ "Q3No":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"category\">\r\n    <form class=\"v-form\">\r\n        <div class=\"form-group\">\r\n            <label for=\"cate-name\">分类名称</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"cate-name\" placeholder=\"请输入分类名称\" v-model=\"cate_name\">\r\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label for=\"brand-name\">品牌名称</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"brand-name\" placeholder=\"请输入分类名称\" v-model=\"brand_name\">\r\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\r\n        </div>\r\n        <div class=\"form-group\">\r\n            <label for=\"brand-intro\">品牌介绍</label>\r\n            <textarea class=\"form-control\" rows=\"3\" id=\"brand-intro\" placeholder=\"请输入分类名称\" v-model=\"brand_intro\"></textarea>\r\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\r\n        </div>\r\n        <div class=\"form-group form-check\">\r\n            <input type=\"checkbox\" class=\"form-check-input\" id=\"is-show\" v-model=\"is_show\">\r\n            <label class=\"form-check-label\" for=\"is-show\">是否显示</label>\r\n        </div>\r\n        <div class=\"form-group form-button\"><button type=\"submit\" class=\"btn btn-primary\">添加</button></div>\r\n    </form>\r\n    <v-table :title=\"'分类设置'\" :thead_list=\"thead_list\" :trow_list=\"trow_list\" @show_pop=\"showPop\" @delete_item=\"deleteItem\"></v-table>\r\n</div>";
+module.exports = "<div class=\"category\">\n    <form class=\"v-form\">\n        <div class=\"form-group\">\n            <label for=\"cate-name\">分类名称</label>\n            <input type=\"text\" class=\"form-control\" id=\"cate-name\" placeholder=\"请输入分类名称\" v-model=\"cate_name\">\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group\">\n            <label for=\"brand-name\">品牌名称</label>\n            <input type=\"text\" class=\"form-control\" id=\"brand-name\" placeholder=\"请输入分类名称\" v-model=\"brand_name\">\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group\">\n            <label for=\"brand-intro\">品牌介绍</label>\n            <textarea class=\"form-control\" rows=\"3\" id=\"brand-intro\" placeholder=\"请输入分类名称\" v-model=\"brand_intro\"></textarea>\n            <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n        </div>\n        <div class=\"form-group form-check\">\n            <input type=\"checkbox\" class=\"form-check-input\" id=\"is-show\" v-model=\"is_show\">\n            <label class=\"form-check-label\" for=\"is-show\">是否显示</label>\n        </div>\n        <div class=\"form-group form-button\"><button @click=\"submit\" type=\"button\" class=\"btn btn-primary\">添加</button></div>\n    </form>\n    <v-table :title=\"'分类设置'\" :key_id=\"'cate_id'\" :thead_list=\"thead_list\" :trow_list=\"trow_list\" @show_pop=\"showPop\" @delete_item=\"deleteItem\"></v-table>\n</div>";
 
 /***/ }),
 
@@ -230,7 +237,7 @@ Vue.component('v-btn', {
 /***/ "iVtf":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"slide\">\r\n    <ul>\r\n        <li v-for=\"(item, index) in slide_list\" :class=\"index === slide_index ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\r\n    </ul>\r\n</div>";
+module.exports = "<div id=\"slide\">\n    <ul>\n        <li v-for=\"(item, index) in slide_list\" :class=\"index === slide_index ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\n    </ul>\n</div>";
 
 /***/ }),
 
@@ -340,7 +347,23 @@ Vue.component('category', {
             console.log(trow);
         },
         deleteItem: function deleteItem(trowIndex) {
-            console.log(trowIndex);
+            var _this = this;
+            var cateId = _this.trow_list[trowIndex].cate_id;
+            var data = {
+                cateId: cateId
+            };
+            EB.ajax({
+                url: '/api/admin/deleteCategory',
+                data: data,
+                method: 'post',
+                success: function success(res) {
+                    console.log(res);
+                    _this.getInitData();
+                },
+                error: function error(err) {
+                    console.log(err);
+                }
+            });
         },
         getInitData: function getInitData() {
             var _this = this;
@@ -348,11 +371,26 @@ Vue.component('category', {
                 url: '/api/admin/getCategoryList',
                 method: 'get',
                 success: function success(res) {
-                    console.log(res);
                     _this.trow_list = res.data;
                 },
                 error: function error(err) {
                     console.log(err);
+                }
+            });
+        },
+        submit: function submit() {
+            var _this = this;
+            var data = {
+                cateName: this.cate_name,
+                brandName: this.brand_name,
+                brandIntro: this.brand_intro
+            };
+            EB.ajax({
+                url: '/api/admin/addCategory',
+                data: data,
+                method: 'post',
+                success: function success(res) {
+                    _this.getInitData();
                 }
             });
         }
@@ -364,7 +402,7 @@ Vue.component('category', {
 /***/ "yAOn":
 /***/ (function(module, exports) {
 
-module.exports = "<header id=\"header\" class=\"clearfix\">\r\n    <div class=\"header-left\">\r\n        <a href=\"#\">Admin</a>\r\n    </div>\r\n    <div class=\"header-right\">\r\n        <ul>\r\n            <li>消息</li>\r\n            <li>设置</li>\r\n        </ul>\r\n    </div>\r\n</header>";
+module.exports = "<header id=\"header\" class=\"clearfix\">\n    <div class=\"header-left\">\n        <a href=\"#\">Admin</a>\n    </div>\n    <div class=\"header-right\">\n        <ul>\n            <li>消息</li>\n            <li>设置</li>\n        </ul>\n    </div>\n</header>";
 
 /***/ })
 
