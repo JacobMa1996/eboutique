@@ -1,29 +1,33 @@
+/*
+thead_list: {
+    type: Array,
+    default: () => {
+        return [{}]
+    }
+},
+trow_list: {
+    type: Array,
+    defalut: () => {
+        return [{}]
+    }
+},
+title: {
+    type: String,
+    default: '表格标题'
+},
+key_id: {
+    type: String
+}
+*/
+
 Vue.component('v-table', {
     template: require('./template.html'),
     props: {
-        thead_list: {
-            type: Array,
-            default: () => {
-                return [{}]
-            }
-        },
-        trow_list: {
-            type: Array,
-            defalut: () => {
-                return [{}]
-            }
-        },
-        title: {
-            type: String,
-            default: '表格标题'
-        },
-        key_id: {
-            type: String
-        }
+        options: {}
     },
-    data () {
+    data() {
         return {
-            
+
         }
     },
     methods: {

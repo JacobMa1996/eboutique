@@ -6,51 +6,82 @@ Vue.component('category', {
     data() {
         var _this = this
         return {
+            title: '分类',
             // table
-            thead_list: [{
-                header: 'cate_name',
-                text: '分类名称'
-            }, {
-                header: 'brand_name',
-                text: '品牌名称'
-            }, {
-                header: 'brand_intro',
-                text: '品牌介绍'
-            }],
-            trow_list: [],
+            table_options: {
+                thead_list: [{
+                    header: 'cate_name',
+                    text: '分类名称'
+                }, {
+                    header: 'brand_name',
+                    text: '品牌名称'
+                }, {
+                    header: 'brand_intro',
+                    text: '品牌介绍'
+                }],
+                trow_list: [],
+            },
             
             // form
-            input_list: [{
-                label: '分类名称',
-                header: 'cate_name',
-                placeholder: '请输入分类名称',
-                value: ''
-            }, {
-                label: '品牌名称',
-                header: 'brand_name',
-                placeholder: '请输入品牌名称',
-                value: ''
-            }],
-            textarea_list: [{
-                label: '品牌介绍',
-                header: 'brand_intro',
-                rows: '3',
-                placeholder: '请输入品牌介绍',
-                value: ''
-            }],
-            check_list: [{
-                label: '是否显示',
-                header: 'is_show',
-                value: true
-            }],
-            button: {
-                label: '添加'
+            form_options: {
+                input_list: [{
+                    label: '分类名称',
+                    header: 'cate_name',
+                    placeholder: '请输入分类名称',
+                    value: ''
+                }, {
+                    label: '品牌名称',
+                    header: 'brand_name',
+                    placeholder: '请输入品牌名称',
+                    value: ''
+                }],
+                textarea_list: [{
+                    label: '品牌介绍',
+                    header: 'brand_intro',
+                    rows: '3',
+                    placeholder: '请输入品牌介绍',
+                    value: ''
+                }],
+                check_list: [{
+                    label: '是否显示',
+                    header: 'is_show',
+                    value: true
+                }],
+                button: {
+                    label: '添加'
+                }
             },
-            //
-            cate_name: '',
-            brand_name: '',
-            brand_intro: '',
-            is_show: true,
+            pop_options: {
+                pop_title: '编辑分类',
+                form_options: {
+                    input_list: [{
+                        label: '分类名称',
+                        header: 'cate_name',
+                        placeholder: '请输入分类名称',
+                        value: ''
+                    }, {
+                        label: '品牌名称',
+                        header: 'brand_name',
+                        placeholder: '请输入品牌名称',
+                        value: ''
+                    }],
+                    textarea_list: [{
+                        label: '品牌介绍',
+                        header: 'brand_intro',
+                        rows: '3',
+                        placeholder: '请输入品牌介绍',
+                        value: ''
+                    }],
+                    check_list: [{
+                        label: '是否显示',
+                        header: 'is_show',
+                        value: true
+                    }],
+                    button: {
+                        label: '添加'
+                    }
+                }
+            }
         }
     },
     mounted() {
@@ -84,7 +115,7 @@ Vue.component('category', {
                 url: '/api/admin/getCategoryList',
                 method: 'get',
                 success(res) {
-                    _this.trow_list = res.data
+                    _this.table_options.trow_list = res.data
                 },
                 error(err) {
                     console.log(err)

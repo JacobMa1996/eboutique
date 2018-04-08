@@ -1,26 +1,30 @@
+/**
+ * tip: {
+    type: String,
+    default: null
+},
+input_list: {
+    type: Array,
+    default: null
+},
+textarea_list: {
+    type: Array,
+    default: null
+},
+check_list: {
+    type: Array,
+    default: null
+},
+button: {
+    type: Object,
+    default: null
+}
+ */
+
 Vue.component('v-form', {
     template: require('./template.html'),
     props: {
-        tip: {
-            type: String,
-            default: null
-        },
-        input_list: {
-            type: Array,
-            default: null
-        },
-        textarea_list: {
-            type: Array,
-            default: null
-        },
-        check_list: {
-            type: Array,
-            default: null
-        },
-        button: {
-            type: Object,
-            default: null
-        }
+        options: {}
     },
     data() {
         return {
@@ -31,11 +35,11 @@ Vue.component('v-form', {
         click() {
             let _this = this
             let data ={
-                tip: _this.tip,
-                input_list: _this.input_list,
-                textarea_list: _this.textarea_list,
-                check_list: _this.check_list,
-                button: _this.button,
+                tip: _this.options.tip,
+                input_list: _this.options.input_list,
+                textarea_list: _this.options.textarea_list,
+                check_list: _this.options.check_list,
+                button: _this.options.button,
             }
             this.$emit('submit', data)
         }
