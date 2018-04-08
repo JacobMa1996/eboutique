@@ -54,3 +54,8 @@
 .v-form .form-button {
     text-align: right
 }
+
+.v-pop .modal {
+    display: block;
+    opacity: 1;
+}

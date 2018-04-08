@@ -78,7 +78,7 @@
 /***/ "99qs":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-table\">\r\n  <h3>{{options.title}}</h3>\r\n  <table class=\"table table-striped table-dark\">\r\n    <thead>\r\n      <tr>\r\n        <th>#</th>\r\n        <th v-for=\"(thead, index) in options.thead_list\" :key=\"index\">{{thead.text}}</th>\r\n        <th>操作</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr v-for=\"(trow, trowIndex) in options.trow_list\" :key=\"trowIndex\">\r\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\r\n        <td v-for=\"(thead, tdataIndex) in options.thead_list\">\r\n          {{trow[thead.header]}}\r\n        </td>\r\n        <td>\r\n          <a @click=\"showPop(trow)\" href=\"\">编辑</a>\r\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\r\n        </td>\r\n      </tr>\r\n\r\n    </tbody>\r\n  </table>\r\n</div>";
+module.exports = "<div class=\"v-table\">\n  <h3>{{options.title}}</h3>\n  <table class=\"table table-striped table-dark\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th v-for=\"(thead, index) in options.thead_list\" :key=\"index\">{{thead.text}}</th>\n        <th>操作</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"(trow, trowIndex) in options.trow_list\" :key=\"trowIndex\">\n        <th scope=\"row\">{{ trowIndex + 1 }}</th>\n        <td v-for=\"(thead, tdataIndex) in options.thead_list\">\n          {{trow[thead.header]}}\n        </td>\n        <td>\n          <a @click=\"showPop(trow)\" href=\"javascript:void(0);\">编辑</a>\n          <a @click=\"deleteItem(trowIndex)\" href=\"javascript:void(0);\">删除</a>\n        </td>\n      </tr>\n\n    </tbody>\n  </table>\n</div>";
 
 /***/ }),
 
@@ -134,21 +134,21 @@ Vue.component('v-table', {
 /***/ "DAap":
 /***/ (function(module, exports) {
 
-module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\r\n";
+module.exports = "<a :href=\"href\" :target=\"target || _blank\" :class=\"['v-btn', display_type]\" @click=\"click()\">{{display_text}}</a>\n";
 
 /***/ }),
 
 /***/ "IoXs":
 /***/ (function(module, exports) {
 
-module.exports = "<form class=\"v-form\">\r\n    <div class=\"\" v-if=\"options.tip\">{{options.tip}}</div>\r\n    <div class=\"form-group\" v-for=\"(item, index) in options.input_list\" :key=\"item.header\">\r\n        <label :for=\"item.header\">{{item.label}}</label>\r\n        <input :type=\"item.type\" class=\"form-control\" :id=\"item.header\" :placeholder=\"item.placeholder\" v-model=\"item.value\">\r\n        <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\r\n    </div>\r\n    <div class=\"form-group\" v-for=\"(item, index) in options.textarea_list\" :key=\"item.header\">\r\n        <label :for=\"item.header\">{{item.label}}</label>\r\n        <textarea class=\"form-control\" :id=\"item.header\" :rows=\"item.rows\" v-model=\"item.value\" :placeholder=\"item.placeholder\"></textarea>\r\n    </div>\r\n    <div class=\"form-group form-check\" v-for=\"(item, index) in options.check_list\" :key=\"item.header\">\r\n        <input type=\"checkbox\" class=\"form-check-input\" :id=\"item.header\" v-model=\"item.value\">\r\n        <label class=\"form-check-label\" :for=\"item.header\">{{item.label}}</label>\r\n    </div>\r\n    <button v-if=\"options.button\" @click=\"click\" type=\"button\" class=\"btn btn-primary\">{{options.button.label}}</button>\r\n</form>";
+module.exports = "<form class=\"v-form\">\n    <div class=\"\" v-if=\"options.tip\">{{options.tip}}</div>\n    <div class=\"form-group\" v-for=\"(item, index) in options.input_list\" :key=\"item.header\">\n        <label :for=\"item.header\">{{item.label}}</label>\n        <input :type=\"item.type\" class=\"form-control\" :id=\"item.header\" :placeholder=\"item.placeholder\" v-model=\"item.value\">\n        <!-- <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small> -->\n    </div>\n    <div class=\"form-group\" v-for=\"(item, index) in options.textarea_list\" :key=\"item.header\">\n        <label :for=\"item.header\">{{item.label}}</label>\n        <textarea class=\"form-control\" :id=\"item.header\" :rows=\"item.rows\" v-model=\"item.value\" :placeholder=\"item.placeholder\"></textarea>\n    </div>\n    <div class=\"form-group form-check\" v-for=\"(item, index) in options.check_list\" :key=\"item.header\">\n        <input type=\"checkbox\" class=\"form-check-input\" :id=\"item.header\" v-model=\"item.value\">\n        <label class=\"form-check-label\" :for=\"item.header\">{{item.label}}</label>\n    </div>\n    <button v-if=\"options.button\" @click=\"click\" type=\"button\" class=\"btn btn-primary\">{{options.button.label}}</button>\n</form>";
 
 /***/ }),
 
 /***/ "OLaw":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"v-modal\">\r\n    <!-- Modal -->\r\n    <div class=\"modal fade\" id=\"modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"modal\" aria-hidden=\"true\">\r\n        <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h5 class=\"modal-title\">\r\n                        {{options.pop_title}}\r\n                    </h5>\r\n                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <v-table :options=\"options.form_options\"></v-table>\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\r\n                    <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"v-pop\" v-if=\"options.modal\">\n    <!-- Modal -->\n    <div class=\"modal-backdrop fade show\"></div>\n    <div class=\"modal fade\" id=\"modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"modal\" aria-hidden=\"true\">\n        <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n            <div class=\"modal-content\">\n                <div class=\"modal-header\">\n                    <h5 class=\"modal-title\">\n                        {{options.pop_title}}\n                    </h5>\n                    <button @click=\"close()\" type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                        <span aria-hidden=\"true\">&times;</span>\n                    </button>\n                </div>\n                <div class=\"modal-body\">\n                    <v-form :options=\"options.form_options\"></v-form>\n                </div>\n                <div class=\"modal-footer\">\n                    <button @click=\"close()\" type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">关闭</button>\n                    <button @click=\"submit()\" type=\"button\" class=\"btn btn-primary\">保存</button>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
 
 /***/ }),
 
@@ -213,7 +213,15 @@ Vue.component('v-pop', {
         return {};
     },
 
-    methods: {}
+    methods: {
+        close: function close() {
+            this.options.modal = false;
+        },
+        submit: function submit() {
+            this.$emit('submit', this.options.form_options);
+            this.options.modal = false;
+        }
+    }
 });
 
 /***/ }),
@@ -221,7 +229,7 @@ Vue.component('v-pop', {
 /***/ "iVtf":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"slide\">\r\n    <ul>\r\n        <li v-for=\"(item, index) in slide_list\" :class=\"index === slide_index ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\r\n    </ul>\r\n</div>";
+module.exports = "<div id=\"slide\">\n    <ul>\n        <li v-for=\"(item, index) in slide_list\" :class=\"index === slide_index ? 'active': ''\" @click=\"toggleSlide(index)\" :key=\"index\">{{item.text}}</li>\n    </ul>\n</div>";
 
 /***/ }),
 
@@ -367,7 +375,7 @@ window.vm = new Vue({
 /***/ "yAOn":
 /***/ (function(module, exports) {
 
-module.exports = "<header id=\"header\" class=\"clearfix\">\r\n    <div class=\"header-left\">\r\n        <a href=\"#\">Admin</a>\r\n    </div>\r\n    <div class=\"header-right\">\r\n        <ul>\r\n            <li>消息</li>\r\n            <li>设置</li>\r\n        </ul>\r\n    </div>\r\n</header>";
+module.exports = "<header id=\"header\" class=\"clearfix\">\n    <div class=\"header-left\">\n        <a href=\"#\">Admin</a>\n    </div>\n    <div class=\"header-right\">\n        <ul>\n            <li>消息</li>\n            <li>设置</li>\n        </ul>\n    </div>\n</header>";
 
 /***/ })
 

@@ -52,6 +52,7 @@ Vue.component('category', {
                 }
             },
             pop_options: {
+                modal: false,
                 pop_title: '编辑分类',
                 form_options: {
                     input_list: [{
@@ -76,10 +77,7 @@ Vue.component('category', {
                         label: '是否显示',
                         header: 'is_show',
                         value: true
-                    }],
-                    button: {
-                        label: '添加'
-                    }
+                    }]
                 }
             }
         }
@@ -89,11 +87,20 @@ Vue.component('category', {
     },
     methods: {
         showPop(trow) {
-            console.log(trow)
+            let _this = this
+            let obj = _this.pop_options.form_options
+            for (let item in obj) {
+                if (obj[item] instanceof Array) {
+                    for (let key of obj[item]) {
+                        key.value = trow[key.header]
+                    }
+                }
+            }
+            this.pop_options.modal = true
         },
         deleteItem(trowIndex) {
             let _this = this
-            let cateId = _this.trow_list[trowIndex].cate_id
+            let cateId = _this.table_options.trow_list[trowIndex].cate_id
             let data = {
                 cateId: cateId
             }
@@ -122,7 +129,7 @@ Vue.component('category', {
                 }
             })
         },
-        submit(obj) {
+        add(obj) {
             let _this = this
             let data = {}
             for (let item in obj) {
@@ -146,6 +153,18 @@ Vue.component('category', {
                     _this.getInitData()
                 }
             })
+        },
+        edit(obj) {
+            let _this = this
+            let data = {}
+            for (let item in obj) {
+                if(obj[item] instanceof Array) {
+                    for (let key of obj[item]) {
+                        data[key.header] = key.value
+                    }
+                }
+            }
+            // 编辑api
         }
     }
 })

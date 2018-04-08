@@ -1,5 +1,6 @@
-<div class="v-modal">
+<div class="v-pop" v-if="options.modal">
     <!-- Modal -->
+    <div class="modal-backdrop fade show"></div>
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -7,16 +8,16 @@
                     <h5 class="modal-title">
                         {{options.pop_title}}
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button @click="close()" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <v-table :options="options.form_options"></v-table>
+                    <v-form :options="options.form_options"></v-form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button @click="close()" type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button @click="submit()" type="button" class="btn btn-primary">保存</button>
                 </div>
             </div>
         </div>
