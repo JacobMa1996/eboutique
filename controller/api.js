@@ -117,17 +117,20 @@ const user = [{
             userName: userInfo.userName
         }).then(res => {
             if (!res.length) {
-                insertTable('user', {
+                return insertTable('user', {
                     userName: userInfo.userName,
                     userPass: userInfo.userPassword,
                     userPhone: userInfo.userPhone,
-                    sex: null
-                }).then(res => {
-                    data = new RequestData()
+                    sex: 0,
+                    favorites: '',
+                    putaway: '',
+                    carts: ''
                 })
             } else {
-                data = new RequestData(null, 1, 'failed, this name has been registered')
+                return Promise.reject('failed, this name has been registered')
             }
+        }).then(res => {
+            data = new RequestData()
         }).catch(err => {
             data = new RequestData(err, 1, 'failed')
         })
