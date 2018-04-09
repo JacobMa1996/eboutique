@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(trow, trowIndex) in options.trow_list" :key="trowIndex">
+      <tr v-for="(trow, trowIndex) in options.trow_list" :key="trow[options.key_id]">
         <th scope="row">{{ trowIndex + 1 }}</th>
         <td v-for="(thead, tdataIndex) in options.thead_list">
           {{trow[thead.header]}}

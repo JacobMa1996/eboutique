@@ -9,6 +9,7 @@ Vue.component('category', {
             title: '分类',
             // table
             table_options: {
+                key_id: 'cate_id',
                 thead_list: [{
                     header: 'cate_name',
                     text: '分类名称'
@@ -55,6 +56,10 @@ Vue.component('category', {
                 modal: false,
                 pop_title: '编辑分类',
                 form_options: {
+                    key_id: [{
+                        header: 'cate_id',
+                        value: ''
+                    }],
                     input_list: [{
                         label: '分类名称',
                         header: 'cate_name',
@@ -122,6 +127,7 @@ Vue.component('category', {
                 url: '/api/admin/getCategoryList',
                 method: 'get',
                 success(res) {
+                    console.log(res)
                     _this.table_options.trow_list = res.data
                 },
                 error(err) {
@@ -151,6 +157,9 @@ Vue.component('category', {
                 method: 'post',
                 success(res) {
                     _this.getInitData()
+                },
+                error (err) {
+                    console.log(err)
                 }
             })
         },
@@ -164,7 +173,19 @@ Vue.component('category', {
                     }
                 }
             }
+            console.log(data)
             // 编辑api
+            EB.ajax({
+                url: '/api/admin/updateCagetory',
+                data: data,
+                method: 'post',
+                success(res) {
+                    _this.getInitData()
+                },
+                error(err) {
+                    console.log(err)
+                }
+            })
         }
     }
 })

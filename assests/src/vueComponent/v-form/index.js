@@ -34,8 +34,9 @@ Vue.component('v-form', {
     methods: {
         click() {
             let _this = this
-            let data ={
+            let data = {
                 tip: _this.options.tip,
+                key_id: _this.key_id,
                 input_list: _this.options.input_list,
                 textarea_list: _this.options.textarea_list,
                 check_list: _this.options.check_list,

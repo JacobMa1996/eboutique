@@ -1,6 +1,6 @@
 const { RequestData } = require('../model/index')
 
-const { query, queryAll, queryTable, insertTable, deleteTable } = require('../lib/mysql.js')
+const { query, queryAll, queryTable, insertTable, updateTable, deleteTable } = require('../lib/mysql.js')
 
 const ADMIN_USER = {
     userName: 'root',
@@ -43,6 +43,25 @@ const admin = [{
             isShow: categoryInfo.isShow
         }).then(res => {
             data = new RequestData(res, 0, 'success')
+        }).catch(err => {
+            data = new RequestData(err, 1, 'failed')
+        })
+        ctx.body = data
+    }
+}, {
+    path: '/admin/updateCagetory',
+    method: 'post',
+    callback: async (ctx) => {
+        const categoryInfo = ctx.request.body
+        let data
+        await updateTable('category', {
+            cate_id: categoryInfo.cate_id,
+            cate_name: categoryInfo.cate_name,
+            brand_name: categoryInfo.brand_name,
+            brand_intro: categoryInfo.brand_intro,
+            is_show: categoryInfo.is_show
+        }).then(res => {
+            data = new RequestData(res, 0, 'sucess')
         }).catch(err => {
             data = new RequestData(err, 1, 'failed')
         })
