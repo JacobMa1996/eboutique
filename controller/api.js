@@ -7,6 +7,19 @@ const ADMIN_USER = {
     userPassword: 'admin'
 }
 
+const common = [{
+    path: '/common/getUserInfo',
+    method: 'get',
+    callback: async (ctx) => {
+        let userInfo = ctx.session.user
+        if (userInfo) {
+            ctx.body = new RequestData(userInfo, 0, 'success')
+        } else {
+            ctx. body = new RequestData(null, 0, 'not login')
+        }
+    }
+}]
+
 const admin = [{
     path: '/admin/login',
     method: 'post',
@@ -86,7 +99,6 @@ const user = [{
             }
         })
         ctx.body = data
-
     }
 }, {
     path: '/user/register',
@@ -117,4 +129,4 @@ const user = [{
     }
 }]
 
-module.exports = [].concat(admin, user)
+module.exports = [].concat(common, admin, user)

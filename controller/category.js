@@ -6,7 +6,7 @@ module.exports = {
     index: async (ctx) => {
         let categoryList = []
         categoryList.push({ categoryId: 01, categoryName: 'Louis Vuitton' })
-        console.log(categoryList)
+        // console.log(categoryList)
         content = {
             search: true,
             category: categoryList

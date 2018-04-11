@@ -1,1 +1,12 @@
 {% extends 'views/frontend/common/layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="/dist/frontend/category/bundle.css">
+{% endblock %}
+{% block  body %}
+<div id="container">
+    {% include 'views/frontend/common/header.html' %}
+
+    {% include 'views/frontend/common/footer.html' %}
+</div>
+<script src="/dist/frontend/category/bundle.js"></script>
+{% endblock %}
