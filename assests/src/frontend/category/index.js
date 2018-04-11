@@ -19,7 +19,7 @@ let vm = new Vue({
                 success(res) {
                     if (res) {
                         console.log(res)
-                        _this.user = res
+                        _this.user = res.data
                     } else {
                         _this.user = {
                             userName: null
