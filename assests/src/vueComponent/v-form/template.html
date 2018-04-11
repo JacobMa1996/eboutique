@@ -1,5 +1,6 @@
 <form class="v-form">
     <div class="" v-if="options.tip">{{options.tip}}</div>
+    <input type="hidden" v-for="(item, index) in options.key_id" :key="item.key_id">
     <div class="form-group" v-for="(item, index) in options.input_list" :key="item.header">
         <label :for="item.header">{{item.label}}</label>
         <input :type="item.type" class="form-control" :id="item.header" :placeholder="item.placeholder" v-model="item.value">
