@@ -5,5 +5,8 @@ router
   .get('/user', user.index)
   .get('/login', user.login)
   .get('/register', user.register)
+  .get('/user/information', user.information)
+  .get('/user/order', user.order)
+  .get('/user/putaway', user.putaway)
 
   module.exports = router;
