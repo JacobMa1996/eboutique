@@ -8,7 +8,8 @@
     <title>eboutique</title>
     <link rel="stylesheet" href="/common/css/normalize.css">
     <link rel="stylesheet" href="/common/css/normal.css">
-    <link rel="stylesheet" href="/common/css/layout.css"> {% block head %} {% endblock %}
+    <link rel="stylesheet" href="/common/css/layout.css">
+    <link rel="stylesheet" href="/dist/frontend/public/bundle.css"> {% block head %} {% endblock %}
     <script src="/common/js/jquery-3.2.1.min.js"></script>
     <script src="/common/js/vue.js"></script>
     <script src="/common/js/common.js"></script>
@@ -18,6 +19,7 @@
     <div class="container">
         {% block body %} {% endblock %}
     </div>
+    <script src="/dist/frontend/public/bundle.js"></script>
 </body>
 
 </html>
