@@ -1,2 +1,3 @@
 node_modules/
-assests/dist/
+assests/dist/frontend/
+assests/dist/backend/

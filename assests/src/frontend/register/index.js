@@ -5,7 +5,7 @@ new Vue({
     data() {
         return {
             userName: '', 
-            userPassword: '',
+            userPass: '',
             userPasswordRepeat: '',
             userPhone: '',
             text: '123'
@@ -15,7 +15,7 @@ new Vue({
         submit () {
             const userInfo = {
                 userName: this.userName, 
-                userPassword: this.userPassword,
+                userPass: this.userPass,
                 userPhone: this.userPhone,
             }
             EB.ajax({

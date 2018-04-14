@@ -91,11 +91,10 @@ const user = [{
     path: '/user/login',
     method: 'post',
     callback: async (ctx) => {
-        const userInfo = ctx.response.body
+        const userInfo = ctx.request.body
         let response
-        let data = new User({
-            userName: userInfo.userName
-        })
+        let data = new User(userInfo)
+        console.log(data)
         await queryTable('user', data).then(res => {
             if (!res.length) {
                 response = new ResponseData(null, 1, "user doesn't exist")
@@ -114,11 +113,11 @@ const user = [{
     path: '/user/register',
     method: 'post',
     callback: async (ctx) => {
-        const userInfo = ctx.response.body
+        const userInfo = ctx.request.body
+        console.log(userInfo)
         let response
-        let data = new User({
-            userName: userInfo.userName
-        })
+        let data = new User(userInfo)
+        console.log(data)
         await queryTable('user', data).then(res => {
             if (!res.length) {
                 return insertTable('user', data)
