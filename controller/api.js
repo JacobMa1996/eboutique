@@ -1,4 +1,4 @@
-const { RequestData } = require('../model/index')
+const { ResponseData } = require('../model/index')
 
 const { query, queryAll, queryTable, insertTable, updateTable, deleteTable } = require('../lib/mysql.js')
 
@@ -13,9 +13,9 @@ const common = [{
     callback: async (ctx) => {
         let userInfo = ctx.session.user
         if (userInfo) {
-            ctx.body = new RequestData(userInfo, 0, 'success')
+            ctx.body = new ResponseData(userInfo, 0, 'success')
         } else {
-            ctx. body = new RequestData(null, 0, 'not login')
+            ctx. body = new ResponseData(null, 0, 'not login')
         }
     }
 }]
@@ -28,9 +28,9 @@ const admin = [{
         if (userInfo.userName === ADMIN_USER.userName && userInfo.userPassword === ADMIN_USER.userPassword) {
             // 存session
             ctx.session.admin_user = userInfo
-            ctx.body = new RequestData()
+            ctx.body = new ResponseData()
         } else {
-            ctx.body = new RequestData(null, 0, 'wrong userName or password')
+            ctx.body = new ResponseData(null, 0, 'wrong userName or password')
         }
     }
 }, {
@@ -41,7 +41,7 @@ const admin = [{
         await queryAll('category').then(res => {
             data = res
         })
-        ctx.body = new RequestData(data, 0, 'success')
+        ctx.body = new ResponseData(data, 0, 'success')
     }
 }, {
     path: '/admin/addCategory',
@@ -55,9 +55,9 @@ const admin = [{
             brandIntro: categoryInfo.brandIntro,
             isShow: categoryInfo.isShow
         }).then(res => {
-            data = new RequestData(res, 0, 'success')
+            data = new ResponseData(res, 0, 'success')
         }).catch(err => {
-            data = new RequestData(err, 1, 'failed')
+            data = new ResponseData(err, 1, 'failed')
         })
         ctx.body = data
     }
@@ -74,9 +74,9 @@ const admin = [{
             brand_intro: categoryInfo.brand_intro,
             is_show: categoryInfo.is_show
         }).then(res => {
-            data = new RequestData(res, 0, 'sucess')
+            data = new ResponseData(res, 0, 'sucess')
         }).catch(err => {
-            data = new RequestData(err, 1, 'failed')
+            data = new ResponseData(err, 1, 'failed')
         })
         ctx.body = data
     }
@@ -89,9 +89,9 @@ const admin = [{
         await deleteTable('category', {
             cateId: categoryInfo.cateId
         }).then(res => {
-            data = new RequestData(res, 0, 'success')
+            data = new ResponseData(res, 0, 'success')
         }).catch(err => {
-            data = new RequestData(err, 1, 'failed')
+            data = new ResponseData(err, 1, 'failed')
         })
         ctx.body = data
     }
@@ -107,13 +107,13 @@ const user = [{
             userName: userInfo.userName
         }).then(res => {
             if (!res.length) {
-                data = new RequestData(null, 1, "user doesn't exist")
+                data = new ResponseData(null, 1, "user doesn't exist")
             } else {
                 if (userInfo.userPassword === res[0].user_pass) {
                     ctx.session.user = res[0]
-                    data = new RequestData()
+                    data = new ResponseData()
                 } else {
-                    data = new RequestData(null, 1, 'password is not correct')
+                    data = new ResponseData(null, 1, 'password is not correct')
                 }
             }
         })
@@ -142,9 +142,9 @@ const user = [{
                 return Promise.reject('failed, this name has been registered')
             }
         }).then(res => {
-            data = new RequestData()
+            data = new ResponseData()
         }).catch(err => {
-            data = new RequestData(err, 1, 'failed')
+            data = new ResponseData(err, 1, 'failed')
         })
         // ctx.body 不能在函数中使用，所以await异步函数，把赋值放到函数外面
         ctx.body = data

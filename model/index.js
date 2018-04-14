@@ -1,7 +1,13 @@
-const RequestData =  require('./requestData')
-const Category = require('./categoryData')
+const ResponseData = require('./responseData')
+const User = require('./user')
+const Category = require('./category')
+const Product = require('./product')
+const ProductOrder = require('./productorder')
 
 module.exports = {
+    ResponseData: ResponseData,
+    User: User,
     Category: Category,
-    RequestData: RequestData
+    Product: Product,
+    ProductOrder: ProductOrder
 }
