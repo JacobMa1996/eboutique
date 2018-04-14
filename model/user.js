@@ -10,19 +10,20 @@
 // }
 
 class User {
-    constructor (data) {
-       this.user_name = data.userName || ''
-       this.user_pass = data.userPass || ''
-       this.user_phone = data.userPhone || ''
-       this.user_img = data.userImg || ''
-       this.sex = data.sex || 0
-       this.favorites = data.favorites || ''
-       this.added = data.added || ''
-       this.carts = data.carts || ''
+    constructor(data) {
+        if (data.userId) this.user_id = data.userId
+        this.user_name = data.userName || ''
+        this.user_pass = data.userPass || ''
+        this.user_phone = data.userPhone || ''
+        this.user_img = data.userImg || ''
+        this.sex = data.sex || 0
+        this.favorites = data.favorites || ''
+        this.added = data.added || ''
+        this.carts = data.carts || ''
     }
-    verify () {
+    verify() {
         return true
     }
 }
 
-modulex.exports = User
+module.exports = User

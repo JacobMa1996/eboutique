@@ -1,5 +1,6 @@
 class ProductOrder {
     constructor(data) {
+        if (data.orderId) this.order_id = data.orderId
         this.create_date = data.createDate || ''
         this.trade_date = data.tradeDate || ''
         this.pro_price = data.proPrice || ''

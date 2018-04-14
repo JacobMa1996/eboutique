@@ -1,5 +1,6 @@
 class Category {
     constructor (data) {
+        if (data.cateId) this.cate_id = data.cateId
         this.cate_name = data.cateName || ''
         this.brand_name = data.brandName || ''
         this.brand_intro = data.brandIntro || ''

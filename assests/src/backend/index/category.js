@@ -145,7 +145,7 @@ Vue.component('category', {
                     }
                 }
             }
-            let ajaxData = {
+            let requestData = {
                 cateName: data.cate_name,
                 brandName: data.brand_name,
                 brandIntro: data.brand_intro,
@@ -153,7 +153,7 @@ Vue.component('category', {
             }
             EB.ajax({
                 url: '/api/admin/addCategory',
-                data: ajaxData,
+                data: requestData,
                 method: 'post',
                 success(res) {
                     _this.getInitData()
@@ -173,11 +173,17 @@ Vue.component('category', {
                     }
                 }
             }
-            console.log(data)
+            let requestData = {
+                cateId: data.cate_id,
+                cateName: data.cate_name,
+                brandName: data.brand_name,
+                brandIntro: data.brand_intro,
+                isShow: data.is_show ? '1' : '0'
+            }
             // 编辑api
             EB.ajax({
                 url: '/api/admin/updateCagetory',
-                data: data,
+                data: requestData,
                 method: 'post',
                 success(res) {
                     _this.getInitData()

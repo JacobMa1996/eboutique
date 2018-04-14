@@ -1,5 +1,5 @@
-const { ResponseData } = require('../model/index')
-
+const { ResponseData, User, Category, Product, ProductOrder } = require('../model/index')
+const { USER_TYPE, CATEGORY_TYPE, PRODUCT_TYPE, PRODUCTORDER_TYPE } = require('../lib/data_type')
 const { query, queryAll, queryTable, insertTable, updateTable, deleteTable } = require('../lib/mysql.js')
 
 const ADMIN_USER = {
@@ -15,7 +15,7 @@ const common = [{
         if (userInfo) {
             ctx.body = new ResponseData(userInfo, 0, 'success')
         } else {
-            ctx. body = new ResponseData(null, 0, 'not login')
+            ctx.body = new ResponseData(null, 0, 'not login')
         }
     }
 }]
@@ -37,63 +37,53 @@ const admin = [{
     path: '/admin/getCategoryList',
     method: 'get',
     callback: async (ctx) => {
-        let data
+        let response
         await queryAll('category').then(res => {
-            data = res
+            response = res
         })
-        ctx.body = new ResponseData(data, 0, 'success')
+        ctx.body = new ResponseData(response, 0, 'success')
     }
 }, {
     path: '/admin/addCategory',
     method: 'post',
     callback: async (ctx) => {
-        const categoryInfo = ctx.request.body
-        let data
-        await insertTable('category', {
-            cateName: categoryInfo.cateName,
-            brandName: categoryInfo.brandName,
-            brandIntro: categoryInfo.brandIntro,
-            isShow: categoryInfo.isShow
-        }).then(res => {
-            data = new ResponseData(res, 0, 'success')
+        let categoryInfo = ctx.request.body
+        let response
+        let data = new Category(categoryInfo)
+        await insertTable('category', data).then(res => {
+            response = new ResponseData(res, 0, 'success')
         }).catch(err => {
-            data = new ResponseData(err, 1, 'failed')
+            response = new ResponseData(err, 1, 'failed')
         })
-        ctx.body = data
+        ctx.body = response
     }
 }, {
     path: '/admin/updateCagetory',
     method: 'post',
     callback: async (ctx) => {
         const categoryInfo = ctx.request.body
-        let data
-        await updateTable('category', {
-            cate_id: categoryInfo.cate_id,
-            cate_name: categoryInfo.cate_name,
-            brand_name: categoryInfo.brand_name,
-            brand_intro: categoryInfo.brand_intro,
-            is_show: categoryInfo.is_show
-        }).then(res => {
-            data = new ResponseData(res, 0, 'sucess')
+        let response
+        let data = new Category(categoryInfo)
+        await updateTable('category', data).then(res => {
+            response = new ResponseData(res, 0, 'sucess')
         }).catch(err => {
-            data = new ResponseData(err, 1, 'failed')
+            response = new ResponseData(err, 1, 'failed')
         })
-        ctx.body = data
+        ctx.body = response
     }
 }, {
     path: '/admin/deleteCategory',
     method: 'post',
     callback: async (ctx) => {
         const categoryInfo = ctx.request.body
-        let data
-        await deleteTable('category', {
-            cateId: categoryInfo.cateId
-        }).then(res => {
-            data = new ResponseData(res, 0, 'success')
+        let response
+        let data = new Category(categoryInfo)
+        await deleteTable('category', data).then(res => {
+            response = new ResponseData(res, 0, 'success')
         }).catch(err => {
-            data = new ResponseData(err, 1, 'failed')
+            response = new ResponseData(err, 1, 'failed')
         })
-        ctx.body = data
+        ctx.body = response
     }
 }]
 
@@ -101,54 +91,78 @@ const user = [{
     path: '/user/login',
     method: 'post',
     callback: async (ctx) => {
-        const userInfo = ctx.request.body
-        let data
-        await queryTable('user', {
+        const userInfo = ctx.response.body
+        let response
+        let data = new User({
             userName: userInfo.userName
-        }).then(res => {
+        })
+        await queryTable('user', data).then(res => {
             if (!res.length) {
-                data = new ResponseData(null, 1, "user doesn't exist")
+                response = new ResponseData(null, 1, "user doesn't exist")
             } else {
                 if (userInfo.userPassword === res[0].user_pass) {
                     ctx.session.user = res[0]
-                    data = new ResponseData()
+                    response = new ResponseData()
                 } else {
-                    data = new ResponseData(null, 1, 'password is not correct')
+                    response = new ResponseData(null, 1, 'password is not correct')
                 }
             }
         })
-        ctx.body = data
+        ctx.body = response
     }
 }, {
     path: '/user/register',
     method: 'post',
     callback: async (ctx) => {
-        const userInfo = ctx.request.body
-        let data
-        await queryTable('user', {
+        const userInfo = ctx.response.body
+        let response
+        let data = new User({
             userName: userInfo.userName
-        }).then(res => {
+        })
+        await queryTable('user', data).then(res => {
             if (!res.length) {
-                return insertTable('user', {
-                    userName: userInfo.userName,
-                    userPass: userInfo.userPassword,
-                    userPhone: userInfo.userPhone,
-                    sex: 0,
-                    favorites: '',
-                    putaway: '',
-                    carts: ''
-                })
+                return insertTable('user', data)
             } else {
                 return Promise.reject('failed, this name has been registered')
             }
         }).then(res => {
-            data = new ResponseData()
+            response = new ResponseData()
         }).catch(err => {
-            data = new ResponseData(err, 1, 'failed')
+            response = new ResponseData(err, 1, 'failed')
         })
         // ctx.body 不能在函数中使用，所以await异步函数，把赋值放到函数外面
-        ctx.body = data
+        ctx.body = response
     }
 }]
+
+// const getData = (type, data) => {
+//     const getFormatData = (typeList, data) => {
+//         let newData = {}
+//         for (let item in data) {
+//             newData[typeList[item]] = data[item]
+//         }
+//         return newData
+//     }
+//     let newData
+//     switch (type) {
+//         case 'user': {
+//             newData = getFormatData(USER_TYPE, new User(data))
+//             break
+//         }
+//         case 'category': {
+//             newData = getFormatData(CATEGORY_TYPE, new Category(data))
+//             break
+//         }
+//         case 'product': {
+//             newData = getFormatData(PRODUCT_TYPE, new Product(data))
+//             break
+//         }
+//         case 'productorder': {
+//             newData = getFormatData(PRODUCTORDER_TYPE, new ProductOrder(data))
+//         }
+//     }
+//     return newData
+
+// }
 
 module.exports = [].concat(common, admin, user)
