@@ -7,7 +7,7 @@ const slide = [{
     url: '/user/order'
 }, {
     name: '我的发布',
-    url: '/user/putaway'
+    url: '/user/added'
 }]
 
 module.exports = {
@@ -50,12 +50,12 @@ module.exports = {
             await ctx.render('frontend/user/login')
         }
     },
-    putaway: async (ctx) => {
+    added: async (ctx) => {
         if (ctx.session.user) {
             let content = {
                 slide: slide
             }
-            await ctx.render('frontend/user/putaway', content)
+            await ctx.render('frontend/user/added', content)
         } else {
             await ctx.render('frontend/user/login')
         }

@@ -7,6 +7,6 @@ router
   .get('/register', user.register)
   .get('/user/information', user.information)
   .get('/user/order', user.order)
-  .get('/user/putaway', user.putaway)
+  .get('/user/added', user.added)
 
   module.exports = router;

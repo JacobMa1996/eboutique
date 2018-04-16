@@ -1,10 +1,21 @@
+import '../../vueComponent'
 import './index.scss'
 
 let vm = new Vue({
     el: '#container',
     data() {
         return {
-            user: {}
+            user: {},
+            proBrand: '',
+            brandName: '',
+            cateName: '',
+            proSubtitle: '',
+            proDetail: '',
+            originPrice: '',
+            currentPrice: '',
+            proCode: '',
+            proImg: '',
+            proKeep: ''
         }
     },
     mounted() {
@@ -31,6 +42,12 @@ let vm = new Vue({
                     console.log(err)
                 }
             })
+        },
+        add () {
+
+        },
+        upload (imgUrl) {
+            this.proImg = imgUrl
         }
     }
 })

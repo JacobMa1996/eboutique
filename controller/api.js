@@ -1,6 +1,25 @@
+const multer = require('koa-multer')
 const { ResponseData, User, Category, Product, ProductOrder } = require('../model/index')
 const { USER_TYPE, CATEGORY_TYPE, PRODUCT_TYPE, PRODUCTORDER_TYPE } = require('../lib/data_type')
 const { query, queryAll, queryTable, insertTable, updateTable, deleteTable } = require('../lib/mysql.js')
+
+let fileName = ''
+
+//uopload 配置  
+const storage = multer.diskStorage({
+    //文件保存路径  
+    destination: function (req, file, cb) {
+        cb(null, 'assests/uploads/')
+    },
+    //修改文件名称  
+    filename: function (req, file, cb) {
+        let fileFormat = (file.originalname).split(".")
+        fileName = Date.now() + "." + fileFormat[fileFormat.length - 1]
+        cb(null, fileName)
+    }
+})
+
+const upload = multer({ storage: storage });
 
 const ADMIN_USER = {
     userName: 'root',
@@ -17,6 +36,17 @@ const common = [{
         } else {
             ctx.body = new ResponseData(null, 0, 'not login')
         }
+    }
+}, {
+    path: '/common/upload',
+    method: 'post',
+    middleware: [
+        upload.single('upload')
+    ],
+    callback: async (ctx) => {
+        let data = fileName
+        fileName = ''
+        ctx.body = new ResponseData(data, 0, 'success')
     }
 }]
 
@@ -94,7 +124,6 @@ const user = [{
         const userInfo = ctx.request.body
         let response
         let data = new User(userInfo)
-        console.log(data)
         await queryTable('user', data).then(res => {
             if (!res.length) {
                 response = new ResponseData(null, 1, "user doesn't exist")
@@ -113,11 +142,8 @@ const user = [{
     path: '/user/register',
     method: 'post',
     callback: async (ctx) => {
-        const userInfo = ctx.request.body
-        console.log(userInfo)
         let response
         let data = new User(userInfo)
-        console.log(data)
         await queryTable('user', data).then(res => {
             if (!res.length) {
                 return insertTable('user', data)

@@ -1,6 +1,6 @@
 {% extends 'views/frontend/common/layout.html' %}
 {% block head %}
-    <link rel="stylesheet" href="/dist/frontend/userputaway/bundle.css">
+    <link rel="stylesheet" href="/dist/frontend/useradded/bundle.css">
 {% endblock %}
 {% block body %}
     <div id="container">
@@ -11,44 +11,46 @@
             <form action="">
                 <div class="input">
                     <label for="">商品品牌</label>
-                    <input type="text">
+                    <input type="text" v-model="proBrand">
                 </div>
                 <div class="input">
                     <label for="">商品名称</label>
-                    <input type="text">
+                    <input type="text" v-model="brandName">
                 </div>
                 <div class="input">
                     <label for="">商品分类</label>
-                    <input type="text">
+                    <input type="text" v-model="cateName">
                 </div>
                 <div class="input">
                     <label for="">商品简介</label>
-                    <input type="text">
+                    <input type="text" v-model="proSubtitle">
                 </div>
                 <div class="input">
                     <label for="">商品详情</label>
-                    <input type="text">
+                    <input type="text" v-model="proDetail">
                 </div>
                 <div class="input">
                     <label for="">商品原价</label>
-                    <input type="text">
+                    <input type="text" v-model="originPrice">
                 </div>
                 <div class="input">
                     <label for="">商品标价</label>
-                    <input type="text">
+                    <input type="text" v-model="currentPrice">
                 </div>
                 <div class="input">
                     <label for="">商品编码</label>
-                    <input type="text">
+                    <input type="text" v-model="proCode">
                 </div>
+                <v-upload @upload="upload"></v-upload>
                 <div class="input">
                     <label for="">是否损坏</label>
-                    <input type="checkbox">
+                    <input type="checkbox" v-model="proKeep">
                 </div>
+                <button @click="add" type="button">发布</button>
             </form>
         </div>
         {% include 'views/frontend/common/footer.html' %}
     </div>
 
-    <script src="/dist/frontend/userputaway/bundle.js"></script>
+    <script src="/dist/frontend/useradded/bundle.js"></script>
 {% endblock %}
