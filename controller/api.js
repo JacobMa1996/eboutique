@@ -158,6 +158,23 @@ const user = [{
         // ctx.body 不能在函数中使用，所以await异步函数，把赋值放到函数外面
         ctx.body = response
     }
+}, {
+    path: '/addProduct',
+    method: 'post',
+    callback: async (ctx) => {
+        let response
+        let productInfo = Object.assign({
+            reviewStatus: '0'
+        }, ctx.request.body)
+        let data = new Product(productInfo)
+        console.log(data)
+        await insertTable('product', data).then(res => {
+            response = new ResponseData(res, 0, 'success')
+        }).catch(err => {
+            response = new ResponseData(err, 1, 'failed')
+        })
+        ctx.body = response
+    }
 }]
 
 // const getData = (type, data) => {

@@ -7,19 +7,18 @@
         {% include 'views/frontend/common/header.html' %}
 
         {% include 'views/frontend/user/_slide.html' %}
+        {% raw %}
         <div class="user-content">
             <form action="">
                 <div class="input">
-                    <label for="">商品品牌</label>
-                    <input type="text" v-model="proBrand">
-                </div>
-                <div class="input">
                     <label for="">商品名称</label>
-                    <input type="text" v-model="brandName">
+                    <input type="text" v-model="proTitle">
                 </div>
                 <div class="input">
                     <label for="">商品分类</label>
-                    <input type="text" v-model="cateName">
+                    <select v-model="cateId">
+                        <option v-for="(item, index) in cateList" :key="index" :value="item.cate_id">{{item.cate_name}}</option>
+                    </select>
                 </div>
                 <div class="input">
                     <label for="">商品简介</label>
@@ -31,7 +30,7 @@
                 </div>
                 <div class="input">
                     <label for="">商品原价</label>
-                    <input type="text" v-model="originPrice">
+                    <input type="text" v-model="originalPrice">
                 </div>
                 <div class="input">
                     <label for="">商品标价</label>
@@ -49,6 +48,7 @@
                 <button @click="add" type="button">发布</button>
             </form>
         </div>
+        {% endraw %}
         {% include 'views/frontend/common/footer.html' %}
     </div>
 

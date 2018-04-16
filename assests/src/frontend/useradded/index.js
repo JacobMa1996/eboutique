@@ -6,16 +6,16 @@ let vm = new Vue({
     data() {
         return {
             user: {},
-            proBrand: '',
-            brandName: '',
-            cateName: '',
+            proTitle: '',
+            cateList: [],
+            cateId: '',
             proSubtitle: '',
             proDetail: '',
-            originPrice: '',
+            originalPrice: '',
             currentPrice: '',
             proCode: '',
             proImg: '',
-            proKeep: ''
+            proKeep: false
         }
     },
     mounted() {
@@ -42,8 +42,35 @@ let vm = new Vue({
                     console.log(err)
                 }
             })
+            EB.ajax({
+                url: '/api/admin/getCategoryList',
+                method: 'get',
+                success(res) {
+                    _this.cateList = res.data
+                }
+            })
         },
         add () {
+            let _this = this
+            let data = {
+                cateId: _this.cateId,
+                proTitle: _this.proTitle,
+                proSubtitle: _this.proSubtitle,
+                proDetail: _this.proDetail,
+                proImg: _this.proImg,
+                originalPrice: _this.originalPrice,
+                currentPrice: _this.currentPrice,
+                proKeep: _this.proKeep,
+                proCode: _this.proCode
+            }
+            EB.ajax({
+                url: '/api/addProduct',
+                method: 'post',
+                data: data,
+                success(res) {
+                    console.log(res)
+                }
+            })
 
         },
         upload (imgUrl) {
