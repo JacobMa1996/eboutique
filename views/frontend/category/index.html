@@ -5,7 +5,24 @@
 {% block  body %}
 <div id="container">
     {% include 'views/frontend/common/header.html' %}
-
+    {% raw %}
+    <div class="category-nav">
+        <ul>
+            <li v-for="(item, index) in cateList" :key="index" @click="getProductList(item.cate_id)">
+                {{item.cate_name}}
+            </li>
+        </ul>
+    </div>
+    <div class="category-conten">
+        <div>
+            <ul>
+                <li v-for="(item, index) in productList" :key="index">
+                    123
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% endraw %}
     {% include 'views/frontend/common/footer.html' %}
 </div>
 <script src="/dist/frontend/category/bundle.js"></script>

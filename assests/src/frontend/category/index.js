@@ -4,7 +4,11 @@ let vm = new Vue({
     el: '#container',
     data() {
         return {
-            user: {}
+            user: {
+                user_name: null
+            },
+            cateList: [],
+            productList: []
         }
     },
     mounted() {
@@ -17,15 +21,37 @@ let vm = new Vue({
                 url: '/api/common/getUserInfo',
                 method: 'get',
                 success(res) {
-                    if (res) {
+                    if (res.data) {
                         console.log(res)
                         _this.user = res.data
-                    } else {
-                        _this.user = {
-                            userName: null
-                        }
-                        console.log('no login')
                     }
+                },
+                error(err) {
+                    console.log(err)
+                }
+            })
+            EB.ajax({
+                url: '/api/admin/getCategoryList',
+                method: 'get',
+                success(res) {
+                    _this.cateList = res.data
+                },
+                error(err) {
+                    console.log(err)
+                }
+            })
+            
+        },
+        getProductList (cateId) {
+            let _this = this
+            EB.ajax({
+                url: '/api/getProductList',
+                method: 'post',
+                data: {
+                    cateId: cateId
+                },
+                success(res) {
+                    _this.productList = res.data
                 },
                 error(err) {
                     console.log(err)

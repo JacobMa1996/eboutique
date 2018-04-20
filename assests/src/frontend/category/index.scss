@@ -1,0 +1,21 @@
+.category-nav {
+    ul {
+        display: flex;
+        justify-content: flex-start;
+        // margin: 5px;
+        padding: 5px 10px;
+        background: rgb(223, 219, 219);
+        border-bottom: 1px solid rgb(192, 186, 186);
+        li {
+            margin: 3px;
+            padding: 5px 10px;
+            width: 100px;
+            box-sizing: border-box;
+            display: inline-block;
+            border-radius: 5px;
+            background: rgb(49, 49, 49);
+            color: #fff;
+            text-align: center
+        }
+    }
+}
