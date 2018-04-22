@@ -164,14 +164,12 @@ const user = [{
     method: 'post',
     callback: async (ctx) => {
         let response
-        let productInfo = Object.assign({
-            reviewStatus: '0'
-        }, ctx.request.body)
+        let productInfo = ctx.request.body
         let data = new Product(productInfo)
-        console.log(data)
         await insertTable('product', data).then(res => {
             response = new ResponseData(res, 0, 'success')
         }).catch(err => {
+            console.log(err)
             response = new ResponseData(err, 1, 'failed')
         })
         ctx.body = response
@@ -183,9 +181,53 @@ const user = [{
         let response
         let category = ctx.request.body
         let data = new Category(category)
+        let productList = []
+        let userList = []
         await queryProByCateId(data).then(res => {
-            console.log(res)
-            response = new ResponseData(res, 0, 'success')
+            productList = res
+        }).catch(err => {
+            console.log(err)
+            response = new ResponseData(err, 1, 'failed')
+        })
+
+        for(let pro of productList) {
+            if (userList.map(user => user.user_id).indexOf(pro.user_id) === -1) {
+                await queryTable('user', new User({userId: pro.user_id})).then(res => {
+                    userList.push(res[0])
+                    pro = Object.assign(pro, res[0])
+                }).catch(err => {
+                    response = new ResponseData(err, 1, 'failed')
+                })
+            } else {
+                userList.forEach(user => {
+                    if (user.user_id === pro.user_id) {
+                        pro = Object.assign(pro, user)
+                    }
+                })
+            }
+        }
+        response = new ResponseData(productList, 0, 'success')
+        ctx.body = response
+    }
+}, {
+    path: '/getProductDetail',
+    method: 'post',
+    callback: async (ctx) => {
+        let response
+        let productInfo = ctx.request.body
+        let userId
+        let productDetail = {}
+        await queryTable('product', new Product(productInfo)).then(res => {
+            userId = res[0].user_id
+            productDetail = res[0]
+        }).catch(err => {
+            console.log(err)
+            response = new ResponseData(err, 1, 'faild')
+        })
+
+        await queryTable('user', new User({userId: userId})).then(res => {
+            productDetail = Object.assign(productDetail, res[0])
+            response = new ResponseData(productDetail, 0, 'success')
         }).catch(err => {
             console.log(err)
             response = new ResponseData(err, 1, 'failed')

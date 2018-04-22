@@ -3,9 +3,8 @@
 }
 
 html, body {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
-    overflow: hidden
 }
 
 body {
@@ -24,6 +23,16 @@ ul {
 
 li {
     list-style: none
+}
+
+p {
+    margin: 0
+}
+
+p.line {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .clearfix::after {

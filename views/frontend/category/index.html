@@ -1,29 +1,73 @@
-{% extends 'views/frontend/common/layout.html' %}
-{% block head %}
-    <link rel="stylesheet" href="/dist/frontend/category/bundle.css">
-{% endblock %}
-{% block  body %}
+{% extends 'views/frontend/common/layout.html' %} {% block head %}
+<link rel="stylesheet" href="/dist/frontend/category/bundle.css"> {% endblock %} {% block body %}
 <div id="container">
-    {% include 'views/frontend/common/header.html' %}
-    {% raw %}
-    <div class="category-nav">
+    {% include 'views/frontend/common/header.html' %} {% raw %}
+    <div ref="nav" class="category-nav">
         <ul>
             <li v-for="(item, index) in cateList" :key="index" @click="getProductList(item.cate_id)">
                 {{item.cate_name}}
             </li>
         </ul>
     </div>
-    <div class="category-conten">
+    <div ref="con" class="category-content">
         <div>
             <ul>
-                <li v-for="(item, index) in productList" :key="index">
-                    123
+                <li class="item" v-for="(item, index) in productList" @click="goToDetail(item.pro_id)" :key="index">
+                    <div class="item-info">
+                        <div class="info-user">
+                            <div class="user-img">
+                                <img src="" onerror="this.src='/images/head.png'" alt="">
+                            </div>
+                            <div class="user-name">
+                                <div>{{item.user_name}}</div>
+                                <div>{{item.user_phone}}</div>
+                            </div>
+                        </div>
+                        <div class="info-price">
+                            <div class="current-price">价格：
+                                <span>￥{{item.current_price}}</span>
+                            </div>
+                            <div class="original-price">原价：
+                                <span>￥{{item.original_price}}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item-detail">
+                        <div class="detail-img">
+                            <img :src="item.pro_img" onerror="this.src='./images/1.png'" alt="">
+                        </div>
+                        <div class="detail-info">
+                            <p class="info-title line">{{item.pro_title}}</p>
+                            <p class="info-subtitle">{{item.pro_subtitle}}</p>
+                            <p class="info-detail">{{item.pro_detail}}</p>
+                            <div class="item-button">
+                                查看详情
+                            </div>
+                        </div>
+                    </div>
                 </li>
+                <!-- <li v-for="(item, index) in productList" :key="index + 10">
+                    <div class="">2</div>
+                </li>
+                <li v-for="(item, index) in productList" :key="index + 20 ">
+                    <div class="">3</div>
+                </li>
+                <li v-for="(item, index) in productList" :key="index + 30">
+                    <div class="">4</div>
+                </li>
+                <li v-for="(item, index) in productList" :key="index + 40">
+                    <div class="">5</div>
+                </li>
+                <li v-for="(item, index) in productList" :key="index + 50">
+                    <div class="">6</div>
+                </li>
+                <li v-for="(item, index) in productList" :key="index + 60">
+                    <div class="">7</div>
+                </li> -->
             </ul>
         </div>
     </div>
-    {% endraw %}
-    {% include 'views/frontend/common/footer.html' %}
+    {% endraw %} {% include 'views/frontend/common/footer.html' %}
 </div>
-<script src="/dist/frontend/category/bundle.js"></script>
-{% endblock %}
+<script src="/dist/frontend/category/bundle.js"></script> {% endblock %}

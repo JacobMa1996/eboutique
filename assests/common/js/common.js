@@ -35,3 +35,17 @@ EB.ajax = function (url, data, func_succ, func_err, method) {
 
     $.ajax(options)
 }
+
+// getQuery
+EB.query = function (queryStr, url) {
+    let value = '格式错误'
+    if(!queryStr || !url) {
+        return value
+    }
+    let query = url.split('?')[1]
+    let queryArr = query.split('=')
+    if (queryArr[0] === queryStr) {
+        value = queryArr[1]
+    }
+    return value
+}

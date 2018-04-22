@@ -10,6 +10,9 @@ module.exports = {
         //     category: categoryList
         // }
         await ctx.render('frontend/category/index', content)
+    },
+    product: async (ctx) => {
+        await ctx.render('frontend/product/index')
     }
 }
 

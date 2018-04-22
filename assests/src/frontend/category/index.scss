@@ -2,7 +2,6 @@
     ul {
         display: flex;
         justify-content: flex-start;
-        // margin: 5px;
         padding: 5px 10px;
         background: rgb(223, 219, 219);
         border-bottom: 1px solid rgb(192, 186, 186);
@@ -16,6 +15,115 @@
             background: rgb(49, 49, 49);
             color: #fff;
             text-align: center
+        }
+    }
+}
+
+.category-content {
+    ul {
+        li.item {
+            // height: 200px;
+            padding: 10px 10px;
+            border-bottom: 1px solid #eee;
+            .item-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .info-user {
+                    display: flex;
+                    .user-img {
+                        font-size: 0;
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                        }
+                    }
+                    .user-name {
+                        margin-left: 10px;
+                        font-size: 16px;
+                        line-height: 16px;
+                        height: 16px;
+                        div {
+                            margin-top: 5px;
+                        }
+                    }
+                }
+                .info-price {
+                    .current-price {
+                        height: 18px;
+                        span {
+                            font-size: 22px;
+                            line-height: 18px;
+                            color: red
+                        }
+                    }
+                    .original-price {
+                        margin-top: 5px;
+                        color: rgb(136, 127, 127);
+                        span {
+                            text-decoration: line-through;
+                        }
+                    }
+                    
+                }
+            }
+            .item-detail {
+                margin-top: 10px;
+                display: flex;
+                justify-content: space-between;
+                // align-items: center;
+                .detail-img {
+                    font-size: 0;
+                    img {
+                        border-radius: 10px;
+                        width: 150px;
+                        height: 150px;
+                    }
+                }
+                .detail-info {
+                    width: 100%;
+                    margin-left: 15px;
+                    position: relative;
+                    .info-title {
+                        font-size: 24px;
+                        line-height: 24px;
+                        height: 24px;
+                    }
+                    .info-subtitle {
+                        margin-top: 10px;
+                        font-size: 16px;
+                        line-height: 16px;
+                        height: 16px;
+                        overflow: hidden;
+                        color: rgb(136, 127, 127);
+                    }
+                    .info-detail {
+                        margin-top: 10px;
+                        font-size: 16px;
+                        line-height: 16px;
+                        height: 32px;
+                        overflow : hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;/*行数n*/
+                        -webkit-box-orient: vertical;
+                    }
+                    .item-button {
+                        font-size: 16px;
+                        line-height: 32px;
+                        height: 32px;
+                        width: 100px;
+                        color: #fff;
+                        border-radius: 5px;
+                        text-align: center;
+                        background: rgb(161, 131, 94);
+                        position: absolute;
+                        bottom: 5px;
+                        right: 5px;
+                    }
+                }
+            }
         }
     }
 }

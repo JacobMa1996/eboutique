@@ -4,5 +4,6 @@ router.prefix('/category')
 
 router
   .get('/', category.index)
+  .get('/product', category.product)
   
 module.exports = router

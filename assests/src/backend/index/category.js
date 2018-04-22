@@ -103,6 +103,12 @@ Vue.component('category', {
             }
             this.pop_options.modal = true
         },
+        clearForm () {
+            console.log(1)
+            this.form_options.input_list.forEach(val => val.value = '')
+            this.form_options.textarea_list.forEach(val => val.value = '')
+            this.form_options.check_list.forEach(val => val.value = '')
+        },
         deleteItem(trowIndex) {
             let _this = this
             let cateId = _this.table_options.trow_list[trowIndex].cate_id
@@ -157,6 +163,7 @@ Vue.component('category', {
                 method: 'post',
                 success(res) {
                     _this.getInitData()
+                    _this.clearForm()
                 },
                 error (err) {
                     console.log(err)

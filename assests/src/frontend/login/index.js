@@ -23,7 +23,7 @@ new Vue({
                 success(res) {
                     alert('登陆成功')
                     setTimeout(() => {
-                        location.href = '/user'
+                        location.href = '/category'
                     }, 0)
                 }, 
                 error(err) {

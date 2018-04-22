@@ -1,7 +1,8 @@
 class Product {
     constructor(data) {
-        if (data.pro_id) this.pro_id = data.pro_id
-        this.cate_id = data.cateId || 0
+        if (data.proId) this.pro_id = Number(data.proId)
+        this.cate_id = Number(data.cateId) || 0
+        this.user_id = Number(data.userId) || 0
         this.pro_title = data.proTitle || ''
         this.pro_subtitle = data.proSubtitle || ''
         this.pro_detail = data.proDetail || ''

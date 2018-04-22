@@ -54,6 +54,7 @@ let vm = new Vue({
             let _this = this
             let data = {
                 cateId: _this.cateId,
+                userId: _this.user.user_id,
                 proTitle: _this.proTitle,
                 proSubtitle: _this.proSubtitle,
                 proDetail: _this.proDetail,
