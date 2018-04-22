@@ -4,7 +4,8 @@
 
 html, body {
     height: 100%;
-    width: 100%
+    width: 100%;
+    overflow: hidden
 }
 
 body {
@@ -32,4 +33,19 @@ li {
     height: 0;
     line-height: 0;
     visibility: hidden;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: rgb(237, 238, 221); /* #FAFFBD; */
+    background-image: none;
+    color: rgb(0, 0, 0);
+}
+
+.form.sign {
+    background: #f8f9f3;
+    padding: 20px;
+    border-radius: 5px;
+    .form-title {
+        font-size: 25px
+    }
 }

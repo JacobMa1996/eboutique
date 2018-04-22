@@ -1,11 +1,37 @@
+body {
+    background: url('http://chuantu.biz/t6/292/1524381114x-1404795654.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.login-title {
+    padding-top: 50px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // line-height: 200px;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+}
+
 .form {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -50%);
     width: 300px;
     text-align: center;
     .form-group {
         text-align: left
+    }
+    .form-tip {
+        text-align: right;
+        a {
+
+        }
     }
 }

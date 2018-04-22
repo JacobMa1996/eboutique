@@ -1,11 +1,24 @@
+body {
+    background: url('http://chuantu.biz/t6/292/1524381114x-1404795654.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
 .form {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -50%);
     width: 300px;
     text-align: center;
     .form-group {
         text-align: left
+    }
+    .form-tip {
+        text-align: right;
+        a {
+
+        }
     }
 }

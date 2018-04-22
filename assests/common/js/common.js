@@ -1,18 +1,5 @@
 window.EB = {}
 
-//返回页面的宽和高
-EB.pageWidthHeight = () => {
-    let page = {}
-    if (document.compatMode == 'CSS1Compat') {
-        page.pageWidth = document.documentElement.clientWidth
-        page.pageHeight = document.documentElement.clientHeight
-    } else {
-        page.pageWidth = document.body.clientWidth
-        page.pageHeight = document.body.clientHeight
-    }
-    return page
-}
-
 //Ajax
 EB.ajax = function (url, data, func_succ, func_err, method) {
     let options = {}

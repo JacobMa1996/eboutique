@@ -6,20 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>eboutique</title>
-    <link rel="stylesheet" href="/common/css/normalize.css">
-    <link rel="stylesheet" href="/common/css/normal.css">
-    <link rel="stylesheet" href="/common/css/layout.css">
-    <link rel="stylesheet" href="/dist/frontend/public/bundle.css"> {% block head %} {% endblock %}
+    <link rel="stylesheet" href="/dist/frontend/public/bundle.css">
     <script src="/common/js/jquery-3.2.1.min.js"></script>
+    <script src="/common/js/bootstrap.min.js"></script>
     <script src="/common/js/vue.js"></script>
-    <script src="/common/js/common.js"></script>
+    <script src="/common/js/common.js"></script> {% block head %} {% endblock %}
 </head>
 
 <body>
     <div class="container">
         {% block body %} {% endblock %}
     </div>
-    <script src="/dist/frontend/public/bundle.js"></script>
 </body>
 
 </html>

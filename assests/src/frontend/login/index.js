@@ -1,3 +1,4 @@
+import '../public/index'
 import './index.scss'
 
 new Vue({

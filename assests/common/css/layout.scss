@@ -1,0 +1,76 @@
+header {
+    height: 60px;
+    width: 100%;
+    background: #25211e;
+    color: rgb(202, 192, 168);
+    box-sizing: border-box;
+    font-size: 16px;
+    & > div {
+        /* height: 100%; */
+        margin: 0 1em
+    }
+
+    .title {
+        font-size: 30px;
+        line-height: 60px;
+        display: inline-block;
+    }
+
+    .category {
+        display: inline-block
+    }
+
+    .search {
+        display: inline-block;
+        float: right;
+        line-height: 60px
+    }
+
+    .user {
+        float: right;
+        line-height: 60px;
+        .passed {
+            display: inline-block;
+            a {
+                color: rgb(202, 192, 168);
+                &:hover {
+                    color: rgb(255, 235, 205)
+                }
+            }
+            position: relative;
+            width: 100px;
+            text-align: center;
+            .user-center {
+                &:hover .user-title {
+                    color: rgb(255, 235, 205);
+                    cursor: default;
+                }
+                &:hover ul {
+                    height: 270px
+                }
+                ul {
+                    position: absolute;
+                    right: 0px;
+                    line-height: 1.4em;
+                    background: #25211e;
+                    height: 0;
+                    overflow: hidden;
+                    transition: height 0.3s ease 0s;
+                    text-align: left;
+                    li {
+                        padding: 1em
+                    }
+                }
+            }
+        }
+        .passing {
+            display: inline-block;
+            a {
+                color: rgb(202, 192, 168);
+                &:hover {
+                    color: rgb(255, 235, 205)
+                }
+            }
+        }
+    }
+}
