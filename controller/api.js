@@ -216,9 +216,11 @@ const user = [{
         let response
         let productInfo = ctx.request.body
         let userId
+        let cateId
         let productDetail = {}
         await queryTable('product', new Product(productInfo)).then(res => {
             userId = res[0].user_id
+            cateId = res[0].cate_id
             productDetail = res[0]
         }).catch(err => {
             console.log(err)
@@ -227,10 +229,14 @@ const user = [{
 
         await queryTable('user', new User({userId: userId})).then(res => {
             productDetail = Object.assign(productDetail, res[0])
-            response = new ResponseData(productDetail, 0, 'success')
         }).catch(err => {
             console.log(err)
             response = new ResponseData(err, 1, 'failed')
+        })
+
+        await queryTable('category', new Category({cateId: cateId})).then(res => {
+            productDetail = Object.assign(productDetail, res[0])
+            response = new ResponseData(productDetail, 0, 'success')
         })
         ctx.body = response
     }

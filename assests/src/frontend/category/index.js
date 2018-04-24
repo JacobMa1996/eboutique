@@ -77,7 +77,7 @@ let vm = new Vue({
             })
         },
         goToDetail(proId) {
-            location.href = `/product?id=${proId}`
+            location.href = `/category/product?id=${proId}`
         }
     }
 })

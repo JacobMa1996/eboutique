@@ -23,14 +23,14 @@ new Vue({
                 data: userInfo,
                 method: 'post',
                 success(res) {
-                    alert('注册成功')
+                    // alert('注册成功')
                     setTimeout(() => {
                         location.href = '/login'
                     },0)
                 }, 
                 error(err) {
                     console.log(err)
-                    alert(err)
+                    // alert(err)
                 }
             })
         }

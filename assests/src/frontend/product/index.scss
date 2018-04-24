@@ -1,3 +1,57 @@
 #container {
+    background: #eee
+}
+
+.item {
+    background: #fff;
+    padding: 5px 10px;
+    .item-title {
+        margin-bottom: 10px;
+        padding: 3px 5px;
+        display: inline-block;
+        color: rgb(55, 139, 218);
+        border-bottom: 3px solid rgb(55, 139, 218)
+    }
+    border-bottom: 1px solid #eee;
+    margin-top: 5px;
+    &:first-child {
+        margin-top: 0
+    }
+}
+
+.user-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .user-img {
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%
+        }
+    }
+    .user-detail {
+        .user-name {
+
+        }
+        .user-phone {
+
+        }
+    }
+}
+
+.product-info {
     
+}
+
+.buy {
+    position: fixed;
+    background: rgb(202, 192, 168);
+    color: #fff;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 50px;
 }

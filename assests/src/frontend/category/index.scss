@@ -22,7 +22,6 @@
 .category-content {
     ul {
         li.item {
-            // height: 200px;
             padding: 10px 10px;
             border-bottom: 1px solid #eee;
             .item-info {
@@ -123,6 +122,21 @@
                         right: 5px;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .category-content {
+        ul {
+            display: flex;
+            justify-content: space-around;
+            li.item {
+                width: 414px;
+                margin: 10px;
+                border: 1px solid #eee;
+                border-radius: 5px;
             }
         }
     }

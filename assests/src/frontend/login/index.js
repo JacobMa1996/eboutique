@@ -21,14 +21,14 @@ new Vue({
                 data: userInfo,
                 method: 'post',
                 success(res) {
-                    alert('登陆成功')
+                    // alert('登陆成功')
                     setTimeout(() => {
                         location.href = '/category'
                     }, 0)
                 }, 
                 error(err) {
                     console.log(err)
-                    alert(err)
+                    // alert(err)
                 }
             })
         }
