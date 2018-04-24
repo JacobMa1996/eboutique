@@ -49,3 +49,18 @@ EB.query = function (queryStr, url) {
     }
     return value
 }
+
+//
+EB.logOut = function () {
+    EB.ajax({
+        url: '/api/common/logOut',
+        method: 'get',
+        success (res) {
+            alert('注销成功')
+            location.reload()
+        },
+        error (err) {
+            console.log(err)
+        }
+    })
+}

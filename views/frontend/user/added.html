@@ -1,56 +1,63 @@
-{% extends 'views/frontend/common/layout.html' %}
-{% block head %}
-    <link rel="stylesheet" href="/dist/frontend/useradded/bundle.css">
-{% endblock %}
-{% block body %}
-    <div id="container">
-        {% include 'views/frontend/common/header.html' %}
+{% extends 'views/frontend/common/layout.html' %} {% block head %}
+<link rel="stylesheet" href="/dist/frontend/useradded/bundle.css"> {% endblock %} {% block body %}
+<div id="container">
+    {% include 'views/frontend/common/header.html' %}
 
-        {% include 'views/frontend/user/_slide.html' %}
-        {% raw %}
-        <div class="user-content">
-            <form action="">
-                <div class="input">
-                    <label for="">商品名称</label>
-                    <input type="text" v-model="proTitle">
-                </div>
-                <div class="input">
-                    <label for="">商品分类</label>
-                    <select v-model="cateId">
-                        <option v-for="(item, index) in cateList" :key="index" :value="item.cate_id">{{item.cate_name}}</option>
-                    </select>
-                </div>
-                <div class="input">
-                    <label for="">商品简介</label>
-                    <input type="text" v-model="proSubtitle">
-                </div>
-                <div class="input">
-                    <label for="">商品详情</label>
-                    <input type="text" v-model="proDetail">
-                </div>
-                <div class="input">
-                    <label for="">商品原价</label>
-                    <input type="text" v-model="originalPrice">
-                </div>
-                <div class="input">
-                    <label for="">商品标价</label>
-                    <input type="text" v-model="currentPrice">
-                </div>
-                <div class="input">
-                    <label for="">商品编码</label>
-                    <input type="text" v-model="proCode">
-                </div>
-                <v-upload @upload="upload"></v-upload>
-                <div class="input">
-                    <label for="">是否损坏</label>
-                    <input type="checkbox" v-model="proKeep">
-                </div>
-                <button @click="add" type="button">发布</button>
-            </form>
-        </div>
-        {% endraw %}
-        {% include 'views/frontend/common/footer.html' %}
+    <div class="slide-user">
+        <ul>
+            <li>
+                <a href="/user/information">我的信息</a>
+            </li>
+            <li>
+                <a href="/user/order">我的订单</a>
+            </li>
+            <li class="active">
+                <a href="/user/added">我的发布</a>
+            </li>
+        </ul>
     </div>
+    {% raw %}
+    <div class="user-content">
+        <form action="">
+            <div class="input">
+                <label for="">商品名称</label>
+                <input type="text" v-model="proTitle">
+            </div>
+            <div class="input">
+                <label for="">商品分类</label>
+                <select v-model="cateId">
+                    <option v-for="(item, index) in cateList" :key="index" :value="item.cate_id">{{item.cate_name}}</option>
+                </select>
+            </div>
+            <div class="input">
+                <label for="">商品简介</label>
+                <input type="text" v-model="proSubtitle">
+            </div>
+            <div class="input">
+                <label for="">商品详情</label>
+                <textarea cols="" rows="" v-model="proDetail"></textarea>
+            </div>
+            <div class="input">
+                <label for="">商品原价</label>
+                <input type="text" v-model="originalPrice">
+            </div>
+            <div class="input">
+                <label for="">商品标价</label>
+                <input type="text" v-model="currentPrice">
+            </div>
+            <div class="input">
+                <label for="">商品编码</label>
+                <input type="text" v-model="proCode">
+            </div>
+            <v-upload :class="'input'" :label="'商品图片'" @upload="upload"></v-upload>
+            <div class="input">
+                <label for="">是否损坏</label>
+                <input type="checkbox" v-model="proKeep">
+            </div>
+            <div class="add" @click="add">发布</div>
+        </form>
+    </div>
+    {% endraw %} {% include 'views/frontend/common/footer.html' %}
+</div>
 
-    <script src="/dist/frontend/useradded/bundle.js"></script>
-{% endblock %}
+<script src="/dist/frontend/useradded/bundle.js"></script> {% endblock %}

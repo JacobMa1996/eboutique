@@ -4,7 +4,8 @@ Vue.component('v-upload', {
         className: {
             type: String,
             default: ''
-        }
+        },
+        label: String
     },
     data() {
         return {

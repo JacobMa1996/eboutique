@@ -7,8 +7,7 @@ window.vm = new Vue({
             user: {
                 user_name: null
             },
-            product: {},
-            url: ''
+            product: {}
         }
     },
     mounted() {

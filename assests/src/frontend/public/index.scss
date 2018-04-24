@@ -2,15 +2,47 @@
     height: 100%;
     width: 100%;
     position: relative;
+    background: #eee;
 }
 
 .slide-user {
-    width: 100px;
-    position: absolute;
-    left: 50px;
-    top: 300px
+    margin-top: 10px;
+    background: #fff;
+    ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        li {
+            padding: 10px;
+            // background: #eee;
+            &.active {
+                border-bottom: 3px solid rgb(202, 192, 168);
+            }
+            // background: #25211e; 
+            a {
+                text-decoration: none;
+                color: #25211e
+            }
+        }
+    }
 }
 
 .user-content {
-    margin-left: 150px
+    margin-top: 10px;
+    background: #fff
+}
+
+@media screen and (min-width: 414px) {
+    #container {
+        position: relative;
+    }
+    .slide-user {
+        margin: 10px auto 0;
+        width: 60%;
+    }
+
+    .user-content {
+        margin: 10px auto 0;
+        width: 60%
+    }
 }

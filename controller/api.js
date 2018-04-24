@@ -48,6 +48,13 @@ const common = [{
         fileName = ''
         ctx.body = new ResponseData(data, 0, 'success')
     }
+}, {
+    path: '/common/logOut',
+    method: 'get',
+    callback: async (ctx) => {
+        ctx.session.user = null
+        ctx.body = new ResponseData()
+    }
 }]
 
 const admin = [{

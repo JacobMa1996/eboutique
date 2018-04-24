@@ -1,5 +1,6 @@
 <div :class="className">
     <form ref="upload" enctype="multipart/form-data">
+        <label for="upload">{{label}}</label>
         <input type="file" name="upload" @change="change">
     </form>
 </div>

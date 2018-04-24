@@ -1,5 +1,6 @@
 #container {
-    background: #eee
+    background: #eee;
+    padding-bottom: 50px;
 }
 
 .item {
@@ -42,6 +43,14 @@
 
 .product-info {
     
+}
+
+.product-img {
+    width: 100%;
+    img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
 }
 
 .buy {

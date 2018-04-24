@@ -1,0 +1,92 @@
+#container {
+    padding-bottom: 50px;
+}
+
+.user-content {
+    padding: 10px;
+    .input {
+        display: flex;
+        align-items: center;
+        // margin: 5px;
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+        label {
+            width: 80px;
+            // line-height: 30px
+        }
+        input, select, textarea {
+            outline: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            line-height: 16px;
+            border-radius: 3px;
+            border: 1px solid #999;
+            box-shadow: 0 1px 3px #eee;
+            width: 80%
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border: 1px solid #7dc4e0;
+            box-shadow: 0 1px 3px #d1e2ee;
+        }
+        form {
+            display: flex;
+            align-items: center; 
+            input {
+                width: 80%
+            }
+        }
+        input[type="file"] {
+            width: 80%
+        }
+        input[type="checkbox"] {
+            width: auto;
+        }
+        select {
+            width: 60px
+        }
+        textarea {
+            resize: none;
+            height: 100px
+        }
+    }
+
+    .add {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+        line-height: 50px;
+        width: 100%;
+        background: rgb(161, 131, 94);
+        text-align: center;
+        color: #fff
+    }
+}
+
+@media screen and (min-width: 414px) {
+    #container {
+        padding-bottom: 0
+    }
+
+    .user-content {
+        position: relative;
+        text-align: center;
+        .input {
+            // margin: auto;
+            // width: 500px
+        }
+        .add {
+            position: absolute;
+            left: auto;
+            right: 10px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 5px;
+        }
+    }
+
+    
+}
