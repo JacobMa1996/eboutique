@@ -30,7 +30,6 @@ window.vm = new Vue({
                 }
             })
             this.getProductDetail(id)
-            
         },
         getProductDetail (proId) {
             let _this = this
@@ -44,6 +43,29 @@ window.vm = new Vue({
                     _this.product = res.data
                 },
                 error(err) {
+                    console.log(err)
+                }
+            })
+        },
+        buy () {
+            if (!EB.isLogin()) {
+                return
+            }
+            let _this = this
+            console
+            let data = {
+                proId: _this.product.pro_id,
+                buyId: _this.user.user_id,
+                sellId: _this.product.user_id
+            }
+            EB.ajax({
+                url: '/api/productBuy',
+                method: 'post',
+                data: data,
+                success(res) {
+                    console.log(res)
+                },
+                error (err) {
                     console.log(err)
                 }
             })

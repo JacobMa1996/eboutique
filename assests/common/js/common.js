@@ -50,7 +50,7 @@ EB.query = function (queryStr, url) {
     return value
 }
 
-//
+// 注销
 EB.logOut = function () {
     EB.ajax({
         url: '/api/common/logOut',
@@ -63,4 +63,25 @@ EB.logOut = function () {
             console.log(err)
         }
     })
+}
+
+// 检查是否登录
+EB.isLogin = function () {
+    let bool = true
+    EB.ajax({
+        url: '/api/common/getUserInfo',
+        method: 'get',
+        success(res) {
+            if (!res.data) {
+                alert('请前往登录')
+                location.href = '/login'
+            } else {
+                bool = false
+            }
+        },
+        error (res) {
+            console.log(err)
+        }
+    })
+    return bool
 }

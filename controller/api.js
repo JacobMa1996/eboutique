@@ -247,6 +247,32 @@ const user = [{
         })
         ctx.body = response
     }
+}, {
+    path: '/productBuy',
+    method: 'post',
+    callback: async (ctx) => {
+        let requestInfo = ctx.request.body
+        let response
+        let data = {
+            proId: requestInfo.proId,
+            buyId: requestInfo.buyId,
+            sellId: requestInfo.sellId
+        }
+        // 如果未登录
+        if (!data.buyId) {
+            return ctx.body = new ResponseData('购买失败，未登录', 1, 'failed')
+        }
+        await queryTable('product', new Product({proId: data.proId})).then(res => {
+            data.pro_price = res.current_price
+            return insertTable('productorder', new ProductOrder(data))
+        }).then(res => {
+            response = new ResponseData('1', 0, 'success')
+        }).catch(err => {
+            console.log(err)
+            response = new ResponseData(err, 1, 'failed')
+        })
+        ctx.body = response
+    }
 }]
 
 // const getData = (type, data) => {
