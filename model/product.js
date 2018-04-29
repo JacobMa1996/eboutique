@@ -11,6 +11,7 @@ class Product {
         this.current_price = data.currentPrice || ''
         this.pro_keep = data.proKeep ? 1 : 0
         this.pro_code = data.proCode || ''
+        this.pro_isbuy = data.proIsBuy || 0
         this.review_status = data.review_status ? 1 : 0
     }
 

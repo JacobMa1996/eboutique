@@ -1,0 +1,17 @@
+<div class="v-confirm" v-if="options.isConfirm">
+    <div class="mask"></div>
+    <div class="content">
+        <div class="confirm-header">{{options.title}}</div>
+        <div class="confirm-body">
+            <div v-if="options.type === 0">{{options.tip}}</div>
+            <div v-if="options.type === 1">{{options.confirm}}</div>
+            <div v-if="options.type === 2">
+                <input class="v-input" type="text" v-model="options.value">
+            </div>
+        </div>
+        <div class="confirm-footer">
+            <div class="cancel" @click="cancel" v-if="options.type">取消</div>
+            <div class="submit" @click="submit">确定</div>
+        </div>
+    </div>
+</div>

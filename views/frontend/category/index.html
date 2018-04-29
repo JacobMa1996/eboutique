@@ -4,7 +4,7 @@
     {% include 'views/frontend/common/header.html' %} {% raw %}
     <div ref="nav" class="category-nav">
         <ul>
-            <li v-for="(item, index) in cateList" :key="index" @click="getProductList(item.cate_id)">
+            <li v-for="(item, index) in cateList" :class="index === tabNum ? 'active' : ''" :key="index" @click="getProductList(index)">
                 {{item.cate_name}}
             </li>
         </ul>
@@ -12,7 +12,7 @@
     <div ref="con" class="category-content">
         <div>
             <ul>
-                <li class="item" v-for="(item, index) in productList" @click="goToDetail(item.pro_id)" :key="index">
+                <li class="item" v-for="(item, index) in productList" :class="item.pro_isbuy && 'sold-out'" @click="goToDetail(item)" :key="index">
                     <div class="item-info">
                         <div class="info-user">
                             <div class="user-img">

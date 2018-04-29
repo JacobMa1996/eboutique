@@ -6,7 +6,7 @@ new Vue({
     data() {
         return {
             userName: '', 
-            userPassword: '',
+            userPass: '',
             text: '123'
         }
     }, 
@@ -14,7 +14,7 @@ new Vue({
         submit () {
             const userInfo = {
                 userName: this.userName, 
-                userPassword: this.userPassword
+                userPass: this.userPass
             }
             EB.ajax({
                 url: '/api/user/login',

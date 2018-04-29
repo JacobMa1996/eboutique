@@ -7,7 +7,7 @@ header {
     font-size: 16px;
     & > div {
         /* height: 100%; */
-        margin: 0 1em
+        margin: 0 10px
     }
 
     .title {
@@ -77,5 +77,11 @@ header {
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    * {
+        font-size: 12px !important
     }
 }

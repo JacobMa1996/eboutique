@@ -8,7 +8,8 @@ let vm = new Vue({
                 user_name: null
             },
             cateList: [],
-            productList: []
+            productList: [],
+            tabNum: 0
         }
     },
     mounted() {
@@ -53,15 +54,17 @@ let vm = new Vue({
                 method: 'get',
                 success(res) {
                     _this.cateList = res.data
-                    _this.getProductList(_this.cateList[0].cate_id)
+                    _this.cateList.length && _this.getProductList(_this.tabNum)
                 },
                 error(err) {
                     console.log(err)
                 }
             })
         },
-        getProductList (cateId) {
+        getProductList (index) {
             let _this = this
+            _this.tabNum = index
+            let cateId = _this.cateList[index] ? _this.cateList[index].cate_id : 0
             EB.ajax({
                 url: '/api/getProductList',
                 method: 'post',
@@ -76,8 +79,13 @@ let vm = new Vue({
                 }
             })
         },
-        goToDetail(proId) {
-            location.href = `/category/product?id=${proId}`
+        goToDetail(item) {
+            if (item.pro_isbuy) {
+                alert('抱歉，此商品已被下单！')
+                return
+            } else {
+                location.href = `/category/product?id=${item.pro_id}`
+            }
         }
     }
 })

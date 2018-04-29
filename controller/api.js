@@ -23,7 +23,7 @@ const upload = multer({ storage: storage });
 
 const ADMIN_USER = {
     userName: 'root',
-    userPassword: 'admin'
+    userPass: 'admin'
 }
 
 const common = [{
@@ -31,11 +31,21 @@ const common = [{
     method: 'get',
     callback: async (ctx) => {
         let userInfo = ctx.session.user
+        let response
         if (userInfo) {
-            ctx.body = new ResponseData(userInfo, 0, 'success')
+            await queryTable('user', new User({userId: userInfo.user_id})).then(res => {
+                if (res && res.length) {
+                    ctx.session.user = res[0]
+                    response = new ResponseData(res[0], 0, 'sucess')
+                } else {
+                    ctx.session.user = null
+                    response = new ResponseData(res[0], 1, 'failed')
+                }
+            })
         } else {
-            ctx.body = new ResponseData(null, 0, 'not login')
+            response = new ResponseData(null, 0, 'not login')
         }
+        ctx.body = response
     }
 }, {
     path: '/common/upload',
@@ -62,7 +72,7 @@ const admin = [{
     method: 'post',
     callback: async (ctx) => {
         const userInfo = ctx.request.body // bodyParser
-        if (userInfo.userName === ADMIN_USER.userName && userInfo.userPassword === ADMIN_USER.userPassword) {
+        if (userInfo.userName === ADMIN_USER.userName && userInfo.userPass === ADMIN_USER.userPass) {
             // 存session
             ctx.session.admin_user = userInfo
             ctx.body = new ResponseData()
@@ -135,7 +145,7 @@ const user = [{
             if (!res.length) {
                 response = new ResponseData(null, 1, "user doesn't exist")
             } else {
-                if (userInfo.userPassword === res[0].user_pass) {
+                if (userInfo.userPass === res[0].user_pass) {
                     ctx.session.user = res[0]
                     response = new ResponseData()
                 } else {
@@ -164,6 +174,26 @@ const user = [{
             response = new ResponseData(err, 1, 'failed')
         })
         // ctx.body 不能在函数中使用，所以await异步函数，把赋值放到函数外面
+        ctx.body = response
+    }
+}, {
+    path: '/user/updateUser',
+    method: 'post',
+    callback: async (ctx) => {
+        let userInfo = ctx.request.body
+        let response
+        let data = new User(userInfo)
+        for (let key in data) {
+            if (!data[key]) {
+                delete data[key]
+            }
+        }
+        await updateTable('user', data).then(res => {
+            response = new ResponseData(res, 0, 'success')
+        }).catch(err => {
+            console.log(err)
+            response = new ResponseData(err, 1, 'failed')
+        })
         ctx.body = response
     }
 }, {
@@ -197,9 +227,9 @@ const user = [{
             response = new ResponseData(err, 1, 'failed')
         })
 
-        for(let pro of productList) {
+        for (let pro of productList) {
             if (userList.map(user => user.user_id).indexOf(pro.user_id) === -1) {
-                await queryTable('user', new User({userId: pro.user_id})).then(res => {
+                await queryTable('user', new User({ userId: pro.user_id })).then(res => {
                     userList.push(res[0])
                     pro = Object.assign(pro, res[0])
                 }).catch(err => {
@@ -234,14 +264,14 @@ const user = [{
             response = new ResponseData(err, 1, 'faild')
         })
 
-        await queryTable('user', new User({userId: userId})).then(res => {
+        await queryTable('user', new User({ userId: userId })).then(res => {
             productDetail = Object.assign(productDetail, res[0])
         }).catch(err => {
             console.log(err)
             response = new ResponseData(err, 1, 'failed')
         })
 
-        await queryTable('category', new Category({cateId: cateId})).then(res => {
+        await queryTable('category', new Category({ cateId: cateId })).then(res => {
             productDetail = Object.assign(productDetail, res[0])
             response = new ResponseData(productDetail, 0, 'success')
         })
@@ -262,13 +292,25 @@ const user = [{
         if (!data.buyId) {
             return ctx.body = new ResponseData('购买失败，未登录', 1, 'failed')
         }
-        await queryTable('product', new Product({proId: data.proId})).then(res => {
-            data.pro_price = res.current_price
-            return insertTable('productorder', new ProductOrder(data))
+        await queryTable('product', new Product({ proId: data.proId })).then(res => {
+            if (res.length) {
+                if (res[0].pro_isbuy) { // 如果已经被购买了
+                    return Promise.reject('failed, this product has sold out! ')
+                } else {
+                    data.pro_price = res.current_price
+                    return insertTable('productorder', new ProductOrder(data))
+                }
+            } else {
+                return Promise.reject('failed, this product isn\'t exist! ')
+            }
+        }).then(res => { // 购买成功，改变购买状态
+            return updateTable('product', {
+                pro_id: data.proId,
+                pro_isbuy: 1
+            })
         }).then(res => {
-            response = new ResponseData('1', 0, 'success')
+            response = new ResponseData(res, 0, 'success')
         }).catch(err => {
-            console.log(err)
             response = new ResponseData(err, 1, 'failed')
         })
         ctx.body = response
