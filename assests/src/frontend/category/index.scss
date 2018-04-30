@@ -154,10 +154,20 @@
 }
 
 @media screen and (min-width: 415px) {
+    .category-nav {
+       ul {
+           li:first-child {
+            // margin-left: 15%
+           }
+       } 
+    }
     .category-content {
+        // width: 868px;
+        margin: auto;
         ul {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
             margin-top: 10px;
             li.item {
                 width: 414px;

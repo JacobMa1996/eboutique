@@ -45,15 +45,18 @@ let vm = new Vue({
             switch (type) {
                 case 'userName': {
                     this.confirm_options.value = this.user.user_name
+                    this.confirm_options.title = '修改昵称'
                     this.confirm_options.isConfirm = true
                     break
                 }
                 case 'userPhone': {
+                    this.confirm_options.title = '修改手机号'
                     this.confirm_options.value = this.user.user_phone
                     this.confirm_options.isConfirm = true
                     break
                 }
                 case 'sex': {
+                    this.confirm_options.title = '修改性别'
                     let sex = this.user.sex ? (this.user.sex === 1 ? '男' : '女') : '未设置'
                     this.confirm_options.value = sex
                     this.confirm_options.isConfirm = true
@@ -101,6 +104,9 @@ let vm = new Vue({
                     console.log(err)
                 }
             })
+        },
+        redirect (url) {
+            location.href = url
         }
     }
 })

@@ -12,8 +12,8 @@
                 <img src="" onerror="this.src='/images/head.png'" alt="头像">
             </div>
             <div class="user-detail">
-                <div class="user-name">{{product.user_name}}</div>
-                <div class="user-phone">{{product.user_phone}}</div>
+                <div class="user-name">昵称：{{product.user_name}}</div>
+                <div class="user-phone">手机：{{product.user_phone}}</div>
             </div>
         </div>
     </div>
@@ -23,10 +23,10 @@
         </div>
         <div class="category-info">
             <div class="category-title">
-                品牌名称：{{product.brand_name}}
+                <span>品牌名称：</span>{{product.brand_name}}
             </div>
             <div class="category-intro">
-                品牌介绍：{{product.brand_intro}}
+                <span>品牌介绍：</span>{{product.brand_intro}}
             </div>
         </div>
     </div>
@@ -36,13 +36,13 @@
         </div>
         <div class="product-info">
             <div class="product-title">
-                商品名称：{{product.pro_title}}
+                <span>商品名称：</span>{{product.pro_title}}
             </div>
             <div class="product-subtitle">
-                商品简介：{{product.pro_subtitle}}
+                <span>商品简介：</span>{{product.pro_subtitle}}
             </div>
             <div class="product-detail">
-                商品详情：{{product.pro_detail}}
+                <span>商品详情：</span>{{product.pro_detail}}
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ module.exports = {
         if (ctx.session.user) {
             await ctx.render('frontend/user/index')
         } else {
-            await ctx.render('frontend/user/login')
+            ctx.redirect('/login')
         }
     },
     login: async (ctx) => {
@@ -19,21 +19,21 @@ module.exports = {
         if (ctx.session.user) {
             await ctx.render('frontend/user/information')
         } else {
-            await ctx.render('frontend/user/login')
+            ctx.redirect('/login')
         }
     },
     order: async (ctx) => {
         if (ctx.session.user) {
             await ctx.render('frontend/user/order')
         } else {
-            await ctx.render('frontend/user/login')
+            ctx.redirect('/login')
         }
     },
     added: async (ctx) => {
         if (ctx.session.user) {
             await ctx.render('frontend/user/added')
         } else {
-            await ctx.render('frontend/user/login')
+            ctx.redirect('/login')
         }
     }
 }

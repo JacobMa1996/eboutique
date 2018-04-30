@@ -8,51 +8,71 @@
             <li class="active">
                 <a href="/user/information">我的信息</a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="/user/order">我的订单</a>
-            </li>
+            </li> -->
             <li>
-                <a href="/user/added">我的发布</a>
+                <a href="/user/added">发布商品</a>
             </li>
         </ul>
     </div>
     <div class="user-content">
-        <div class="item">
-            <div class="title">
-                <img src="/images/user.png" alt="">
-                <span>昵称</span>
+        <div class="group">
+            <div class="item">
+                <div class="title">
+                    <img src="/images/user.png" alt="">
+                    <span>昵称</span>
+                </div>
+                <div class="value" @click="getConfirm('userName')">
+                    <span>{{user.user_name}}</span>
+                    <img src="/images/arrow-right.png" alt="">
+                </div>
             </div>
-            <div class="value" @click="getConfirm('userName')">
-                <span>{{user.user_name}}</span>
-                <img src="/images/arrow-right.png" alt="">
+            <div class="item">
+                <div class="title">
+                    <img src="/images/phone.png" alt="">
+                    <span>手机</span>
+                </div>
+                <div class="value" @click="getConfirm('userPhone')">
+                    <span>{{user.user_phone}}</span>
+                    <img src="/images/arrow-right.png" alt="">
+                </div>
             </div>
-
+            <div class="item">
+                <div class="title">
+                    <img src="/images/sex.png" alt="">
+                    <span>性别</span>
+                </div>
+                <div class="value" @click="getConfirm('sex')">
+                    <span>{{user.sex ? (user.sex === 1 ? '男' : '女') : '未设置' }}</span>
+                    <img src="/images/arrow-right.png" alt="">
+                </div>
+            </div>
         </div>
-        <div class="item">
-            <div class="title">
-                <img src="/images/phone.png" alt="">
-                <span>手机</span>
+        <div class="group">
+            <div class="item" @click="redirect('/user/order')">
+                <div class="title">
+                    <img src="/images/order.png" alt="">
+                    <span>我的订单</span>
+                </div>
+                <div class="value">
+                    <span></span>
+                    <img src="/images/arrow-right.png" alt="">
+                </div>
             </div>
-            <div class="value" @click="getConfirm('userPhone')">
-                <span>{{user.user_phone}}</span>
-                <img src="/images/arrow-right.png" alt="">
+            <div class="item" @click="redirect('/user/favorites')">
+                <div class="title">
+                    <img src="/images/favorites.png" alt="">
+                    <span>我的收藏</span>
+                </div>
+                <div class="value">
+                    <span></span>
+                    <img src="/images/arrow-right.png" alt="">
+                </div>
             </div>
-
-        </div>
-        <div class="item">
-            <div class="title">
-                <img src="/images/sex.png" alt="">
-                <span>性别</span>
-            </div>
-            <div class="value" @click="getConfirm('sex')">
-                <span>{{user.sex ? (user.sex === 1 ? '男' : '女') : '未设置' }}</span>
-                <img src="/images/arrow-right.png" alt="">
-            </div>
-
         </div>
     </div>
-    {% endraw %}
-    {% include 'views/frontend/common/footer.html' %}
+    {% endraw %} {% include 'views/frontend/common/footer.html' %}
     <v-confirm :options="confirm_options" @submit="changeInformation"></v-confirm>
 </div>
 

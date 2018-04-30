@@ -1,7 +1,7 @@
 const multer = require('koa-multer')
 const { ResponseData, User, Category, Product, ProductOrder } = require('../model/index')
 const { USER_TYPE, CATEGORY_TYPE, PRODUCT_TYPE, PRODUCTORDER_TYPE } = require('../lib/data_type')
-const { query, queryAll, queryTable, insertTable, updateTable, deleteTable, queryProByCateId } = require('../lib/mysql.js')
+const { query, queryAll, queryTable, insertTable, updateTable, deleteTable, queryProByCateId, queryOrderByUserId } = require('../lib/mysql.js')
 
 let fileName = ''
 
@@ -278,6 +278,34 @@ const user = [{
         ctx.body = response
     }
 }, {
+    path: '/getOrdersByUserId',
+    method: 'post',
+    callback: async (ctx) => {
+        let requestInfo = ctx.request.body
+        let response
+        let orderList = []
+        let data = new ProductOrder(requestInfo)
+        await queryOrderByUserId(data).then(res => {
+            orderList = res
+        }).catch(err => {
+            response = new ResponseData(err, 1, 'failed')
+        })
+        if (orderList && orderList.length) {
+            for (let i = 0; i < orderList.length; i++) {
+                await queryTable('product', new Product({proId: orderList[i].pro_id})).then(pro => {
+                    orderList[i].pro_img = pro[0].pro_img
+                    orderList[i].pro_title = pro[0].pro_title
+                    orderList[i].original_price = pro[0].original_price
+                }).catch(err => {
+                    response = new ResponseData(err, 1, 'failed')
+                })
+            }
+        }
+        response = new ResponseData(orderList, 0, 'success')
+
+        ctx.body = response
+    }
+}, {
     path: '/productBuy',
     method: 'post',
     callback: async (ctx) => {
@@ -297,7 +325,7 @@ const user = [{
                 if (res[0].pro_isbuy) { // 如果已经被购买了
                     return Promise.reject('failed, this product has sold out! ')
                 } else {
-                    data.pro_price = res.current_price
+                    data.proPrice = res[0].current_price
                     return insertTable('productorder', new ProductOrder(data))
                 }
             } else {
