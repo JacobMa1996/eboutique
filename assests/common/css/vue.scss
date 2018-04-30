@@ -133,3 +133,16 @@
         box-shadow: 0 1px 3px #d1e2ee;
     }
 }
+
+.v-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background: #4d5965;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}

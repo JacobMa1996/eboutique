@@ -25,6 +25,7 @@ Vue.component('category', {
             
             // form
             form_options: {
+                tip: '添加分类',
                 input_list: [{
                     label: '分类名称',
                     header: 'cate_name',

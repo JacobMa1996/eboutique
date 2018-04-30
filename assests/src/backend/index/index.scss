@@ -8,4 +8,17 @@
     table tbody tr td:nth-child(4) {
         width: 60%
     }
+
+    .form {
+        border-radius: 10px;
+        border: 1px solid #d2d2d2;
+        background: #eee;
+        padding: 10px;
+    }
+
+    header {
+        a {
+            color: #fff
+        }
+    }
 }

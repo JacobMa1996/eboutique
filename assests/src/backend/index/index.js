@@ -1,10 +1,11 @@
 import './index.scss'
 import '../../vueComponent'
 import './category'
+import './product'
 
 new Vue({
     el: '#admin',
-    data() {
+    data() {    
         return {
             slide_index: 0, // 默认0
             slide_list: [{

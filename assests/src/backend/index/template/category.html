@@ -18,7 +18,7 @@
         </div>
         <div class="form-group form-button"><button @click="submit" type="button" class="btn btn-primary">添加</button></div>
     </form> -->
-    <v-form :options="form_options" @submit="add"></v-form>
+    <v-form :options="form_options" @submit="add" class="form"></v-form>
     <v-table :options="table_options" @show_pop="showPop" @delete_item="deleteItem"></v-table>
     <v-pop :options="pop_options" @submit="edit"></v-pop>
 </div>

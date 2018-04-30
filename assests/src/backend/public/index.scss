@@ -1,4 +1,38 @@
-body {
+html {
+    height: 100%;
+    width: 100%
+}
 
+body {
+    height: 100%;
+    width: 100%
+}
+
+#admin {
+    height: 100%;
+    width: 100%
+}
+
+#slide {
+    position: fixed;
+    top: 50px;
+    background: #e7e7e7;
+    width: 200px;
+    height: 100%;
+}
+
+#slide > ul > li {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee
+}
+
+#slide > ul > li.active {
+    background: #4d5864;
+    color: #fff
+}
+
+.content {
+    padding: 10px
 }
 
