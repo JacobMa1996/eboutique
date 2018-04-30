@@ -1,4 +1,7 @@
 /*
+status: {
+    
+},
 thead_list: {
     type: Array,
     default: () => {
@@ -36,6 +39,10 @@ Vue.component('v-table', {
         },
         deleteItem(trowIndex) {
             this.$emit('delete_item', trowIndex)
+        },
+        changeStatus (trowIndex) {
+            this.options.trow_list[trowIndex].status.value = !this.options.trow_list[trowIndex].status.value
+            this.$emit('changeStatus', trowIndex)
         }
     }
 })

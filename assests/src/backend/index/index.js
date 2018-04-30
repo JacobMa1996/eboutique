@@ -13,7 +13,7 @@ new Vue({
                 text: '分类设置'
             }, {
                 index: 1,
-                text: '审核设置'
+                text: '商品审核'
             }, {
                 index: 2,
                 text: '数据分析'

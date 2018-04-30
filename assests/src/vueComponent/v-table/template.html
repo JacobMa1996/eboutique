@@ -15,8 +15,9 @@
           {{trow[thead.header]}}
         </td>
         <td>
-          <a @click="showPop(trow)" href="javascript:void(0);">编辑</a>
-          <a @click="deleteItem(trowIndex)" href="javascript:void(0);">删除</a>
+          <a v-if="trow.status" @click="changeStatus(trowIndex)" href="javascript:void(0);">{{trow.status.value ? trow.status.after : trow.status.before}}</a>          
+          <a v-if="!trow.status" @click="showPop(trow)" href="javascript:void(0);">编辑</a>
+          <a v-if="!trow.status" @click="deleteItem(trowIndex)" href="javascript:void(0);">删除</a>
         </td>
       </tr>
 

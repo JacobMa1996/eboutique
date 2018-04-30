@@ -105,7 +105,6 @@ Vue.component('category', {
             this.pop_options.modal = true
         },
         clearForm () {
-            console.log(1)
             this.form_options.input_list.forEach(val => val.value = '')
             this.form_options.textarea_list.forEach(val => val.value = '')
             this.form_options.check_list.forEach(val => val.value = '')

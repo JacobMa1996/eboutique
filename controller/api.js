@@ -132,6 +132,47 @@ const admin = [{
         })
         ctx.body = response
     }
+}, {
+    path: '/admin/getProductList',
+    method: 'get',
+    callback: async (ctx) => {
+        let response
+        let productList = []
+        await queryAll('product').then(res => {
+            for (item of res) {
+                // if (!item.review_status) {
+                //     productList.push(item)
+                // }
+                productList.push(item)
+            }
+        }).catch(err => {
+            response = new ResponseData(err, 1, 'failed')
+        })
+        for (let item of productList) {
+            await queryTable('category', new Category({cateId: item.cate_id})).then(res => {
+                item.cate_name = res[0].cate_name
+            })
+        }
+        response = new ResponseData(productList, 0, 'success')
+        ctx.body = response
+    }
+}, {
+    path: '/admin/changeProReviewStatus',
+    method: 'post',
+    callback: async (ctx) => {
+        let response
+        let requestInfo = ctx.request.body
+        await updateTable('product', {
+            pro_id: requestInfo.proId,
+            review_status: requestInfo.reviewStatus
+        }).then(res => {
+            response = new ResponseData(res, 0, 'success')
+        }).catch(err => {
+            console.log(err)
+            response = new ResponseData(err, 0, 'failed')
+        })
+        ctx.body = response
+    }
 }]
 
 const user = [{
@@ -197,6 +238,24 @@ const user = [{
         ctx.body = response
     }
 }, {
+    path: '/getCategoryList',
+    method: 'get',
+    callback: async (ctx) => {
+        let response
+        let categoryList = []
+        await queryAll('category').then(res => {
+            for (let item of res) {
+                if (item.is_show) {
+                    categoryList.push(item)
+                }
+            }
+        }).catch(err => {
+            response = new ResponseData(err, 1, 'failed')
+        })
+        response = new ResponseData(categoryList, 0, 'success')
+        ctx.body = response
+    }
+}, {
     path: '/addProduct',
     method: 'post',
     callback: async (ctx) => {
@@ -221,7 +280,11 @@ const user = [{
         let productList = []
         let userList = []
         await queryProByCateId(data).then(res => {
-            productList = res
+            for (let item of res) {
+                if (item.review_status) {
+                    productList.push(item)
+                }
+            }
         }).catch(err => {
             console.log(err)
             response = new ResponseData(err, 1, 'failed')

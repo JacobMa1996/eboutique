@@ -50,7 +50,7 @@ let vm = new Vue({
                 }
             })
             EB.ajax({
-                url: '/api/admin/getCategoryList',
+                url: '/api/getCategoryList',
                 method: 'get',
                 success(res) {
                     _this.cateList = res.data
