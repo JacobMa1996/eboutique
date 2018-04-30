@@ -8,5 +8,7 @@ router
   .get('/user/information', user.information)
   .get('/user/order', user.order)
   .get('/user/added', user.added)
+  .get('/user/myadded', user.myadded)
+  .get('/user/favorites', user.favorites)
 
   module.exports = router;

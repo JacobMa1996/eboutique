@@ -1,0 +1,10 @@
+{% extends 'views/frontend/common/layout.html' %} {% block head %}
+<link rel="stylesheet" href="/dist/frontend/userfavorites/bundle.css"> {% endblock %} {% block body %}
+<div id="container">
+    {% include 'views/frontend/common/header.html' %} {% raw %}
+
+    
+    {% endraw %} {% include 'views/frontend/common/footer.html' %}
+</div>
+
+<script src="/dist/frontend/userfavorites/bundle.js"></script> {% endblock %}

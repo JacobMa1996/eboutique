@@ -29,9 +29,23 @@ module.exports = {
             ctx.redirect('/login')
         }
     },
+    favorites: async (ctx) => {
+        if (ctx.session.user) {
+            await ctx.render('frontend/user/favorites')
+        } else {
+            ctx.redirect('/login')
+        }
+    },
     added: async (ctx) => {
         if (ctx.session.user) {
             await ctx.render('frontend/user/added')
+        } else {
+            ctx.redirect('/login')
+        }
+    },
+    myadded: async (ctx) => {
+        if (ctx.session.user) {
+            await ctx.render('frontend/user/myadded')
         } else {
             ctx.redirect('/login')
         }

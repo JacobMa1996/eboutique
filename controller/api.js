@@ -1,7 +1,28 @@
 const multer = require('koa-multer')
-const { ResponseData, User, Category, Product, ProductOrder } = require('../model/index')
-const { USER_TYPE, CATEGORY_TYPE, PRODUCT_TYPE, PRODUCTORDER_TYPE } = require('../lib/data_type')
-const { query, queryAll, queryTable, insertTable, updateTable, deleteTable, queryProByCateId, queryOrderByUserId } = require('../lib/mysql.js')
+const {
+    ResponseData,
+    User,
+    Category,
+    Product,
+    ProductOrder
+} = require('../model/index')
+const {
+    USER_TYPE,
+    CATEGORY_TYPE,
+    PRODUCT_TYPE,
+    PRODUCTORDER_TYPE
+} = require('../lib/data_type')
+const {
+    query,
+    queryAll,
+    queryTable,
+    insertTable,
+    updateTable,
+    deleteTable,
+    queryProByCateId,
+    queryOrderByUserId,
+    queryProductByUserId
+} = require('../lib/mysql.js')
 
 let fileName = ''
 
@@ -366,6 +387,19 @@ const user = [{
         }
         response = new ResponseData(orderList, 0, 'success')
 
+        ctx.body = response
+    }
+}, {
+    path: '/getMyAddedProduct',
+    method: 'post',
+    callback: async (ctx) => {
+        let response
+        let requestInfo = ctx.request.body
+        await queryProductByUserId(new Product(requestInfo)).then(res => {
+            response = new ResponseData(res, 0, 'success')
+        }).catch(err => {
+            response = new ResponseData(err, 1, 'failed')
+        })
         ctx.body = response
     }
 }, {
