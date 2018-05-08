@@ -12,7 +12,7 @@ const mysql = require('mysql')
 const NODE_ENV = require('./config/config')
 const MYSQLCONFIG = require('./config/mysql.config')
 
-const routers = require('./route')
+const routers = require('./routes/index')
 
 process.env.NODE_ENV = NODE_ENV
 
