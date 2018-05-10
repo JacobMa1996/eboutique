@@ -58,6 +58,9 @@
 .v-pop .modal {
     display: block;
     opacity: 1;
+    .modal-content {
+        top: 100px;
+    }
 }
 
 .v-confirm {
@@ -73,7 +76,7 @@
         position: fixed;
         left: 50%;
         right: 50%;
-        transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -150%, 0);
         border: 1px solid #d2d2d2;
         width: 300px;
         border-radius: 10px;

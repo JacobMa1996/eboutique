@@ -63,7 +63,12 @@ window.vm = new Vue({
                 method: 'post',
                 data: data,
                 success(res) {
-                    console.log(res)
+                    if (res.status === 0) {
+                        alert('购买成功')
+                        setTimeout(() => {
+                            location.href = '/category'
+                        }, 3000)
+                    }
                 },
                 error (err) {
                     console.log(err)

@@ -28,7 +28,7 @@ new Vue({
                 }, 
                 error(err) {
                     console.log(err)
-                    // alert(err)
+                    alert(err)
                 }
             })
         }
