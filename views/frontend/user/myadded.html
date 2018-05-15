@@ -4,7 +4,7 @@
     {% include 'views/frontend/common/header.html' %}
 
     {% raw %}
-    <div class="item">
+    <div class="item" v-for="(item, index) in productList" :key="index">
         <div class=""></div>
     </div>
     {% endraw %} {% include 'views/frontend/common/footer.html' %}
