@@ -4,8 +4,20 @@
     {% include 'views/frontend/common/header.html' %}
 
     {% raw %}
-    <div class="item" v-for="(item, index) in productList" :key="index">
-        <div class=""></div>
+    <div class="item" v-for="(item, index) in productList" :key="index" @click="direct(item.pro_id)">
+        <div class="item-left">
+            <img v-if="item.pro_img !== null" :src="item.pro_img" onerror="this.src='/images/1.jpg'">
+        </div>
+        <div class="item-right">
+            <div class="item-name">{{item.pro_title}}</div>
+            <div class="item-price">
+                <span>￥{{item.original_price}}</span>
+                <span>￥{{item.current_price}}</span>
+            </div>
+            <div class="item-status">
+                购买状态：<span :class="item.pro_isbuy ? 'green' : 'red'">{{item.pro_isbuy ? '已卖出' : '未卖出'}}</span>
+            </div>
+        </div>
     </div>
     {% endraw %} {% include 'views/frontend/common/footer.html' %}
 </div>

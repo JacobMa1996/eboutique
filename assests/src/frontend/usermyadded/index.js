@@ -47,6 +47,9 @@ let vm = new Vue({
                 }
             })
 
+        },
+        direct(id) {
+            location.href = `/category/product?id=${id}`
         }
     }
 })

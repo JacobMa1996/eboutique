@@ -1,0 +1,43 @@
+.item {
+    display: flex;
+    padding: 10px 5px;
+    // border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+    background: #fff;
+    .item-left {
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .item-right {
+        margin-left: 10px;
+        & > div {
+            margin-top: 10px;
+        }
+        .item-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width:  200px
+        }
+        .item-price {
+            span:first-child {
+                text-decoration: line-through;
+                color: #999
+            }
+            span:last-child {
+                color: rgb(211, 64, 64);
+                font-size: 18px;
+            }
+        }
+        .item-status {
+            .red {
+                color: rgb(211, 64, 64)
+            }
+            .green {
+                color: rgb(20, 124, 20)
+            }
+        }
+    }
+}
