@@ -54,7 +54,7 @@
             <img v-if="product.pro_img !== null" :src="product.pro_img" onerror="this.src='/images/1.jpg'"  alt="图片">
         </div>
     </div>
-    <div class="buy" @click="buy">
+    <div v-if="isBuyBtnShow" class="buy" @click="buy">
         立即购买
     </div>
     {% endraw %}

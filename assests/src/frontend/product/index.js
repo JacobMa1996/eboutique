@@ -7,8 +7,18 @@ window.vm = new Vue({
             user: {
                 user_name: null
             },
-            product: {}
+            product: {},
+            isBuyBtnShow: false // 是否显示购买按钮
         }
+    },
+    computed: {
+        // isBuyBtnShow () {
+        //     // if (this.user.user_id && this.product.user_id) {
+        //     //     return this.user.user_id === this.product.user_id
+        //     // }
+        //     console.log(this.user.user_id, this.product.user_id)
+        //     return this.user.user_id === this.product.user_id
+        // }
     },
     mounted() {
         this.getInitData()
@@ -41,6 +51,7 @@ window.vm = new Vue({
                 method: 'post',
                 success(res) {
                     _this.product = res.data
+                    _this.isBuyBtnShow = (_this.user.user_id !== _this.product.user_id)
                 },
                 error(err) {
                     console.log(err)
@@ -72,6 +83,7 @@ window.vm = new Vue({
                 },
                 error (err) {
                     console.log(err)
+                    alert(err)
                 }
             })
         }
