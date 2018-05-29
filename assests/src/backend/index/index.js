@@ -14,9 +14,6 @@ new Vue({
             }, {
                 index: 1,
                 text: '商品审核'
-            }, {
-                index: 2,
-                text: '数据分析'
             }]
         }
     },
